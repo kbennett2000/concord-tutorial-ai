@@ -192,9 +192,9 @@ easy, but because you built the small version yourself._
 If you want to _run_ the real thing, concord-mcp's
 [README](https://github.com/kbennett2000/concord-mcp/tree/v1.0.0#readme)
 shows a no-code path — no account, nothing this course asks you to
-install; it's there when you're curious. And this repo has one more
-quiet delivery coming: a recipes file and an ideas file, copy-paste
-material for whatever you build next.
+install; it's there when you're curious. And the quiet delivery has
+landed: [recipes.md](../../recipes.md) is the copy-paste material, and
+[ideas.md](../../ideas.md) is what to build with it.
 
 What should that be? You have a chat page with your name on it, three
 tools you understand to the bone, and a Bible that never lets the
