@@ -1,0 +1,572 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>My Scripture study chat</title>
+    <style>
+      /* Just enough styling that the page doesn't look broken. The code is the lesson. */
+      body {
+        font-family:
+          system-ui,
+          -apple-system,
+          "Segoe UI",
+          Roboto,
+          sans-serif;
+        max-width: 40rem;
+        margin: 2rem auto;
+        padding: 0 1rem;
+        line-height: 1.5;
+        color: #1c2733;
+        background: #faf7f0;
+      }
+      h1 {
+        font-size: 1.4rem;
+        color: #2a4a6b;
+      }
+      .chat {
+        margin: 1rem 0;
+      }
+      .bubble {
+        margin: 0.6rem 0;
+        padding: 0.6rem 0.9rem;
+        border-radius: 0.6rem;
+        max-width: 85%;
+        white-space: pre-wrap;
+      }
+      .bubble.you {
+        background: #fbeee0;
+        border: 1px solid #e7cda8;
+        margin-left: auto;
+      }
+      .bubble.model {
+        background: #fff;
+        border: 1px solid #ece3cf;
+        margin-right: auto;
+      }
+      .bubble .who {
+        font-weight: 600;
+        font-size: 0.8rem;
+        color: #2a4a6b;
+        margin-bottom: 0.2rem;
+      }
+      .row {
+        display: flex;
+        gap: 0.5rem;
+        margin: 1rem 0 0.25rem;
+      }
+      input {
+        flex: 1;
+        padding: 0.5rem 0.6rem;
+        font-size: 1rem;
+        border: 1px solid #c9bfa8;
+        border-radius: 0.4rem;
+      }
+      button {
+        padding: 0.5rem 0.9rem;
+        font-size: 1rem;
+        cursor: pointer;
+        border: 0;
+        border-radius: 0.4rem;
+        background: #2a4a6b;
+        color: #fff;
+      }
+      button:disabled {
+        opacity: 0.6;
+        cursor: wait;
+      }
+      .fill {
+        font-size: 0.9rem;
+        margin: 0 0 1rem;
+        color: #6b5b40;
+      }
+      .fill a {
+        color: #1d4ed8;
+        cursor: pointer;
+      }
+      .busy {
+        margin: 1rem 0;
+        color: #6b5b40;
+        font-style: italic;
+      }
+      .busy[hidden] {
+        display: none;
+      }
+      .wire {
+        margin: 1rem 0;
+        padding: 0.75rem 1rem;
+        background: #1c2733;
+        color: #e7e3d8;
+        border-radius: 0.5rem;
+        font-family: ui-monospace, Menlo, Consolas, monospace;
+        font-size: 0.85rem;
+        line-height: 1.45;
+      }
+      .wire .title {
+        font-family: system-ui, sans-serif;
+        font-weight: 600;
+        color: #9fc1e8;
+        margin-bottom: 0.4rem;
+      }
+      .wire .line {
+        margin: 0.3rem 0;
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+      .wire .you {
+        color: #d8c98a;
+      }
+      .wire .model {
+        color: #9fc1e8;
+      }
+      .wire .code {
+        color: #9fe8b0;
+      }
+      .wire .err {
+        color: #f0a8a0;
+      }
+      .message,
+      [data-offline-guidance] {
+        margin: 1rem 0;
+        padding: 0.75rem 1rem;
+        border-radius: 0.5rem;
+        background: #fbeee0;
+        border: 1px solid #e7cda8;
+      }
+      .message small {
+        display: block;
+        margin-top: 0.35rem;
+        color: #6b5b40;
+      }
+      [data-offline-guidance][hidden] {
+        display: none;
+      }
+      code {
+        font-family: ui-monospace, Menlo, Consolas, monospace;
+        font-size: 0.92em;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ← The personalization: make this heading yours. Your name, your
+         study group, your kitchen table. That's the whole edit. -->
+    <h1>My Scripture study chat</h1>
+    <p>
+      Ask, follow up, dig deeper — the conversation remembers. Quotes arrive
+      over the wire from your Concord; the panel below the chat shows every
+      crossing.
+    </p>
+
+    <!-- Shown only when a backend can't be reached — the page takes care of you. -->
+    <div data-offline-guidance="ollama" hidden>
+      <strong>Ollama isn't running.</strong> The 30-second check: open
+      <code>http://localhost:11434</code> in a new tab — you want "Ollama is
+      running." If not: on Windows and Mac launch the Ollama app; on Linux it's
+      a background service — <code>sudo systemctl start ollama</code>. Then
+      reload. (<a href="../../SETUP.md">SETUP</a> has the full path.)
+    </div>
+    <div data-offline-guidance="concord" hidden>
+      <strong>Concord isn't answering.</strong> Course 1's ritual, unchanged:
+      open <code>http://localhost:8000/healthz</code> — a short line of data
+      means it's on. If nothing loads, open Docker and start Concord, then
+      reload. (<a href="../../SETUP.md">SETUP</a> shows the way.)
+    </div>
+
+    <div class="chat" id="chat"></div>
+
+    <p class="busy" id="busy" hidden>
+      Working — the loop may go around more than once, and each round arrives
+      all at once. On a machine without a graphics card, give it a minute.
+    </p>
+
+    <div id="notice"></div>
+
+    <div class="row">
+      <input
+        id="prompt"
+        value="What does Acts 9:3 say?"
+        aria-label="Your message"
+      />
+      <button id="ask">Send</button>
+    </div>
+    <p class="fill">
+      <a id="startOver">Start over</a> — clears the conversation, keeps the
+      page.
+    </p>
+
+    <div id="wire" class="wire" hidden>
+      <div class="title">What just crossed the wire</div>
+      <div id="wireLines"></div>
+    </div>
+
+    <script>
+      // The two backends, same addresses as always.
+      const OLLAMA = "http://localhost:11434";
+      const CONCORD = "http://localhost:8000";
+      // ← on the smaller model from SETUP? Make this "qwen3.5:2b" — that's the whole change
+      const MODEL = "qwen3.5:4b";
+
+      // The menu — three tools, lesson 4's exact declarations.
+      const TOOLS = [
+        {
+          type: "function",
+          function: {
+            name: "lookup_verse",
+            description:
+              'Look up the exact text of a Bible verse by reference, e.g. "John 3:16".',
+            parameters: {
+              type: "object",
+              required: ["ref"],
+              properties: {
+                ref: {
+                  type: "string",
+                  description: 'The verse reference, like "John 3:16"',
+                },
+              },
+            },
+          },
+        },
+        {
+          type: "function",
+          function: {
+            name: "search_by_meaning",
+            description:
+              "Search the Bible by meaning rather than exact words. Use this when the user " +
+              "describes a theme, feeling, or idea — like 'verses about courage' — instead " +
+              "of naming a verse. Returns the closest verses with a similarity score.",
+            parameters: {
+              type: "object",
+              required: ["query"],
+              properties: {
+                query: {
+                  type: "string",
+                  description: "What the user is looking for, in plain words",
+                },
+              },
+            },
+          },
+        },
+        {
+          type: "function",
+          function: {
+            name: "places_for_passage",
+            description:
+              "List the places named in a Bible passage. Use this when the user asks " +
+              "where something happened. Takes a verse reference like 'Acts 9:3'.",
+            parameters: {
+              type: "object",
+              required: ["ref"],
+              properties: {
+                ref: {
+                  type: "string",
+                  description: 'The verse reference, like "Acts 9:3"',
+                },
+              },
+            },
+          },
+        },
+      ];
+
+      // The one rule, riding along since lesson 3.
+      const RULE =
+        "You answer questions about the Bible. Never quote a verse from memory: " +
+        "always look it up with the lookup_verse tool, and quote only what it returns.";
+
+      const input = document.getElementById("prompt");
+      const askButton = document.getElementById("ask");
+      const busy = document.getElementById("busy");
+      const notice = document.getElementById("notice");
+      const chatBox = document.getElementById("chat");
+      const wire = document.getElementById("wire");
+      const wireLines = document.getElementById("wireLines");
+      const guidance = (name) =>
+        document.querySelector(`[data-offline-guidance="${name}"]`);
+
+      // THE list. One array, the whole conversation — every turn, every tool
+      // call, every result. It started life in lesson 1 holding a single
+      // message; today it finally grows. Both views below render from it and
+      // nothing else.
+      let messages = [{ role: "system", content: RULE }];
+
+      // View 1: the chat — your turns and the model's words, as bubbles.
+      function renderChat(messages) {
+        chatBox.innerHTML = "";
+        for (const m of messages) {
+          if (
+            m.role === "user" ||
+            (m.role === "assistant" && m.content && !m.tool_calls)
+          ) {
+            const bubble = document.createElement("div");
+            bubble.className =
+              "bubble " + (m.role === "user" ? "you" : "model");
+            const who = document.createElement("div");
+            who.className = "who";
+            who.textContent = m.role === "user" ? "You" : "The model";
+            const body = document.createElement("div");
+            body.textContent = m.content;
+            bubble.appendChild(who);
+            bubble.appendChild(body);
+            chatBox.appendChild(bubble);
+          }
+        }
+      }
+
+      // View 2: the wire — the tool traffic the chat view doesn't show.
+      // Same array in; different lines out. Two views, one truth.
+      function renderWire(messages) {
+        wire.hidden = false;
+        wireLines.innerHTML = "";
+        for (const m of messages) {
+          const line = document.createElement("div");
+          line.className = "line";
+          if (m.role === "user") {
+            line.classList.add("you");
+            line.textContent = "you asked: " + m.content;
+          } else if (m.role === "assistant" && m.tool_calls) {
+            line.classList.add("model");
+            for (const call of m.tool_calls) {
+              line.textContent +=
+                "→ the model asked: " +
+                call.function.name +
+                " " +
+                JSON.stringify(call.function.arguments) +
+                "\n";
+            }
+          } else if (m.role === "tool") {
+            line.classList.add(m.isError ? "err" : "code");
+            line.textContent = "← your code sent back: " + m.content;
+          } else {
+            continue;
+          }
+          wireLines.appendChild(line);
+        }
+      }
+
+      function renderBoth() {
+        renderChat(messages);
+        renderWire(messages);
+      }
+
+      function showNotice(text, hint) {
+        notice.innerHTML = "";
+        const box = document.createElement("div");
+        box.className = "message";
+        box.textContent = text;
+        if (hint) {
+          const small = document.createElement("small");
+          small.textContent = hint;
+          box.appendChild(small);
+        }
+        notice.appendChild(box);
+      }
+
+      // ---- Your code's side of the menu — lesson 4's, unchanged.
+
+      async function lookupVerse(ref) {
+        let response;
+        try {
+          response = await fetch(
+            `${CONCORD}/v1/verses/${encodeURIComponent(ref)}?translations=KJV`,
+          );
+        } catch (e) {
+          guidance("concord").hidden = false;
+          return {
+            content: "Couldn't reach Concord — it appears to be off.",
+            isError: true,
+          };
+        }
+        const data = await response.json();
+        if (!response.ok) return { content: data.error.message, isError: true };
+        return {
+          content: data.verses.map((v) => v.text.KJV).join(" "),
+          isError: false,
+        };
+      }
+
+      async function searchByMeaning(query) {
+        let response;
+        try {
+          // Matching happens in one translation's meaning-space; the text
+          // comes back in yours. Same explicit ask the production server makes.
+          response = await fetch(
+            `${CONCORD}/v1/semantic-search?q=${encodeURIComponent(query)}&limit=5&translation=KJV`,
+          );
+        } catch (e) {
+          guidance("concord").hidden = false;
+          return {
+            content: "Couldn't reach Concord — it appears to be off.",
+            isError: true,
+          };
+        }
+        const data = await response.json();
+        if (!response.ok) return { content: data.error.message, isError: true };
+        const lines = data.results.map(
+          (r) => `${r.reference} (similarity ${r.score}): ${r.text}`,
+        );
+        return {
+          content: "Closest matches (KJV text):\n" + lines.join("\n"),
+          isError: false,
+        };
+      }
+
+      async function placesForPassage(ref) {
+        let response;
+        try {
+          response = await fetch(
+            `${CONCORD}/v1/verses/${encodeURIComponent(ref)}/places`,
+          );
+        } catch (e) {
+          guidance("concord").hidden = false;
+          return {
+            content: "Couldn't reach Concord — it appears to be off.",
+            isError: true,
+          };
+        }
+        const data = await response.json();
+        if (!response.ok) return { content: data.error.message, isError: true };
+        if (data.places.length === 0) {
+          return {
+            content: `No places are named in ${data.reference}.`,
+            isError: false,
+          };
+        }
+        const lines = data.places.map((p) =>
+          p.latitude !== null
+            ? `${p.name} — a ${p.type}, located at ${p.latitude.toFixed(2)}, ${p.longitude.toFixed(2)}`
+            : `${p.name} — a ${p.type}, location unknown`,
+        );
+        return { content: lines.join("\n"), isError: false };
+      }
+
+      async function runTool(call) {
+        const args = call.function.arguments;
+        switch (call.function.name) {
+          case "lookup_verse":
+            return lookupVerse(args.ref);
+          case "search_by_meaning":
+            return searchByMeaning(args.query);
+          case "places_for_passage":
+            return placesForPassage(args.ref);
+          default:
+            return {
+              content:
+                `There is no tool called '${call.function.name}'. The tools on offer are: ` +
+                "lookup_verse, search_by_meaning, places_for_passage.",
+              isError: true,
+            };
+        }
+      }
+
+      async function send() {
+        const text = input.value.trim();
+        if (!text) return;
+
+        notice.innerHTML = "";
+        input.value = "";
+        askButton.disabled = true;
+        busy.hidden = false;
+
+        // The conversation grows — we push onto the SAME list every turn.
+        messages.push({ role: "user", content: text });
+        renderBoth();
+
+        for (let round = 1; round <= 10; round++) {
+          let response;
+          try {
+            response = await fetch(`${OLLAMA}/api/chat`, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                model: MODEL,
+                messages: messages,
+                tools: TOOLS,
+                stream: false,
+                think: false,
+              }),
+            });
+          } catch (e) {
+            busy.hidden = true;
+            askButton.disabled = false;
+            guidance("ollama").hidden = false;
+            return;
+          }
+
+          const data = await response.json();
+          if (!response.ok) {
+            busy.hidden = true;
+            askButton.disabled = false;
+            if (String(data.error || "").includes("not found")) {
+              showNotice(
+                "Ollama is running, but the model isn't downloaded yet.",
+                "One command fixes it — in a terminal, run:  ollama pull " +
+                  MODEL,
+              );
+            } else {
+              showNotice(
+                "Ollama couldn't answer that one.",
+                "It said: " + (data.error || response.status),
+              );
+            }
+            return;
+          }
+
+          const reply = data.message;
+          messages.push(reply);
+
+          if (reply.tool_calls) {
+            for (const call of reply.tool_calls) {
+              const looked = await runTool(call);
+              messages.push({
+                role: "tool",
+                tool_name: call.function.name,
+                content: looked.content,
+                isError: looked.isError, // page bookkeeping; Ollama ignores it
+              });
+            }
+            renderBoth();
+            continue;
+          }
+
+          busy.hidden = true;
+          askButton.disabled = false;
+          if (!reply.content.trim()) {
+            showNotice(
+              "The model sent back an empty reply this time.",
+              "Send again — each run is a fresh roll.",
+            );
+          }
+          renderBoth();
+          return;
+        }
+
+        busy.hidden = true;
+        askButton.disabled = false;
+        showNotice(
+          "The model kept asking for lookups past ten rounds, so the page stopped the loop.",
+          "That's the safety cap, not a crash. Send again to retry.",
+        );
+      }
+
+      askButton.addEventListener("click", send);
+      input.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") send();
+      });
+      document.getElementById("startOver").addEventListener("click", () => {
+        messages = [{ role: "system", content: RULE }];
+        notice.innerHTML = "";
+        wire.hidden = true;
+        renderBoth();
+        input.focus();
+      });
+
+      // On load, quietly check both backends — friendly guidance, never a
+      // dead page.
+      fetch(`${OLLAMA}/`).catch(() => {
+        guidance("ollama").hidden = false;
+      });
+      fetch(`${CONCORD}/healthz`).catch(() => {
+        guidance("concord").hidden = false;
+      });
+    </script>
+  </body>
+</html>
