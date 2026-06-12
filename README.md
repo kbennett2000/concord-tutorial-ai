@@ -66,7 +66,7 @@ works.
    reason you can read.
 4. **[Let it choose](lessons/04-the-menu/)** — give it a menu of tools and steer it with plain
    English descriptions you wrote.
-5. **It has a name** — the pattern you hand-rolled is called MCP; open a
+5. **[It has a name](lessons/05-the-real-thing/)** — the pattern you hand-rolled is called MCP; open a
    real production project and recognize every part.
 
 ## What's next
