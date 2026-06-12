@@ -126,6 +126,13 @@ Verified against installed reality in T0 (Ollama v0.30.7, this repo's
   etiquette flags and lesson 3 adds exactly one field. This discharges
   DECISION.md's re-run obligation for this shape; the obligation stands
   for future condition changes (T4's multi-tool shape included).
+- **Multi-turn (accumulated history) verified** _(T5, the chain's final
+  link — `docs/model-pin/MULTITURN-ADDENDUM.md`)_: both course models
+  10/10 on the scripted three-turn protocol with a history-recall
+  probe; stateful chat ships in lesson 5. Measured context growth
+  ~560 → ~1,250 prompt tokens across three turns (headroom remains at
+  the 4,096 default) — the lesson's "long chats think longer" row
+  quotes it.
 - **Error surfaces** _(captured T0, `docs/model-pin/ERROR-SURFACES.md`)_:
   Ollama stopped / Concord down → the page's `fetch` rejects
   (`TypeError: Failed to fetch` and engine equivalents); model not pulled
@@ -255,12 +262,35 @@ purpose, with receipts."
 — and a production implementation exists for the exact tools they
 built.
 **Build:** first, a light polish pass turning lessons 3–4 into a small
-chat page they'd show someone. Then the reveal, mirroring course 2's
+**stateful** chat page they'd show someone — the T5 multi-turn protocol
+measured both course models at 10/10 on a scripted three-turn
+conversation with a history-recall probe
+(`docs/model-pin/MULTITURN-ADDENDUM.md`, the changed-shape chain's
+final link; the addendum also records an instrument repair: the first
+probe wording was ambiguous English and both run sets are committed).
+The chat bubbles and the wire panel render the same live `messages`
+array — the single-source ruling's finale. Personalization is one
+heading edit; the T5 cut list (no timestamps, avatars, persistence, or
+markdown rendering) is recorded so later slices don't re-grow it.
+Then the reveal, staged as **recognition, not surprise** (the name has
+been on the front door since the README), mirroring course 2's
 songbird ending: open `concord-mcp` on GitHub **at the `v1.0.0` tag**
-and walk the map — your tool descriptions ↔ `server.py`'s reviewed
-copy; your fetch to Concord ↔ `backends/http.py`; your error messages ↔
-the rendering that lets a model self-correct; your loop ↔ what the MCP
-standard runs for you. Close on the banner: _looked up, never made up —
+and walk six stops, every quoted line verified verbatim at the tag
+(local-only verifier; output committed) — their one rule ↔ the
+`INSTRUCTIONS` constant in `src/concord_mcp/server.py` (which carries
+lesson 4's honesty beat as law); their declarations ↔ the description
+constants under the "product copy… never a drive-by edit" docstring,
+plus `search_keyword`, the tool they never built; their fetch ↔
+`src/concord_mcp/backends/http.py` (the same explicit `translation`
+send, with its why in a comment); their error handling ↔
+`render_error`, "errors the model can self-correct from"; their places
+formatter ↔ `render_places`, which prints their own line word for word
+(designed kinship, owned in one sentence); and **the seam** — the T3
+diagram returns with one dotted line (`docs/diagrams/tool-loop-seam.svg`)
+showing where MCP standardizes the cut: their loop is what an MCP
+client runs; the right half is what concord-mcp is. A one-paragraph
+Python Rosetta (def/decorator/f-string/indentation) sits immediately
+before the first stop. Close on the banner: _looked up, never made up —
 you just built why._ Optional outbound pointer for the curious:
 concord-mcp's README shows the no-code path to running the real thing.
 **Win — the identity move:** "I can read a production AI project,

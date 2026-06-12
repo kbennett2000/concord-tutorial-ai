@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 340" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <!-- Lesson 5: the tool loop with the seam — where MCP standardizes the cut.
+       Self-backed panel so it reads identically on GitHub light and dark. -->
+  <rect x="0" y="0" width="760" height="340" rx="12" fill="#faf7f0" stroke="#d9cdb2"/>
+
+  <!-- the seam -->
+  <line x1="378" y1="18" x2="378" y2="252" stroke="#9a3412" stroke-width="2.5" stroke-dasharray="7 6"/>
+  <text x="368" y="34" text-anchor="end" font-size="12.5" fill="#9a3412" font-weight="700">the client — your loop</text>
+  <text x="390" y="34" text-anchor="start" font-size="12.5" fill="#9a3412" font-weight="700">the server — concord-mcp</text>
+  <text x="368" y="50" text-anchor="end" font-size="11" fill="#9a3412" font-style="italic">(the asking)</text>
+  <text x="390" y="50" text-anchor="start" font-size="11" fill="#9a3412" font-style="italic">(the tools, the fetch, the rendering)</text>
+
+  <!-- top row -->
+  <g>
+    <rect x="28" y="70" width="120" height="58" rx="9" fill="#ffffff" stroke="#c9bfa8" stroke-width="1.5"/>
+    <text x="88" y="94" text-anchor="middle" font-size="15" fill="#1c2733" font-weight="600">You</text>
+    <text x="88" y="114" text-anchor="middle" font-size="12.5" fill="#52606d">ask a question</text>
+  </g>
+  <g>
+    <rect x="200" y="70" width="150" height="58" rx="9" fill="#ffffff" stroke="#c9bfa8" stroke-width="1.5"/>
+    <text x="275" y="94" text-anchor="middle" font-size="15" fill="#1c2733" font-weight="600">The model</text>
+    <text x="275" y="114" text-anchor="middle" font-size="12.5" fill="#52606d">writes a request</text>
+  </g>
+  <g>
+    <rect x="402" y="62" width="160" height="74" rx="9" fill="#2a4a6b" stroke="#1c3552" stroke-width="3"/>
+    <text x="482" y="90" text-anchor="middle" font-size="15" fill="#ffffff" font-weight="700">The tools</text>
+    <text x="482" y="110" text-anchor="middle" font-size="12.5" fill="#cfe0f2">declared, described, run</text>
+    <text x="482" y="126" text-anchor="middle" font-size="11" fill="#9fc1e8" font-style="italic">server.py · http.py · render.py</text>
+  </g>
+  <g>
+    <rect x="614" y="70" width="120" height="58" rx="9" fill="#ffffff" stroke="#c9bfa8" stroke-width="1.5"/>
+    <text x="674" y="94" text-anchor="middle" font-size="15" fill="#1c2733" font-weight="600">Concord</text>
+    <text x="674" y="114" text-anchor="middle" font-size="12.5" fill="#52606d">a real Bible</text>
+  </g>
+
+  <!-- forward arrows -->
+  <g stroke="#8a5a00" stroke-width="2.2" fill="none" marker-end="url(#fwd2)">
+    <path d="M150 99 L196 99"/>
+    <path d="M352 99 L398 99"/>
+    <path d="M564 99 L610 99"/>
+  </g>
+  <text x="173" y="88" text-anchor="middle" font-size="11.5" fill="#8a5a00">question</text>
+  <text x="375" y="88" text-anchor="middle" font-size="11.5" fill="#8a5a00">tool call</text>
+  <text x="587" y="88" text-anchor="middle" font-size="11.5" fill="#8a5a00">fetch</text>
+
+  <!-- return path -->
+  <g stroke="#1a7f37" stroke-width="2.2" fill="none" marker-end="url(#ret2)">
+    <path d="M674 132 L674 198 L562 198"/>
+    <path d="M482 140 L482 198 L478 198 M478 198 L356 198"/>
+    <path d="M275 198 L275 246 L88 246 L88 218"/>
+  </g>
+  <g stroke="#1a7f37" stroke-width="2.2" fill="none">
+    <path d="M558 198 L486 198"/>
+    <path d="M352 198 L279 198"/>
+  </g>
+  <text x="620" y="188" text-anchor="middle" font-size="11.5" fill="#1a7f37">the verse — or the error, honestly</text>
+  <text x="318" y="188" text-anchor="middle" font-size="11.5" fill="#1a7f37">tool result</text>
+  <text x="182" y="236" text-anchor="middle" font-size="11.5" fill="#1a7f37">the answer, quoting the wire</text>
+
+  <!-- footers -->
+  <text x="380" y="284" text-anchor="middle" font-size="12.5" fill="#1c2733" font-weight="600">In lessons 3–4 you built both halves in one file. MCP standardizes the cut —</text>
+  <text x="380" y="302" text-anchor="middle" font-size="12.5" fill="#1c2733" font-weight="600">your loop is what an MCP client runs for you; the right half is what concord-mcp is.</text>
+  <text x="380" y="324" text-anchor="middle" font-size="11" fill="#52606d" font-style="italic">tool calls and results cross the dotted line in a standard envelope — that's the whole standard</text>
+
+  <defs>
+    <marker id="fwd2" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 z" fill="#8a5a00"/>
+    </marker>
+    <marker id="ret2" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 z" fill="#1a7f37"/>
+    </marker>
+  </defs>
+</svg>
