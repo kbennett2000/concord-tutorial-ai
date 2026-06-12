@@ -1,8 +1,6 @@
-# concord-tutorial-ai
+![Concord — now teach it to look things up.](docs/banner.svg)
 
-> 🚧 **Under construction.** The front door (this README, SETUP, and the
-> course's groundwork) is in review; lessons land one at a time, and
-> everything merged here is followable up to the last finished lesson.
+# concord-tutorial-ai
 
 You've seen an AI invent a Bible verse. In five short lessons you'll catch it
 doing that with your own code — and then fix it, yourself, so it can't.
@@ -56,18 +54,23 @@ works.
 
 ## The five lessons
 
-1. **[Another local server](lessons/01-hello-model/)** — a model is just
-   another HTTP service on your machine; talk to an AI from a page you
-   control. ← **start here**
-2. **[Catch it making things up](lessons/02-the-fact-check/)** — render its claims beside the live
-   Concord lookup, and mark the mismatches with your own eyes.
-3. **[Give it a tool](lessons/03-the-one-rule/)** — the heart of the course: the model writes a
-   request, _your code_ looks the verse up, and the errors stop — for a
-   reason you can read.
-4. **[Let it choose](lessons/04-the-menu/)** — give it a menu of tools and steer it with plain
-   English descriptions you wrote.
-5. **[It has a name](lessons/05-the-real-thing/)** — the pattern you hand-rolled is called MCP; open a
-   real production project and recognize every part.
+1. **[Another local server](lessons/01-hello-model/)** — talk to an AI from
+   a page you control, then ask it for John 3:16 word for word — and
+   discover you can't tell right from blurred without checking.
+   ← **start here**
+2. **[Catch it making things up](lessons/02-the-fact-check/)** — five
+   claimed verses, five live Concord lookups, your own marking tally.
+   Ours came out 1 of 5.
+3. **[Give it a tool](lessons/03-the-one-rule/)** — the heart of the
+   course: a ~40-line loop and a one-sentence rule (without it, our model
+   looked things up in 2 of 6 runs; with it, 6 of 6) — and your tally
+   becomes 5 of 5 for a reason you can read.
+4. **[Let it choose](lessons/04-the-menu/)** — three tools, and the model
+   routes by reading descriptions you wrote (ten for ten in our test).
+   Then you sabotage one and learn what production already knows.
+5. **[It has a name](lessons/05-the-real-thing/)** — a chat that remembers,
+   worth showing someone — then concord-mcp, read at its tag, until you
+   recognize your own hands in production code.
 
 ## What's next
 
@@ -80,3 +83,7 @@ no-code path to running the real thing. Graduates also get
 ## License
 
 MIT © 2026 Kris Bennett — see [`LICENSE`](LICENSE). (Parity with Concord.)
+
+---
+
+_Never trust a quote without a wire line._
