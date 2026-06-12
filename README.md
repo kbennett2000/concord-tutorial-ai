@@ -59,7 +59,7 @@ works.
 1. **[Another local server](lessons/01-hello-model/)** — a model is just
    another HTTP service on your machine; talk to an AI from a page you
    control. ← **start here**
-2. **Catch it making things up** — render its claims beside the live
+2. **[Catch it making things up](lessons/02-the-fact-check/)** — render its claims beside the live
    Concord lookup, and mark the mismatches with your own eyes.
 3. **Give it a tool** — the heart of the course: the model writes a
    request, _your code_ looks the verse up, and the errors stop — for a

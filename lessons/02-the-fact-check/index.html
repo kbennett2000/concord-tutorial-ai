@@ -1,0 +1,485 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>The fact-check</title>
+    <style>
+      /* Just enough styling that the page doesn't look broken. The code is the lesson. */
+      body {
+        font-family:
+          system-ui,
+          -apple-system,
+          "Segoe UI",
+          Roboto,
+          sans-serif;
+        max-width: 40rem;
+        margin: 2rem auto;
+        padding: 0 1rem;
+        line-height: 1.5;
+        color: #1c2733;
+        background: #faf7f0;
+      }
+      h1 {
+        font-size: 1.4rem;
+        color: #2a4a6b;
+      }
+      textarea {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0.5rem 0.6rem;
+        font-size: 1rem;
+        font-family: inherit;
+        border: 1px solid #c9bfa8;
+        border-radius: 0.4rem;
+        min-height: 4.5rem;
+      }
+      button {
+        padding: 0.45rem 0.85rem;
+        font-size: 0.95rem;
+        cursor: pointer;
+        border: 0;
+        border-radius: 0.4rem;
+        background: #2a4a6b;
+        color: #fff;
+      }
+      button:disabled {
+        opacity: 0.6;
+        cursor: wait;
+      }
+      .busy {
+        margin: 1rem 0;
+        color: #6b5b40;
+        font-style: italic;
+      }
+      .busy[hidden] {
+        display: none;
+      }
+      .raw {
+        margin: 1rem 0;
+        padding: 0.75rem 1rem;
+        background: #fff;
+        border: 1px solid #ece3cf;
+        border-radius: 0.5rem;
+        white-space: pre-wrap;
+      }
+      .raw .who,
+      .card .who {
+        font-weight: 600;
+        color: #2a4a6b;
+        margin-bottom: 0.25rem;
+      }
+      .card {
+        margin: 1rem 0;
+        padding: 0.75rem 1rem;
+        background: #fff;
+        border: 1px solid #ece3cf;
+        border-radius: 0.5rem;
+      }
+      .card .claim,
+      .card .truth {
+        margin: 0.5rem 0;
+        white-space: pre-wrap;
+      }
+      .card .label {
+        font-weight: 600;
+        font-size: 0.85rem;
+        letter-spacing: 0.02em;
+      }
+      .card .claim .label {
+        color: #8a5a00;
+      }
+      .card .truth .label {
+        color: #1a7f37;
+      }
+      .card .checkrow {
+        display: flex;
+        gap: 0.5rem;
+        margin: 0.5rem 0;
+      }
+      .card .checkrow input {
+        flex: 1;
+        padding: 0.4rem 0.55rem;
+        font-size: 0.95rem;
+        border: 1px solid #c9bfa8;
+        border-radius: 0.4rem;
+      }
+      .card .markrow {
+        display: flex;
+        gap: 0.5rem;
+        margin-top: 0.6rem;
+      }
+      .card .markrow button {
+        background: #eef2f6;
+        color: #1c2733;
+        border: 1px solid #c9bfa8;
+      }
+      .card .markrow button[aria-pressed="true"] {
+        background: #2a4a6b;
+        color: #fff;
+      }
+      .card.marked-match {
+        border-color: #1a7f37;
+        background: #f2faf2;
+      }
+      .card.marked-mismatch {
+        border-color: #b4540a;
+        background: #fdf3ea;
+      }
+      .card.marked-uncheck {
+        border-color: #8a6d1a;
+        background: #fbf6e3;
+      }
+      .cardnote {
+        color: #6b5b40;
+        font-size: 0.92rem;
+        margin: 0.4rem 0;
+      }
+      .tally {
+        margin: 1rem 0;
+        font-weight: 600;
+        color: #2a4a6b;
+      }
+      .message,
+      [data-offline-guidance] {
+        margin: 1rem 0;
+        padding: 0.75rem 1rem;
+        border-radius: 0.5rem;
+        background: #fbeee0;
+        border: 1px solid #e7cda8;
+      }
+      .message small {
+        display: block;
+        margin-top: 0.35rem;
+        color: #6b5b40;
+      }
+      [data-offline-guidance][hidden] {
+        display: none;
+      }
+      code {
+        font-family: ui-monospace, Menlo, Consolas, monospace;
+        font-size: 0.92em;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>The fact-check</h1>
+    <p>
+      Ask the model for verses with exact KJV text — then check every claim
+      against the real Bible on your machine, and judge with your own eyes.
+    </p>
+
+    <!-- Shown only when a backend can't be reached — the page takes care of you. -->
+    <div data-offline-guidance="ollama" hidden>
+      <strong>Ollama isn't running.</strong> The 30-second check: open
+      <code>http://localhost:11434</code> in a new tab — you want "Ollama is
+      running." If not: on Windows and Mac launch the Ollama app; on Linux it's
+      a background service — <code>sudo systemctl start ollama</code>. Then
+      reload. (<a href="../../SETUP.md">SETUP</a> has the full path.)
+    </div>
+    <div data-offline-guidance="concord" hidden>
+      <strong>Concord isn't answering.</strong> Course 1's ritual, unchanged:
+      open <code>http://localhost:8000/healthz</code> — a short line of data
+      means it's on. If nothing loads, open Docker and start Concord, then
+      reload. (<a href="../../SETUP.md">SETUP</a> shows the way.)
+    </div>
+
+    <textarea id="prompt" aria-label="Your request to the model">
+List exactly 5 Bible verses about forgiveness. Reply with exactly 5 lines and nothing else. Each line must look like this: Reference | the exact verse text, word for word, in the King James Version</textarea
+    >
+    <p style="margin-top: 0.5rem"><button id="ask">Ask the model</button></p>
+
+    <p class="busy" id="busy" hidden>
+      Thinking — the reply arrives all at once. On a machine without a graphics
+      card this can take up to half a minute.
+    </p>
+
+    <div id="result"></div>
+
+    <script>
+      // The two backends, same addresses as always.
+      const OLLAMA = "http://localhost:11434";
+      const CONCORD = "http://localhost:8000";
+      // ← on the smaller model from SETUP? Make this "qwen3.5:2b" — that's the whole change
+      const MODEL = "qwen3.5:4b";
+
+      const promptBox = document.getElementById("prompt");
+      const askButton = document.getElementById("ask");
+      const busy = document.getElementById("busy");
+      const result = document.getElementById("result");
+      const guidance = (name) =>
+        document.querySelector(`[data-offline-guidance="${name}"]`);
+
+      // Always say something human — never a blank page or a raw error.
+      function showMessage(text, hint) {
+        const box = document.createElement("div");
+        box.className = "message";
+        box.textContent = text;
+        if (hint) {
+          const small = document.createElement("small");
+          small.textContent = hint;
+          box.appendChild(small);
+        }
+        result.appendChild(box);
+        return box;
+      }
+
+      // Shave any list numbering off the front of a reference ("1. John 3:16"
+      // → "John 3:16") — but ONLY numbering. A digit that's part of the book's
+      // own name ("1 John 1:9") stays, so we only strip a number wearing a
+      // "." or ")" after it, or stray bullets and stars.
+      function tidyReference(s) {
+        return s
+          .trim()
+          .replace(/^\d+[.)]\s*/, "")
+          .replace(/^[-*#\s]+/, "")
+          .replace(/[*_]+$/g, "")
+          .trim();
+      }
+
+      // One claim = one card: the model's words, an editable reference box,
+      // a Check button, Concord's answer, and three marks only YOU can give.
+      function makeCard(ref, claim, rawLine) {
+        const card = document.createElement("div");
+        card.className = "card";
+
+        const claimBlock = document.createElement("div");
+        claimBlock.className = "claim";
+        const claimLabel = document.createElement("div");
+        claimLabel.className = "label";
+        claimLabel.textContent = "THE MODEL SAID";
+        const claimBody = document.createElement("div");
+        claimBody.textContent = claim;
+        claimBlock.appendChild(claimLabel);
+        claimBlock.appendChild(claimBody);
+        card.appendChild(claimBlock);
+
+        if (!ref) {
+          const note = document.createElement("p");
+          note.className = "cardnote";
+          note.textContent =
+            "This line didn't follow the format we asked for, so the page can't guess the reference. Models do that — copy the reference from the line above into the box and check it anyway.";
+          card.appendChild(note);
+        }
+
+        const checkRow = document.createElement("div");
+        checkRow.className = "checkrow";
+        const refBox = document.createElement("input");
+        refBox.value = ref;
+        refBox.setAttribute("aria-label", "Reference to check with Concord");
+        refBox.placeholder = "Reference, like John 3:16";
+        const checkButton = document.createElement("button");
+        checkButton.textContent = "Check with Concord";
+        checkRow.appendChild(refBox);
+        checkRow.appendChild(checkButton);
+        card.appendChild(checkRow);
+
+        const truthBlock = document.createElement("div");
+        truthBlock.className = "truth";
+        card.appendChild(truthBlock);
+
+        checkButton.addEventListener("click", async () => {
+          truthBlock.innerHTML = "";
+          const lookup = refBox.value.trim();
+          if (!lookup) return;
+
+          let response;
+          try {
+            // The course-1 move, untouched: GET a URL, read the JSON.
+            response = await fetch(
+              `${CONCORD}/v1/verses/${encodeURIComponent(lookup)}?translations=KJV`,
+            );
+          } catch (e) {
+            // Concord itself is unreachable — say so on this card, and bring
+            // back the page-top guidance. The model side keeps working.
+            truthBlock.textContent = "Couldn't reach Concord — is it running?";
+            guidance("concord").hidden = false;
+            return;
+          }
+
+          const data = await response.json();
+          const label = document.createElement("div");
+          label.className = "label";
+          const body = document.createElement("div");
+
+          if (response.ok) {
+            label.textContent = "CONCORD SAYS — " + data.reference;
+            // A range like John 3:16-17 returns several verses; show them all.
+            body.textContent = data.verses.map((v) => v.text.KJV).join(" ");
+          } else {
+            // Concord couldn't even look it up. That's not a dead end — it's
+            // often the strongest catch on the page. Concord explains itself
+            // in the same tidy envelope course 1 taught: error.code/message.
+            const code = data.error && data.error.code;
+            if (code === "no_verses_found") {
+              label.textContent = "CONCORD SAYS";
+              body.textContent =
+                "Concord has no such verse. The reference looks real, but the verse isn't there — best catch on the page.";
+            } else if (code === "unknown_book") {
+              label.textContent = "CONCORD SAYS";
+              body.textContent =
+                "Concord knows no book by that name. Right words, broken address? Sometimes a real book hides behind a mangled name — try fixing it in the box (a missing 1 or 2 in front is a classic) and check again.";
+            } else if (code === "unparseable_reference") {
+              label.textContent = "CONCORD SAYS";
+              body.textContent =
+                "Concord can't read this as a verse reference at all — it doesn't even have the shape of one.";
+            } else {
+              label.textContent = "CONCORD SAYS";
+              body.textContent =
+                "Hmm — couldn't look that up. " +
+                ((data.error && data.error.message) || "");
+            }
+          }
+          truthBlock.appendChild(label);
+          truthBlock.appendChild(body);
+        });
+
+        // The three marks. The page counts your clicks — it never compares a
+        // single word itself. Your eyes are the instrument.
+        const markRow = document.createElement("div");
+        markRow.className = "markrow";
+        const marks = [
+          ["Matches", "marked-match"],
+          ["Doesn't match", "marked-mismatch"],
+          ["Can't check", "marked-uncheck"],
+        ];
+        for (const [text, cls] of marks) {
+          const b = document.createElement("button");
+          b.textContent = text;
+          b.setAttribute("aria-pressed", "false");
+          b.addEventListener("click", () => {
+            card.classList.remove(
+              "marked-match",
+              "marked-mismatch",
+              "marked-uncheck",
+            );
+            card.classList.add(cls);
+            for (const other of markRow.querySelectorAll("button"))
+              other.setAttribute("aria-pressed", "false");
+            b.setAttribute("aria-pressed", "true");
+            updateTally();
+          });
+          markRow.appendChild(b);
+        }
+        card.appendChild(markRow);
+
+        return card;
+      }
+
+      function updateTally() {
+        const tally = document.getElementById("tally");
+        if (!tally) return;
+        const n = (cls) => document.querySelectorAll(".card." + cls).length;
+        const total = document.querySelectorAll(".card").length;
+        const marked =
+          n("marked-match") + n("marked-mismatch") + n("marked-uncheck");
+        tally.textContent =
+          marked === 0
+            ? "Mark each claim as you check it."
+            : `You marked: ${n("marked-match")} checked out · ${n("marked-mismatch")} didn't match · ${n("marked-uncheck")} couldn't be checked` +
+              (marked < total ? ` — ${total - marked} to go.` : ".");
+      }
+
+      async function ask() {
+        const text = promptBox.value.trim();
+        if (!text) return;
+
+        result.innerHTML = "";
+        askButton.disabled = true;
+        busy.hidden = false;
+
+        let response;
+        try {
+          // The lesson-1 parcel, unchanged: POST, a JSON body, both etiquette
+          // flags. One user turn.
+          response = await fetch(`${OLLAMA}/api/chat`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              model: MODEL,
+              messages: [{ role: "user", content: text }],
+              stream: false,
+              think: false,
+            }),
+          });
+        } catch (e) {
+          busy.hidden = true;
+          askButton.disabled = false;
+          guidance("ollama").hidden = false;
+          return;
+        }
+
+        const data = await response.json();
+        busy.hidden = true;
+        askButton.disabled = false;
+
+        if (!response.ok) {
+          if (String(data.error || "").includes("not found")) {
+            showMessage(
+              "Ollama is running, but the model isn't downloaded yet.",
+              "One command fixes it — in a terminal, run:  ollama pull " +
+                MODEL,
+            );
+          } else {
+            showMessage(
+              "Ollama couldn't answer that one.",
+              "It said: " + (data.error || response.status),
+            );
+          }
+          return;
+        }
+
+        const reply = data.message.content;
+        if (!reply.trim()) {
+          showMessage(
+            "The model sent back an empty reply this time.",
+            "Press Ask again — each run is a fresh roll.",
+          );
+          return;
+        }
+
+        // The model's reply, exactly as it came — always visible in full, so
+        // nothing the page does below can hide what was actually said.
+        const raw = document.createElement("div");
+        raw.className = "raw";
+        const who = document.createElement("div");
+        who.className = "who";
+        who.textContent = "The model's full reply:";
+        const rawBody = document.createElement("div");
+        rawBody.textContent = reply;
+        raw.appendChild(who);
+        raw.appendChild(rawBody);
+        result.appendChild(raw);
+
+        // The whole "parser": split into lines, and split each line at its
+        // first "|" — the shape we asked the model to use. Not clever, on
+        // purpose. When a line ignores the shape, its card says so and the
+        // reference box is all yours.
+        const lines = reply.split("\n").filter((l) => l.trim() !== "");
+        for (const line of lines) {
+          const bar = line.indexOf("|");
+          const ref = bar > -1 ? tidyReference(line.slice(0, bar)) : "";
+          const claim = bar > -1 ? line.slice(bar + 1).trim() : line.trim();
+          result.appendChild(makeCard(ref, claim, line));
+        }
+
+        const tally = document.createElement("p");
+        tally.className = "tally";
+        tally.id = "tally";
+        result.appendChild(tally);
+        updateTally();
+      }
+
+      askButton.addEventListener("click", ask);
+
+      // On load, quietly check both backends, so a student with one (or both)
+      // not running sees friendly guidance — not a dead page.
+      fetch(`${OLLAMA}/`).catch(() => {
+        guidance("ollama").hidden = false;
+      });
+      fetch(`${CONCORD}/healthz`).catch(() => {
+        guidance("concord").hidden = false;
+      });
+    </script>
+  </body>
+</html>

@@ -124,6 +124,11 @@ Verified against installed reality in T0 (Ollama v0.30.7, this repo's
   (`TypeError: Failed to fetch` and engine equivalents); model not pulled
   → HTTP 404 with body `{"error":"model '<name>' not found"}`, readable
   by page JavaScript. These feed the graceful-offline blocks (§7).
+- **Concord's reference-error taxonomy** _(verified live, T2)_ — three
+  codes in the `{error: {code, message}}` envelope course 1 taught:
+  `no_verses_found` (404; real-looking reference, no verse there),
+  `unknown_book` (404), `unparseable_reference` (400). Lesson 2's
+  marking language maps one card message to each.
 
 ## 6. The five lessons
 
@@ -153,9 +158,20 @@ page."
 **New idea:** hallucination — models answer from compressed memory, and
 memory blurs. Experienced, not lectured.
 **Build:** a given page that asks the model for several verses on a
-theme _with exact KJV text_, then renders each claim beside the live
-Concord lookup (the student's course-1 skill, now a fact-checking
-machine). The student marks match / mismatch with their own eyes.
+theme _with exact KJV text_, then renders each claim with the live
+Concord lookup — paired within one card, the model's line stacked
+directly above Concord's, which is what "beside" means here: long KJV
+verses defeat true side-by-side columns at lesson width (T2 finding).
+The student marks match / mismatch — or can't-check, often the
+strongest catch (the model cited what Scripture's own index can't
+locate) — with their own eyes.
+**Format drift (T2 finding, evidence in
+`docs/transcripts/lesson-02/`):** the model routinely ignores the
+requested line format (separator swapped or dropped, counts off,
+commentary mid-list), so the page's split is deliberately dumb and a
+visible manual path — an editable reference box on every card — is
+load-bearing, not a fallback: rule 8 applied to format as well as
+content.
 **Range handling:** the lesson supplies a harder follow-up prompt for
 students whose model aced round one, and the text makes the deeper
 point either way: _the only reason you know is that you checked._
