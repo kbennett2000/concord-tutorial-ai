@@ -1,0 +1,11 @@
+match | /src/concord_mcp/server.py | stop 2 — the lab's moral as the file's opening law
+match | /src/concord_mcp/server.py | stop 1 — the honesty beat inside the production rule
+match | /src/concord_mcp/server.py | stop 1 — the production rule routes a ten-tool menu
+match | /src/concord_mcp/server.py | stop 2 — the description constant the student's declaration grew into
+match | /src/concord_mcp/backends/http.py | stop 3 — the explicit translation send, with its why
+match | /src/concord_mcp/backends/http.py | stop 3 — the polite single retry
+match | /src/concord_mcp/server.py | stop 4 — errors the model can self-correct from
+match | /src/concord_mcp/server.py | stop 4 — the error that asks the student's own question
+match | /src/concord_mcp/render.py | stop 5 — the line the student's page prints word for word
+
+all 9 quotes verified verbatim at v1.0.0.
