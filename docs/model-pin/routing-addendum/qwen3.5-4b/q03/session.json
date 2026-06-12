@@ -1,0 +1,240 @@
+{
+  "session": "q03",
+  "capturedAt": "2026-06-12T20:23:21.295Z",
+  "page": "lessons/04-the-menu/index.html (driven as the student, in Chromium)",
+  "blunted": null,
+  "rounds": [
+    {
+      "request": {
+        "model": "qwen3.5:4b",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You answer questions about the Bible. Never quote a verse from memory: always look it up with the lookup_verse tool, and quote only what it returns."
+          },
+          {
+            "role": "user",
+            "content": "What does Genesis 1:1 say?"
+          }
+        ],
+        "tools": [
+          {
+            "type": "function",
+            "function": {
+              "name": "lookup_verse",
+              "description": "Look up the exact text of a Bible verse by reference, e.g. \"John 3:16\".",
+              "parameters": {
+                "type": "object",
+                "required": ["ref"],
+                "properties": {
+                  "ref": {
+                    "type": "string",
+                    "description": "The verse reference, like \"John 3:16\""
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "function",
+            "function": {
+              "name": "search_by_meaning",
+              "description": "Search the Bible by meaning rather than exact words. Use this when the user describes a theme, feeling, or idea — like 'verses about courage' — instead of naming a verse. Returns the closest verses with a similarity score.",
+              "parameters": {
+                "type": "object",
+                "required": ["query"],
+                "properties": {
+                  "query": {
+                    "type": "string",
+                    "description": "What the user is looking for, in plain words"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "function",
+            "function": {
+              "name": "places_for_passage",
+              "description": "List the places named in a Bible passage. Use this when the user asks where something happened. Takes a verse reference like 'Acts 9:3'.",
+              "parameters": {
+                "type": "object",
+                "required": ["ref"],
+                "properties": {
+                  "ref": {
+                    "type": "string",
+                    "description": "The verse reference, like \"Acts 9:3\""
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "stream": false,
+        "think": false
+      },
+      "status": 200,
+      "response": {
+        "model": "qwen3.5:4b",
+        "created_at": "2026-06-12T20:23:22.153588456Z",
+        "message": {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "id": "call_ypswyebu",
+              "function": {
+                "index": 0,
+                "name": "lookup_verse",
+                "arguments": {
+                  "ref": "Genesis 1:1"
+                }
+              }
+            }
+          ]
+        },
+        "done": true,
+        "done_reason": "stop",
+        "total_duration": 760357270,
+        "load_duration": 334079079,
+        "prompt_eval_count": 560,
+        "prompt_eval_duration": 118146000,
+        "eval_count": 32,
+        "eval_duration": 304918000
+      }
+    },
+    {
+      "request": {
+        "model": "qwen3.5:4b",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You answer questions about the Bible. Never quote a verse from memory: always look it up with the lookup_verse tool, and quote only what it returns."
+          },
+          {
+            "role": "user",
+            "content": "What does Genesis 1:1 say?"
+          },
+          {
+            "role": "assistant",
+            "content": "",
+            "tool_calls": [
+              {
+                "id": "call_ypswyebu",
+                "function": {
+                  "index": 0,
+                  "name": "lookup_verse",
+                  "arguments": {
+                    "ref": "Genesis 1:1"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "tool_name": "lookup_verse",
+            "content": "In the beginning God created the heaven and the earth.",
+            "isError": false
+          }
+        ],
+        "tools": [
+          {
+            "type": "function",
+            "function": {
+              "name": "lookup_verse",
+              "description": "Look up the exact text of a Bible verse by reference, e.g. \"John 3:16\".",
+              "parameters": {
+                "type": "object",
+                "required": ["ref"],
+                "properties": {
+                  "ref": {
+                    "type": "string",
+                    "description": "The verse reference, like \"John 3:16\""
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "function",
+            "function": {
+              "name": "search_by_meaning",
+              "description": "Search the Bible by meaning rather than exact words. Use this when the user describes a theme, feeling, or idea — like 'verses about courage' — instead of naming a verse. Returns the closest verses with a similarity score.",
+              "parameters": {
+                "type": "object",
+                "required": ["query"],
+                "properties": {
+                  "query": {
+                    "type": "string",
+                    "description": "What the user is looking for, in plain words"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "function",
+            "function": {
+              "name": "places_for_passage",
+              "description": "List the places named in a Bible passage. Use this when the user asks where something happened. Takes a verse reference like 'Acts 9:3'.",
+              "parameters": {
+                "type": "object",
+                "required": ["ref"],
+                "properties": {
+                  "ref": {
+                    "type": "string",
+                    "description": "The verse reference, like \"Acts 9:3\""
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "stream": false,
+        "think": false
+      },
+      "status": 200,
+      "response": {
+        "model": "qwen3.5:4b",
+        "created_at": "2026-06-12T20:23:22.714059822Z",
+        "message": {
+          "role": "assistant",
+          "content": "According to Genesis 1:1, \"In the beginning God created the heaven and the earth.\""
+        },
+        "done": true,
+        "done_reason": "stop",
+        "total_duration": 555864878,
+        "load_duration": 329906103,
+        "prompt_eval_count": 616,
+        "prompt_eval_duration": 33579000,
+        "eval_count": 21,
+        "eval_duration": 189108000
+      }
+    }
+  ],
+  "concordCalls": [
+    {
+      "url": "http://localhost:8000/v1/verses/Genesis%201%3A1?translations=KJV",
+      "status": 200,
+      "response": {
+        "reference": "Genesis 1:1",
+        "translations": ["KJV"],
+        "verses": [
+          {
+            "book": "GEN",
+            "chapter": 1,
+            "verse": 1,
+            "reference": "Genesis 1:1",
+            "text": {
+              "KJV": "In the beginning God created the heaven and the earth."
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "finalAnswer": "The model's answer:According to Genesis 1:1, \"In the beginning God created the heaven and the earth.\"",
+  "promptInBox": "What does Genesis 1:1 say?",
+  "wirePanelText": "you asked: What does Genesis 1:1 say?→ the model asked: lookup_verse {\"ref\":\"Genesis 1:1\"}\n← your code sent back: In the beginning God created the heaven and the earth."
+}

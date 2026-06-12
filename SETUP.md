@@ -95,12 +95,14 @@ ollama pull qwen3.5:2b
 ```
 
 It's a 2.7 GB download and uses about 2.2 GB of memory. Fair statement
-of what we know: in our 10-trial course test it scored a perfect 10,
-same as the main model — but that test is short and friendly, and a
-smaller brain generally has less room for the trickier moments in later
-lessons. If it fumbles, that's expected sometimes, and the lessons are
-written so a fumble is never a dead end. Wherever a lesson says the
-model's name, just use this one instead.
+of what we know, all of it measured: on the course's simple test it
+scored a perfect 10, same as the main model. On the harder test behind
+lesson 4 — choosing the right tool out of three, ten questions — it
+got 9 of 10 where the main model got 10, picked the wrong tool once,
+and often took the scenic route. It works, you'll see it fumble
+sometimes, and the lessons are written so a fumble is never a dead
+end. Wherever a lesson says the model's name, just use this one
+instead.
 
 ## Concord — same as course 1
 

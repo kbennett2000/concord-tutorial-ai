@@ -1,0 +1,240 @@
+{
+  "session": "intact-lookup_verse-3",
+  "capturedAt": "2026-06-12T20:26:21.028Z",
+  "page": "lessons/04-the-menu/index.html (driven as the student, in Chromium)",
+  "blunted": null,
+  "rounds": [
+    {
+      "request": {
+        "model": "qwen3.5:4b",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You answer questions about the Bible. Never quote a verse from memory: always look it up with the lookup_verse tool, and quote only what it returns."
+          },
+          {
+            "role": "user",
+            "content": "What does Romans 8:28 say?"
+          }
+        ],
+        "tools": [
+          {
+            "type": "function",
+            "function": {
+              "name": "lookup_verse",
+              "description": "Look up the exact text of a Bible verse by reference, e.g. \"John 3:16\".",
+              "parameters": {
+                "type": "object",
+                "required": ["ref"],
+                "properties": {
+                  "ref": {
+                    "type": "string",
+                    "description": "The verse reference, like \"John 3:16\""
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "function",
+            "function": {
+              "name": "search_by_meaning",
+              "description": "Search the Bible by meaning rather than exact words. Use this when the user describes a theme, feeling, or idea — like 'verses about courage' — instead of naming a verse. Returns the closest verses with a similarity score.",
+              "parameters": {
+                "type": "object",
+                "required": ["query"],
+                "properties": {
+                  "query": {
+                    "type": "string",
+                    "description": "What the user is looking for, in plain words"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "function",
+            "function": {
+              "name": "places_for_passage",
+              "description": "List the places named in a Bible passage. Use this when the user asks where something happened. Takes a verse reference like 'Acts 9:3'.",
+              "parameters": {
+                "type": "object",
+                "required": ["ref"],
+                "properties": {
+                  "ref": {
+                    "type": "string",
+                    "description": "The verse reference, like \"Acts 9:3\""
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "stream": false,
+        "think": false
+      },
+      "status": 200,
+      "response": {
+        "model": "qwen3.5:4b",
+        "created_at": "2026-06-12T20:26:21.764651641Z",
+        "message": {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "id": "call_xgohg9u0",
+              "function": {
+                "index": 0,
+                "name": "lookup_verse",
+                "arguments": {
+                  "ref": "Romans 8:28"
+                }
+              }
+            }
+          ]
+        },
+        "done": true,
+        "done_reason": "stop",
+        "total_duration": 655563106,
+        "load_duration": 315145191,
+        "prompt_eval_count": 561,
+        "prompt_eval_duration": 23550000,
+        "eval_count": 34,
+        "eval_duration": 313604000
+      }
+    },
+    {
+      "request": {
+        "model": "qwen3.5:4b",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You answer questions about the Bible. Never quote a verse from memory: always look it up with the lookup_verse tool, and quote only what it returns."
+          },
+          {
+            "role": "user",
+            "content": "What does Romans 8:28 say?"
+          },
+          {
+            "role": "assistant",
+            "content": "",
+            "tool_calls": [
+              {
+                "id": "call_xgohg9u0",
+                "function": {
+                  "index": 0,
+                  "name": "lookup_verse",
+                  "arguments": {
+                    "ref": "Romans 8:28"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "tool_name": "lookup_verse",
+            "content": "And we know that all things work together for good to them that love God, to them who are the called according to [his] purpose.",
+            "isError": false
+          }
+        ],
+        "tools": [
+          {
+            "type": "function",
+            "function": {
+              "name": "lookup_verse",
+              "description": "Look up the exact text of a Bible verse by reference, e.g. \"John 3:16\".",
+              "parameters": {
+                "type": "object",
+                "required": ["ref"],
+                "properties": {
+                  "ref": {
+                    "type": "string",
+                    "description": "The verse reference, like \"John 3:16\""
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "function",
+            "function": {
+              "name": "search_by_meaning",
+              "description": "Search the Bible by meaning rather than exact words. Use this when the user describes a theme, feeling, or idea — like 'verses about courage' — instead of naming a verse. Returns the closest verses with a similarity score.",
+              "parameters": {
+                "type": "object",
+                "required": ["query"],
+                "properties": {
+                  "query": {
+                    "type": "string",
+                    "description": "What the user is looking for, in plain words"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "function",
+            "function": {
+              "name": "places_for_passage",
+              "description": "List the places named in a Bible passage. Use this when the user asks where something happened. Takes a verse reference like 'Acts 9:3'.",
+              "parameters": {
+                "type": "object",
+                "required": ["ref"],
+                "properties": {
+                  "ref": {
+                    "type": "string",
+                    "description": "The verse reference, like \"Acts 9:3\""
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "stream": false,
+        "think": false
+      },
+      "status": 200,
+      "response": {
+        "model": "qwen3.5:4b",
+        "created_at": "2026-06-12T20:26:22.555297482Z",
+        "message": {
+          "role": "assistant",
+          "content": "According to Romans 8:28, it says: \"And we know that all things work together for good to them that love God, to them who are the called according to [his] purpose.\""
+        },
+        "done": true,
+        "done_reason": "stop",
+        "total_duration": 780434215,
+        "load_duration": 325621824,
+        "prompt_eval_count": 637,
+        "prompt_eval_duration": 40379000,
+        "eval_count": 43,
+        "eval_duration": 408109000
+      }
+    }
+  ],
+  "concordCalls": [
+    {
+      "url": "http://localhost:8000/v1/verses/Romans%208%3A28?translations=KJV",
+      "status": 200,
+      "response": {
+        "reference": "Romans 8:28",
+        "translations": ["KJV"],
+        "verses": [
+          {
+            "book": "ROM",
+            "chapter": 8,
+            "verse": 28,
+            "reference": "Romans 8:28",
+            "text": {
+              "KJV": "And we know that all things work together for good to them that love God, to them who are the called according to [his] purpose."
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "finalAnswer": "The model's answer:According to Romans 8:28, it says: \"And we know that all things work together for good to them that love God, to them who are the called according to [his] purpose.\"",
+  "promptInBox": "What does Romans 8:28 say?",
+  "wirePanelText": "you asked: What does Romans 8:28 say?→ the model asked: lookup_verse {\"ref\":\"Romans 8:28\"}\n← your code sent back: And we know that all things work together for good to them that love God, to them who are the called according to [his] purpose."
+}

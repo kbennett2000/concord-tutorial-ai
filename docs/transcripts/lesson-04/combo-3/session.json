@@ -1,0 +1,287 @@
+{
+  "session": "combo-3",
+  "capturedAt": "2026-06-12T20:29:42.633Z",
+  "page": "lessons/04-the-menu/index.html (driven as the student, in Chromium)",
+  "blunted": null,
+  "rounds": [
+    {
+      "request": {
+        "model": "qwen3.5:4b",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You answer questions about the Bible. Never quote a verse from memory: always look it up with the lookup_verse tool, and quote only what it returns."
+          },
+          {
+            "role": "user",
+            "content": "What does Acts 9:3 say, and which places does it name?"
+          }
+        ],
+        "tools": [
+          {
+            "type": "function",
+            "function": {
+              "name": "lookup_verse",
+              "description": "Look up the exact text of a Bible verse by reference, e.g. \"John 3:16\".",
+              "parameters": {
+                "type": "object",
+                "required": ["ref"],
+                "properties": {
+                  "ref": {
+                    "type": "string",
+                    "description": "The verse reference, like \"John 3:16\""
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "function",
+            "function": {
+              "name": "search_by_meaning",
+              "description": "Search the Bible by meaning rather than exact words. Use this when the user describes a theme, feeling, or idea — like 'verses about courage' — instead of naming a verse. Returns the closest verses with a similarity score.",
+              "parameters": {
+                "type": "object",
+                "required": ["query"],
+                "properties": {
+                  "query": {
+                    "type": "string",
+                    "description": "What the user is looking for, in plain words"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "function",
+            "function": {
+              "name": "places_for_passage",
+              "description": "List the places named in a Bible passage. Use this when the user asks where something happened. Takes a verse reference like 'Acts 9:3'.",
+              "parameters": {
+                "type": "object",
+                "required": ["ref"],
+                "properties": {
+                  "ref": {
+                    "type": "string",
+                    "description": "The verse reference, like \"Acts 9:3\""
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "stream": false,
+        "think": false
+      },
+      "status": 200,
+      "response": {
+        "model": "qwen3.5:4b",
+        "created_at": "2026-06-12T20:29:43.670842344Z",
+        "message": {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "id": "call_3166wmav",
+              "function": {
+                "index": 0,
+                "name": "lookup_verse",
+                "arguments": {
+                  "ref": "Acts 9:3"
+                }
+              }
+            },
+            {
+              "id": "call_i19r9duz",
+              "function": {
+                "index": 1,
+                "name": "places_for_passage",
+                "arguments": {
+                  "ref": "Acts 9:3"
+                }
+              }
+            }
+          ]
+        },
+        "done": true,
+        "done_reason": "stop",
+        "total_duration": 953403452,
+        "load_duration": 327245947,
+        "prompt_eval_count": 567,
+        "prompt_eval_duration": 21944000,
+        "eval_count": 65,
+        "eval_duration": 600783000
+      }
+    },
+    {
+      "request": {
+        "model": "qwen3.5:4b",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You answer questions about the Bible. Never quote a verse from memory: always look it up with the lookup_verse tool, and quote only what it returns."
+          },
+          {
+            "role": "user",
+            "content": "What does Acts 9:3 say, and which places does it name?"
+          },
+          {
+            "role": "assistant",
+            "content": "",
+            "tool_calls": [
+              {
+                "id": "call_3166wmav",
+                "function": {
+                  "index": 0,
+                  "name": "lookup_verse",
+                  "arguments": {
+                    "ref": "Acts 9:3"
+                  }
+                }
+              },
+              {
+                "id": "call_i19r9duz",
+                "function": {
+                  "index": 1,
+                  "name": "places_for_passage",
+                  "arguments": {
+                    "ref": "Acts 9:3"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "tool_name": "lookup_verse",
+            "content": "And as he journeyed, he came near Damascus: and suddenly there shined round about him a light from heaven:",
+            "isError": false
+          },
+          {
+            "role": "tool",
+            "tool_name": "places_for_passage",
+            "content": "Damascus — a settlement, located at 33.51, 36.31",
+            "isError": false
+          }
+        ],
+        "tools": [
+          {
+            "type": "function",
+            "function": {
+              "name": "lookup_verse",
+              "description": "Look up the exact text of a Bible verse by reference, e.g. \"John 3:16\".",
+              "parameters": {
+                "type": "object",
+                "required": ["ref"],
+                "properties": {
+                  "ref": {
+                    "type": "string",
+                    "description": "The verse reference, like \"John 3:16\""
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "function",
+            "function": {
+              "name": "search_by_meaning",
+              "description": "Search the Bible by meaning rather than exact words. Use this when the user describes a theme, feeling, or idea — like 'verses about courage' — instead of naming a verse. Returns the closest verses with a similarity score.",
+              "parameters": {
+                "type": "object",
+                "required": ["query"],
+                "properties": {
+                  "query": {
+                    "type": "string",
+                    "description": "What the user is looking for, in plain words"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "function",
+            "function": {
+              "name": "places_for_passage",
+              "description": "List the places named in a Bible passage. Use this when the user asks where something happened. Takes a verse reference like 'Acts 9:3'.",
+              "parameters": {
+                "type": "object",
+                "required": ["ref"],
+                "properties": {
+                  "ref": {
+                    "type": "string",
+                    "description": "The verse reference, like \"Acts 9:3\""
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "stream": false,
+        "think": false
+      },
+      "status": 200,
+      "response": {
+        "model": "qwen3.5:4b",
+        "created_at": "2026-06-12T20:29:44.80554042Z",
+        "message": {
+          "role": "assistant",
+          "content": "Acts 9:3 states: \"And as he journeyed, he came near Damascus: and suddenly there shined round about him a light from heaven.\"\n\nAccording to the places named in this verse, it mentions **Damascus**, which is described as a settlement located at coordinates 33.51° N latitude and 36.31° E longitude."
+        },
+        "done": true,
+        "done_reason": "stop",
+        "total_duration": 1125256836,
+        "load_duration": 325559548,
+        "prompt_eval_count": 695,
+        "prompt_eval_duration": 43936000,
+        "eval_count": 78,
+        "eval_duration": 748876000
+      }
+    }
+  ],
+  "concordCalls": [
+    {
+      "url": "http://localhost:8000/v1/verses/Acts%209%3A3?translations=KJV",
+      "status": 200,
+      "response": {
+        "reference": "Acts 9:3",
+        "translations": ["KJV"],
+        "verses": [
+          {
+            "book": "ACT",
+            "chapter": 9,
+            "verse": 3,
+            "reference": "Acts 9:3",
+            "text": {
+              "KJV": "And as he journeyed, he came near Damascus: and suddenly there shined round about him a light from heaven:"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "url": "http://localhost:8000/v1/verses/Acts%209%3A3/places",
+      "status": 200,
+      "response": {
+        "reference": "Acts 9:3",
+        "total": 1,
+        "places": [
+          {
+            "id": "a69c1d4",
+            "friendly_id": "Damascus",
+            "name": "Damascus",
+            "type": "settlement",
+            "latitude": 33.511112,
+            "longitude": 36.30639,
+            "confidence": "high",
+            "confidence_score": 1000,
+            "status": "identified"
+          }
+        ]
+      }
+    }
+  ],
+  "finalAnswer": "The model's answer:Acts 9:3 states: \"And as he journeyed, he came near Damascus: and suddenly there shined round about him a light from heaven.\"\n\nAccording to the places named in this verse, it mentions **Damascus**, which is described as a settlement located at coordinates 33.51° N latitude and 36.31° E longitude.",
+  "promptInBox": "What does Acts 9:3 say, and which places does it name?",
+  "wirePanelText": "you asked: What does Acts 9:3 say, and which places does it name?→ the model asked: lookup_verse {\"ref\":\"Acts 9:3\"}\n→ the model asked: places_for_passage {\"ref\":\"Acts 9:3\"}\n← your code sent back: And as he journeyed, he came near Damascus: and suddenly there shined round about him a light from heaven:← your code sent back: Damascus — a settlement, located at 33.51, 36.31"
+}

@@ -64,7 +64,7 @@ works.
 3. **[Give it a tool](lessons/03-the-one-rule/)** — the heart of the course: the model writes a
    request, _your code_ looks the verse up, and the errors stop — for a
    reason you can read.
-4. **Let it choose** — give it a menu of tools and steer it with plain
+4. **[Let it choose](lessons/04-the-menu/)** — give it a menu of tools and steer it with plain
    English descriptions you wrote.
 5. **It has a name** — the pattern you hand-rolled is called MCP; open a
    real production project and recognize every part.

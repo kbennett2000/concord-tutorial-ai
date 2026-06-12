@@ -66,6 +66,14 @@ students switch by changing one tag. SETUP.md states honestly that the
 protocol is short and friendly and a smaller brain has less headroom in
 later lessons; the fallback's ≥ 7/10 spec bar is comfortably met.
 
+**The wager's verdict (T4,
+[ROUTING-ADDENDUM.md](ROUTING-ADDENDUM.md)):** the "less headroom"
+hedge above was a wager, and on the first genuinely harder task —
+three-tool routing — it cashed, modestly: the fallback routed **9/10**
+where the pin routed **10/10**, misrouting one where-question and
+taking extra rounds on three others. The pin stands; SETUP.md's
+fallback paragraph now quotes these numbers instead of the hedge.
+
 ## What changing the pin requires
 
 Per course law (CLAUDE.md): re-running this protocol on the new

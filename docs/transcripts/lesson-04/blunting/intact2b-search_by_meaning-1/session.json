@@ -1,0 +1,272 @@
+{
+  "session": "intact2b-search_by_meaning-1",
+  "capturedAt": "2026-06-12T20:28:45.506Z",
+  "page": "lessons/04-the-menu/index.html (driven as the student, in Chromium)",
+  "blunted": null,
+  "rounds": [
+    {
+      "request": {
+        "model": "qwen3.5:2b",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You answer questions about the Bible. Never quote a verse from memory: always look it up with the lookup_verse tool, and quote only what it returns."
+          },
+          {
+            "role": "user",
+            "content": "Find verses about courage when you're afraid."
+          }
+        ],
+        "tools": [
+          {
+            "type": "function",
+            "function": {
+              "name": "lookup_verse",
+              "description": "Look up the exact text of a Bible verse by reference, e.g. \"John 3:16\".",
+              "parameters": {
+                "type": "object",
+                "required": ["ref"],
+                "properties": {
+                  "ref": {
+                    "type": "string",
+                    "description": "The verse reference, like \"John 3:16\""
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "function",
+            "function": {
+              "name": "search_by_meaning",
+              "description": "Search the Bible by meaning rather than exact words. Use this when the user describes a theme, feeling, or idea — like 'verses about courage' — instead of naming a verse. Returns the closest verses with a similarity score.",
+              "parameters": {
+                "type": "object",
+                "required": ["query"],
+                "properties": {
+                  "query": {
+                    "type": "string",
+                    "description": "What the user is looking for, in plain words"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "function",
+            "function": {
+              "name": "places_for_passage",
+              "description": "List the places named in a Bible passage. Use this when the user asks where something happened. Takes a verse reference like 'Acts 9:3'.",
+              "parameters": {
+                "type": "object",
+                "required": ["ref"],
+                "properties": {
+                  "ref": {
+                    "type": "string",
+                    "description": "The verse reference, like \"Acts 9:3\""
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "stream": false,
+        "think": false
+      },
+      "status": 200,
+      "response": {
+        "model": "qwen3.5:2b",
+        "created_at": "2026-06-12T20:28:46.254562044Z",
+        "message": {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "id": "call_k8s2salf",
+              "function": {
+                "index": 0,
+                "name": "search_by_meaning",
+                "arguments": {
+                  "query": "verses about courage when scared or afraid"
+                }
+              }
+            }
+          ]
+        },
+        "done": true,
+        "done_reason": "stop",
+        "total_duration": 669512990,
+        "load_duration": 326845240,
+        "prompt_eval_count": 560,
+        "prompt_eval_duration": 49199000,
+        "eval_count": 34,
+        "eval_duration": 250898000
+      }
+    },
+    {
+      "request": {
+        "model": "qwen3.5:2b",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You answer questions about the Bible. Never quote a verse from memory: always look it up with the lookup_verse tool, and quote only what it returns."
+          },
+          {
+            "role": "user",
+            "content": "Find verses about courage when you're afraid."
+          },
+          {
+            "role": "assistant",
+            "content": "",
+            "tool_calls": [
+              {
+                "id": "call_k8s2salf",
+                "function": {
+                  "index": 0,
+                  "name": "search_by_meaning",
+                  "arguments": {
+                    "query": "verses about courage when scared or afraid"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "tool_name": "search_by_meaning",
+            "content": "Closest matches (KJV text):\nIsaiah 35:4 (similarity 0.9075): Say to them [that are] of a fearful heart, Be strong, fear not: behold, your God will come [with] vengeance, [even] God [with] a recompence; he will come and save you.\nHaggai 2:5 (similarity 0.8899): [According to] the word that I covenanted with you when ye came out of Egypt, so my spirit remaineth among you: fear ye not.\nProverbs 3:25 (similarity 0.8871): Be not afraid of sudden fear, neither of the desolation of the wicked, when it cometh.\n1 Peter 3:14 (similarity 0.8831): But and if ye suffer for righteousness’ sake, happy [are ye]: and be not afraid of their terror, neither be troubled;\nPsalms 31:24 (similarity 0.8818): Be of good courage, and he shall strengthen your heart, all ye that hope in the LORD.",
+            "isError": false
+          }
+        ],
+        "tools": [
+          {
+            "type": "function",
+            "function": {
+              "name": "lookup_verse",
+              "description": "Look up the exact text of a Bible verse by reference, e.g. \"John 3:16\".",
+              "parameters": {
+                "type": "object",
+                "required": ["ref"],
+                "properties": {
+                  "ref": {
+                    "type": "string",
+                    "description": "The verse reference, like \"John 3:16\""
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "function",
+            "function": {
+              "name": "search_by_meaning",
+              "description": "Search the Bible by meaning rather than exact words. Use this when the user describes a theme, feeling, or idea — like 'verses about courage' — instead of naming a verse. Returns the closest verses with a similarity score.",
+              "parameters": {
+                "type": "object",
+                "required": ["query"],
+                "properties": {
+                  "query": {
+                    "type": "string",
+                    "description": "What the user is looking for, in plain words"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "function",
+            "function": {
+              "name": "places_for_passage",
+              "description": "List the places named in a Bible passage. Use this when the user asks where something happened. Takes a verse reference like 'Acts 9:3'.",
+              "parameters": {
+                "type": "object",
+                "required": ["ref"],
+                "properties": {
+                  "ref": {
+                    "type": "string",
+                    "description": "The verse reference, like \"Acts 9:3\""
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "stream": false,
+        "think": false
+      },
+      "status": 200,
+      "response": {
+        "model": "qwen3.5:2b",
+        "created_at": "2026-06-12T20:28:48.410289782Z",
+        "message": {
+          "role": "assistant",
+          "content": "Here are verses about courage when you're afraid from several different parts of the Bible:\n\n*   **Isaiah 35:4**: \"Say to them [that are] of a fearful heart, Be strong, fear not:\" behold, your God will come [with] vengeance; he will come and save you.\n*   **Haggai 2:5**: \"According to the word that I covenanted with you when ye came out of Egypt, so my spirit remaineth among you... Fear ye not.\"\n*   **Proverbs 3:25**: \"Be not afraid of sudden fear,\" neither of the desolation of the wicked, when it cometh.\n*   **1 Peter 3:14**: \"But and if ye suffer for righteousness' sake, happy are ye; and be not afraid of their terror, neither be troubled.\"\n*   **Psalms 31:24**: \"Be of good courage, [and he] shall strengthen your heart,\" all ye that hope in the LORD."
+        },
+        "done": true,
+        "done_reason": "stop",
+        "total_duration": 2111828263,
+        "load_duration": 359592678,
+        "prompt_eval_count": 860,
+        "prompt_eval_duration": 39884000,
+        "eval_count": 221,
+        "eval_duration": 1707898000
+      }
+    }
+  ],
+  "concordCalls": [
+    {
+      "url": "http://localhost:8000/v1/semantic-search?q=verses%20about%20courage%20when%20scared%20or%20afraid&limit=5&translation=KJV",
+      "status": 200,
+      "response": {
+        "query": "verses about courage when scared or afraid",
+        "translation": "KJV",
+        "count": 5,
+        "results": [
+          {
+            "book": "ISA",
+            "chapter": 35,
+            "verse": 4,
+            "reference": "Isaiah 35:4",
+            "score": 0.9075,
+            "text": "Say to them [that are] of a fearful heart, Be strong, fear not: behold, your God will come [with] vengeance, [even] God [with] a recompence; he will come and save you."
+          },
+          {
+            "book": "HAG",
+            "chapter": 2,
+            "verse": 5,
+            "reference": "Haggai 2:5",
+            "score": 0.8899,
+            "text": "[According to] the word that I covenanted with you when ye came out of Egypt, so my spirit remaineth among you: fear ye not."
+          },
+          {
+            "book": "PRO",
+            "chapter": 3,
+            "verse": 25,
+            "reference": "Proverbs 3:25",
+            "score": 0.8871,
+            "text": "Be not afraid of sudden fear, neither of the desolation of the wicked, when it cometh."
+          },
+          {
+            "book": "1PE",
+            "chapter": 3,
+            "verse": 14,
+            "reference": "1 Peter 3:14",
+            "score": 0.8831,
+            "text": "But and if ye suffer for righteousness’ sake, happy [are ye]: and be not afraid of their terror, neither be troubled;"
+          },
+          {
+            "book": "PSA",
+            "chapter": 31,
+            "verse": 24,
+            "reference": "Psalms 31:24",
+            "score": 0.8818,
+            "text": "Be of good courage, and he shall strengthen your heart, all ye that hope in the LORD."
+          }
+        ]
+      }
+    }
+  ],
+  "finalAnswer": "The model's answer:Here are verses about courage when you're afraid from several different parts of the Bible:\n\n*   **Isaiah 35:4**: \"Say to them [that are] of a fearful heart, Be strong, fear not:\" behold, your God will come [with] vengeance; he will come and save you.\n*   **Haggai 2:5**: \"According to the word that I covenanted with you when ye came out of Egypt, so my spirit remaineth among you... Fear ye not.\"\n*   **Proverbs 3:25**: \"Be not afraid of sudden fear,\" neither of the desolation of the wicked, when it cometh.\n*   **1 Peter 3:14**: \"But and if ye suffer for righteousness' sake, happy are ye; and be not afraid of their terror, neither be troubled.\"\n*   **Psalms 31:24**: \"Be of good courage, [and he] shall strengthen your heart,\" all ye that hope in the LORD.",
+  "promptInBox": "Find verses about courage when you're afraid.",
+  "wirePanelText": "you asked: Find verses about courage when you're afraid.→ the model asked: search_by_meaning {\"query\":\"verses about courage when scared or afraid\"}\n← your code sent back: Closest matches (KJV text):\nIsaiah 35:4 (similarity 0.9075): Say to them [that are] of a fearful heart, Be strong, fear not: behold, your God will come [with] vengeance, [even] God [with] a recompence; he will come and save you.\nHaggai 2:5 (similarity 0.8899): [According to] the word that I covenanted with you when ye came out of Egypt, so my spirit remaineth among you: fear ye not.\nProverbs 3:25 (similarity 0.8871): Be not afraid of sudden fear, neither of the desolation of the wicked, when it cometh.\n1 Peter 3:14 (similarity 0.8831): But and if ye suffer for righteousness’ sake, happy [are ye]: and be not afraid of their terror, neither be troubled;\nPsalms 31:24 (similarity 0.8818): Be of good courage, and he shall strengthen your heart, all ye that hope in the LORD."
+}
