@@ -1,7 +1,7 @@
 # concord-tutorial-ai — v1 course specification
 
-Status: **draft, pre-implementation**. Source of truth; amended in the
-same PR whenever reality disagrees.
+Status: **shipped at v1.0.0** (2026-06-12; built T0–T7, PRs #1–#8).
+Source of truth; amended in the same PR whenever reality disagrees.
 
 ## 1. The promise
 
