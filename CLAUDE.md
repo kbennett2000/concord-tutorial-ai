@@ -33,7 +33,7 @@ this course's fuel.
 - **Bobby (kbennett2000) merges every PR.** Never self-merge, never push
   to `main` after bootstrap, never force-push.
 - **Draft PRs at human gates.** Every lesson slice's gate is Bobby
-  *performing the lesson live* — Ollama running, Concord running, as the
+  _performing the lesson live_ — Ollama running, Concord running, as the
   student. The PR opens draft and stays draft until that run passes.
 - **Read the source, don't guess.** Ollama API shapes, CORS behavior,
   model capabilities, and concord-mcp internals are verified against the
@@ -67,16 +67,16 @@ nobody controls:
 
 8. **Write for a non-deterministic co-star.** No lesson's success may
    depend on the model saying any particular thing. Every "you should
-   see" is written as a *range* of plausible outcomes, and every range
+   see" is written as a _range_ of plausible outcomes, and every range
    lands the lesson. If the model is perfect where we expected a flaw
    (or worse where we expected fine), the lesson text must already have
    met that student. The point of lesson 1's "almost right" is the
-   *can't-trust-it*, not the specific error.
+   _can't-trust-it_, not the specific error.
 9. **Real transcripts only, labeled as one run.** Any model output shown
    in course material was genuinely captured, and is marked "one real
    run — yours will differ." Scripting a fake model reply, even a
    realistic one, is a firing offense for a course whose entire thesis
-   is *don't let the machine make things up*.
+   is _don't let the machine make things up_.
 
 ## Technical laws
 

@@ -1,0 +1,48 @@
+name: CI
+
+# Hermetic on purpose — the family's biggest CI divergence. Courses 1–2 ran a
+# live Concord service; this course's smoke proves the OFFLINE experience
+# (SPEC §7): every page must render friendly guidance with no backends. So:
+# no services block, no Ollama, no model downloads — ever. The smoke even
+# aborts any request that tries to leave the static server's origin.
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Prettier check
+        run: npx --yes prettier@3 --check .
+
+  offline-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: tools/smoke/package-lock.json
+
+      - name: Install smoke deps
+        working-directory: tools/smoke
+        run: npm ci
+
+      # The course-1 trio: a GitHub-hosted runner has root, so it can install
+      # WebKit's system libraries — which the dev box can't — so WebKit
+      # actually runs here.
+      - name: Install Playwright browsers + system deps (incl. WebKit)
+        working-directory: tools/smoke
+        run: npx playwright install --with-deps chromium firefox webkit
+
+      - name: Three-engine graceful-offline smoke
+        working-directory: tools/smoke
+        run: npm run smoke

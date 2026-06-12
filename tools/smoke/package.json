@@ -1,0 +1,12 @@
+{
+  "name": "concord-tutorial-ai-smoke",
+  "private": true,
+  "description": "Graceful-offline smoke: every page must render friendly guidance with no backends. CI tooling only — students never touch this.",
+  "type": "module",
+  "scripts": {
+    "smoke": "node smoke.mjs"
+  },
+  "devDependencies": {
+    "playwright": "^1.60.0"
+  }
+}
