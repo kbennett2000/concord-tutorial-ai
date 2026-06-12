@@ -74,7 +74,8 @@ works.
 When you've finished all five, the curious can keep going:
 [concord-mcp](https://github.com/kbennett2000/concord-mcp) is the
 production implementation of exactly what you built — its README shows the
-no-code path to running the real thing.
+no-code path to running the real thing. Graduates also get
+[recipes.md](recipes.md) and [ideas.md](ideas.md) — steal freely.
 
 ## License
 

@@ -143,6 +143,12 @@ Verified against installed reality in T0 (Ollama v0.30.7, this repo's
   `no_verses_found` (404; real-looking reference, no verse there),
   `unknown_book` (404), `unparseable_reference` (400). Lesson 2's
   marking language maps one card message to each.
+- **`/v1/search` snippet shape** _(verified live, T6)_: hits carry
+  `reference` + `snippet`; snippets embed literal `<mark>` highlight
+  tags (web costume — strip before handing to a model) and signal
+  truncation with the single "…" character (U+2026) — an ellipsis means
+  excerpt, never a whole verse, and recipe 1's formatter marks it so
+  (the same decision as production's `[excerpt]` rendering).
 
 ## 6. The five lessons
 
