@@ -110,6 +110,15 @@ Verified against installed reality in T0 (Ollama v0.30.7, this repo's
   standardizes on `localhost` everywhere for consistency with course 1.
 - **Concord CORS** is known-good from course 1 (default `*`);
   re-confirmed against `v1.2.0` in T0.
+- **Thinking models in bare chat** _(found T1, evidence in
+  `docs/transcripts/lesson-01/default-think/`)_: the pinned model
+  "thinks" by default; in tool-free chat it can spend the entire default
+  token budget on `message.thinking` and return **empty**
+  `message.content` (5 of 10 real runs, `done_reason: "length"`). Lesson
+  pages that hold a bare conversation therefore send `think: false` —
+  taught as the second etiquette flag beside `stream: false`. The T0 pin
+  protocol (tool turns) is unaffected; if a later lesson changes request
+  conditions again, the §4 protocol is re-run under those conditions.
 - **Error surfaces** _(captured T0, `docs/model-pin/ERROR-SURFACES.md`)_:
   Ollama stopped / Concord down → the page's `fetch` rejects
   (`TypeError: Failed to fetch` and engine equivalents); model not pulled

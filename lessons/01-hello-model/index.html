@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hello, model</title>
+    <style>
+      /* Just enough styling that the page doesn't look broken. The code is the lesson. */
+      body {
+        font-family:
+          system-ui,
+          -apple-system,
+          "Segoe UI",
+          Roboto,
+          sans-serif;
+        max-width: 40rem;
+        margin: 2rem auto;
+        padding: 0 1rem;
+        line-height: 1.5;
+        color: #1c2733;
+        background: #faf7f0;
+      }
+      h1 {
+        font-size: 1.4rem;
+        color: #2a4a6b;
+      }
+      .row {
+        display: flex;
+        gap: 0.5rem;
+        margin: 1.25rem 0;
+      }
+      input {
+        flex: 1;
+        padding: 0.5rem 0.6rem;
+        font-size: 1rem;
+        border: 1px solid #c9bfa8;
+        border-radius: 0.4rem;
+      }
+      button {
+        padding: 0.5rem 0.9rem;
+        font-size: 1rem;
+        cursor: pointer;
+        border: 0;
+        border-radius: 0.4rem;
+        background: #2a4a6b;
+        color: #fff;
+      }
+      button:disabled {
+        opacity: 0.6;
+        cursor: wait;
+      }
+      .reply {
+        margin: 1rem 0;
+        padding: 0.75rem 1rem;
+        background: #fff;
+        border: 1px solid #ece3cf;
+        border-radius: 0.5rem;
+        white-space: pre-wrap; /* keep the model's own line breaks */
+      }
+      .reply .who {
+        font-weight: 600;
+        color: #2a4a6b;
+        margin-bottom: 0.25rem;
+      }
+      .busy {
+        margin: 1rem 0;
+        color: #6b5b40;
+        font-style: italic;
+      }
+      .busy[hidden] {
+        display: none;
+      }
+      .message,
+      [data-offline-guidance] {
+        margin: 1rem 0;
+        padding: 0.75rem 1rem;
+        border-radius: 0.5rem;
+        background: #fbeee0;
+        border: 1px solid #e7cda8;
+      }
+      .message small {
+        display: block;
+        margin-top: 0.35rem;
+        color: #6b5b40;
+      }
+      [data-offline-guidance][hidden] {
+        display: none;
+      }
+      code {
+        font-family: ui-monospace, Menlo, Consolas, monospace;
+        font-size: 0.92em;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Hello, model</h1>
+    <p>
+      Type something and press Send. The AI answering you is running on your own
+      computer.
+    </p>
+
+    <!-- Shown only when Ollama can't be reached — the page takes care of you instead of going blank. -->
+    <div data-offline-guidance="ollama" hidden>
+      <strong>Ollama isn't running.</strong> The 30-second check: open
+      <code>http://localhost:11434</code> in a new tab — you want the words
+      "Ollama is running." If they don't appear, start Ollama: on Windows and
+      Mac, launch the Ollama app; on Linux it runs as a background service —
+      <code>sudo systemctl start ollama</code>. Then reload this page. (Not
+      installed yet? The one-time <a href="../../SETUP.md">SETUP</a> walks you
+      through it.)
+    </div>
+
+    <div class="row">
+      <input
+        id="prompt"
+        value="Say hello in one short sentence."
+        aria-label="Your message to the model"
+      />
+      <button id="send">Send</button>
+    </div>
+
+    <!-- Honest waiting: we ask for the whole answer at once, so there's a pause, then it all appears. -->
+    <p class="busy" id="busy" hidden>
+      Thinking — the reply arrives all at once. On a machine without a graphics
+      card this can take up to half a minute.
+    </p>
+
+    <div id="result"></div>
+
+    <script>
+      // Where Ollama lives — same idea as the CONCORD line in course 1, new port.
+      const OLLAMA = "http://localhost:11434";
+      // Which model to ask for — Ollama can hold several, so every request names one.
+      const MODEL = "qwen3.5:4b"; // ← on the smaller model from SETUP? Make this "qwen3.5:2b" — that's the whole change
+
+      const input = document.getElementById("prompt");
+      const sendButton = document.getElementById("send");
+      const busy = document.getElementById("busy");
+      const result = document.getElementById("result");
+      const offlineGuidance = document.querySelector(
+        '[data-offline-guidance="ollama"]',
+      );
+
+      // Always say something human — never a blank page or a raw error.
+      function showMessage(text, hint) {
+        result.innerHTML = "";
+        const box = document.createElement("div");
+        box.className = "message";
+        box.textContent = text;
+        if (hint) {
+          const small = document.createElement("small");
+          small.textContent = hint;
+          box.appendChild(small);
+        }
+        result.appendChild(box);
+      }
+
+      // Put the model's words on the page — as plain text, exactly as they came.
+      function showReply(text) {
+        result.innerHTML = "";
+        const box = document.createElement("div");
+        box.className = "reply";
+        const who = document.createElement("div");
+        who.className = "who";
+        who.textContent = "The model said:";
+        const body = document.createElement("div");
+        body.textContent = text;
+        box.appendChild(who);
+        box.appendChild(body);
+        result.appendChild(box);
+      }
+
+      async function send() {
+        const text = input.value.trim();
+        if (!text) return;
+
+        result.innerHTML = "";
+        sendButton.disabled = true;
+        busy.hidden = false;
+
+        let response;
+        try {
+          // The same fetch you know from course 1 — but this time the request
+          // carries a parcel: method POST, a label saying the parcel is JSON,
+          // and the parcel itself. JSON.stringify is .json()'s mirror — it
+          // turns your data back into JSON text for the trip.
+          response = await fetch(`${OLLAMA}/api/chat`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              model: MODEL,
+              // A chat is a list of turns. Today ours has exactly one: yours.
+              messages: [{ role: "user", content: text }],
+              // Two etiquette flags for the model:
+              stream: false, // the whole answer at once (that's the pause you see)
+              think: false, // answer directly — skip the long private mulling
+            }),
+          });
+        } catch (e) {
+          // We never reached Ollama at all — it's probably not running.
+          busy.hidden = true;
+          sendButton.disabled = false;
+          offlineGuidance.hidden = false;
+          return;
+        }
+
+        // Ollama answers in JSON, success or not — same move as course 1.
+        const data = await response.json();
+        busy.hidden = true;
+        sendButton.disabled = false;
+
+        if (!response.ok) {
+          // Ollama is on, but couldn't do it. The most common reason: the
+          // model isn't downloaded on this machine yet.
+          if (String(data.error || "").includes("not found")) {
+            showMessage(
+              "Ollama is running, but the model isn't downloaded yet.",
+              "One command fixes it — in a terminal, run:  ollama pull " +
+                MODEL +
+                "  (SETUP's “Pull the model” section shows what success looks like.)",
+            );
+          } else {
+            showMessage(
+              "Ollama couldn't answer that one.",
+              "It said: " + (data.error || response.status),
+            );
+          }
+          return;
+        }
+
+        // The reply's words live at message.content — read the field, show it.
+        if (!data.message.content.trim()) {
+          // Rare, but kinder than a blank box: the model returned no words.
+          showMessage(
+            "The model sent back an empty reply this time.",
+            "Press Send to try again — each run is a fresh roll.",
+          );
+          return;
+        }
+        showReply(data.message.content);
+        offlineGuidance.hidden = true;
+      }
+
+      sendButton.addEventListener("click", send);
+      input.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") send();
+      });
+
+      // On load, quietly check whether Ollama is reachable, so a student whose
+      // Ollama isn't started sees friendly guidance — not a dead page.
+      fetch(`${OLLAMA}/`)
+        .then((r) => {
+          if (!r.ok) offlineGuidance.hidden = false;
+        })
+        .catch(() => {
+          offlineGuidance.hidden = false;
+        });
+    </script>
+  </body>
+</html>

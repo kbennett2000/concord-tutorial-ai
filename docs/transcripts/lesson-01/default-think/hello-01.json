@@ -1,0 +1,34 @@
+{
+  "label": "hello",
+  "run": 1,
+  "capturedAt": "2026-06-12T18:33:02.035Z",
+  "page": "lessons/01-hello-model/index.html (driven as the student, in Chromium)",
+  "request": {
+    "model": "qwen3.5:4b",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Say hello in one short sentence."
+      }
+    ],
+    "stream": false
+  },
+  "status": 200,
+  "response": {
+    "model": "qwen3.5:4b",
+    "created_at": "2026-06-12T18:33:02.033286334Z",
+    "message": {
+      "role": "assistant",
+      "content": "Hello there!",
+      "thinking": "Thinking Process:\n\n1.  **Analyze the Request:**\n    *   Task: Say \"hello\".\n    *   Constraint: One short sentence.\n\n2.  **Draft Options:**\n    *   Hello there!\n    *   Hi, how are you? (Two words + question mark - counts as one sentence)\n    *   How do you do? (One sentence)\n    *   Greetings to you all!\n\n3.  **Select Best Option:** \"Hello!\" is too short maybe? \"Hi there\" might be better. But the user asked for a \"short sentence\". A fragment like \"Hello.\" counts as a sentence in casual speech, but \"I hope you have a wonderful day!\" is more polite and complete. However, keeping it very simple aligns with \"one short sentence\".\n    *   Option 1: Hello! (Fragments)\n    *   Option 2: I say hello to you. (A bit clunky)\n    *   Option 3: Hi there! (Fragment/Sentence depending on strictness)\n\n4.  **Refine for Politeness and Brevity:** \"Hello!\" is technically an interjection/exclamation, often considered a sentence in modern usage if it stands alone with punctuation. But to be safe as a full clause...\n    *   \"I hope you're having a good day.\" (Short)\n    *   \"Hello friend!\"\n\n5.  **Final Decision:** Keep it extremely direct based on the instruction \"Say hello\".\n    *   \"Hello there!\" is warm and short.\n    *   \"Hi!\" is very common but maybe too brief for \"sentence\".\n    *   Let's go with \"I say hello to you.\" -> No, that's unnatural.\n    *   Let's go with: **\"Greetings!**\" or simply **\"Hello!\"**\n\n6.  **Review Constraints:** \"One short sentence\".\n    *   \"Hello!\" fits well enough in modern context. But maybe make it slightly more formal/complete?\n    *   How about: **\"It is a pleasure to say hello.\"**? No, that's weird AI speak.\n    *   Just do the task: **Hello!** (Often treated as one sentence). Or better: **\"Hi there!\"**\n\n    Let's try to make it sound natural but adhere strictly. \"I hope you are well\" implies saying hello in a way? No, just say hello.\n    \n    Best fit: **\"Hello!\"** is the most direct response that can be interpreted as one short sentence. To add slight variety without breaking brevity: **\"Hi there.\"**\n\n    Let's choose: **Hello!** (It's technically an exclamation, which counts as a complete utterance/sentence in conversation).\n    \n    Actually, \"Good day!\" might sound nice? No.\n    Let's stick to the classic instruction following style.\n\n    *Draft:* Hello there! \n\n7.  **Final Polish:** Keep it under 5 words for \"short\". \n    Response: **\"Hello there!\"** or just **\"Hello.\"**\n\n    I will write: Hello there! (It is a complete utterance).\n    Wait, strictly grammatically? A sentence requires a subject and verb in traditional grammar. But colloquial speech allows exclamations as sentences. To be safe on \"short sentence\" constraint while maintaining flow...\n    \n    Let's go with: **\"I hope you're doing well.\"** (Implies hello/greeting). No, user just said say hello.\n\n    Okay, simplest is best.\n    **Hello!**\n\n    Wait, I want to make sure it counts as a sentence structure wise if they are being strict? \"Greetings!\" vs \"Hello!\". \n    Let's go with: **\"Hi there! How about you?\"** -> That's two questions potentially. \n\n    Okay, just the greeting itself is best.\n    **\"Hello!\"**\n\n    Re-reading constraint: \"Say hello in one short sentence.\"\n    Maybe they want a full grammatical sentence? \n    \"**Here are greetings.**\" (No)\n    \n    Let's try to make it natural yet complete enough. \n    **\"I am saying hello to you today.\"** Too robotic.\n    \n    How about: **\"Hello and good day!\"** \n\n    Okay, I will stick with the most standard interpretation which allows exclamations as sentences in chatbot context.\n\n    **Response:** Hello there! (It's short, polite, one sentence structure)."
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 12008520244,
+    "load_duration": 3722443066,
+    "prompt_eval_count": 17,
+    "prompt_eval_duration": 84615000,
+    "eval_count": 956,
+    "eval_duration": 8200039000
+  }
+}

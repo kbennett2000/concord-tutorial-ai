@@ -1,0 +1,34 @@
+{
+  "label": "fallback-turn",
+  "run": 1,
+  "capturedAt": "2026-06-12T18:41:44.638Z",
+  "page": "lessons/01-hello-model/index.html (driven as the student, in Chromium)",
+  "request": {
+    "model": "qwen3.5:2b",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Give me John 3:16, word for word, in the King James Version."
+      }
+    ],
+    "stream": false,
+    "think": false
+  },
+  "status": 200,
+  "response": {
+    "model": "qwen3.5:2b",
+    "created_at": "2026-06-12T18:41:44.636434879Z",
+    "message": {
+      "role": "assistant",
+      "content": "Thou art God's Son whom I have given to them; And if thou shouldst ask him at all, he shall not turn thee away; But that his flesh might be with us, and we may know Him as one He is. For these are my dearly beloved ones in whom I love You: All they that through the blood of Jesus Christ our Lord shall come to God—being many in number but few in spirit—because many believed—not all believing received this grace; for God so loved them that He sent His own Son into the world, That we might believe on Him and be made children of God."
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 3599343242,
+    "load_duration": 2714565799,
+    "prompt_eval_count": 31,
+    "prompt_eval_duration": 45878000,
+    "eval_count": 126,
+    "eval_duration": 837503000
+  }
+}

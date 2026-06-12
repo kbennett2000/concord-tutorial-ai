@@ -80,11 +80,12 @@ to expect.
 The model uses just under 4 GB of memory while it's loaded (3.78 GB, as
 we measured it). If your computer has **8 GB of RAM or more**, you're
 fine. If it has a graphics card, replies will feel instant; if not, the
-model runs on your processor — it works the same, it just types slower.
+model runs on your processor — it works the same, it just takes longer.
 On our test machine with the graphics card switched off (a 2019 8-core
 processor), it generated about 11 tokens a second — call it eight words
-a second, comfortable reading speed. You'll watch sentences appear; you
-won't wonder if it's frozen.
+a second. On the lesson pages the reply takes a moment — up to half a
+minute on a smaller machine — then arrives all at once, and every page
+tells you it's thinking while you wait.
 
 If your machine has **less than 8 GB of RAM**, or the model above feels
 like wading through mud, there's a smaller cousin from the same family:

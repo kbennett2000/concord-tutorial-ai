@@ -1,0 +1,34 @@
+{
+  "label": "turn-b",
+  "run": 5,
+  "capturedAt": "2026-06-12T18:41:04.699Z",
+  "page": "lessons/01-hello-model/index.html (driven as the student, in Chromium)",
+  "request": {
+    "model": "qwen3.5:4b",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Give me John 3:16, word for word, in the King James Version."
+      }
+    ],
+    "stream": false,
+    "think": false
+  },
+  "status": 200,
+  "response": {
+    "model": "qwen3.5:4b",
+    "created_at": "2026-06-12T18:41:04.698039758Z",
+    "message": {
+      "role": "assistant",
+      "content": "\"For God so loved **the world** that he gave his only begotten Son, that whosoever believeth **in him** should not perish, but have everlasting life.\" (KJV)"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 679309219,
+    "load_duration": 289577431,
+    "prompt_eval_count": 31,
+    "prompt_eval_duration": 24812000,
+    "eval_count": 42,
+    "eval_duration": 363621000
+  }
+}
