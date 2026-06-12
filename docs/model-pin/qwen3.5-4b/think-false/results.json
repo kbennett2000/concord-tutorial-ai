@@ -1,0 +1,97 @@
+{
+  "model": "qwen3.5:4b",
+  "trials": 10,
+  "mechanicalPasses": 10,
+  "results": [
+    {
+      "trial": 1,
+      "gate1": true,
+      "gate2": true,
+      "mechanicalPass": true,
+      "ref": "John 3:16",
+      "tokensPerSec": 103.12,
+      "psBytes": 2968529141
+    },
+    {
+      "trial": 2,
+      "gate1": true,
+      "gate2": true,
+      "mechanicalPass": true,
+      "ref": "John 3:16",
+      "tokensPerSec": 105.07,
+      "psBytes": 2968529141
+    },
+    {
+      "trial": 3,
+      "gate1": true,
+      "gate2": true,
+      "mechanicalPass": true,
+      "ref": "John 3:16",
+      "tokensPerSec": 104.1,
+      "psBytes": 2968529141
+    },
+    {
+      "trial": 4,
+      "gate1": true,
+      "gate2": true,
+      "mechanicalPass": true,
+      "ref": "John 3:16",
+      "tokensPerSec": 106.54,
+      "psBytes": 2968529141
+    },
+    {
+      "trial": 5,
+      "gate1": true,
+      "gate2": true,
+      "mechanicalPass": true,
+      "ref": "John 3:16",
+      "tokensPerSec": 105.56,
+      "psBytes": 2968529141
+    },
+    {
+      "trial": 6,
+      "gate1": true,
+      "gate2": true,
+      "mechanicalPass": true,
+      "ref": "John 3:16",
+      "tokensPerSec": 104.95,
+      "psBytes": 2968529141
+    },
+    {
+      "trial": 7,
+      "gate1": true,
+      "gate2": true,
+      "mechanicalPass": true,
+      "ref": "John 3:16",
+      "tokensPerSec": 105.26,
+      "psBytes": 2968529141
+    },
+    {
+      "trial": 8,
+      "gate1": true,
+      "gate2": true,
+      "mechanicalPass": true,
+      "ref": "John 3:16",
+      "tokensPerSec": 105.11,
+      "psBytes": 2968529141
+    },
+    {
+      "trial": 9,
+      "gate1": true,
+      "gate2": true,
+      "mechanicalPass": true,
+      "ref": "John 3:16",
+      "tokensPerSec": 105.33,
+      "psBytes": 2968529141
+    },
+    {
+      "trial": 10,
+      "gate1": true,
+      "gate2": true,
+      "mechanicalPass": true,
+      "ref": "John 3:16",
+      "tokensPerSec": 105.97,
+      "psBytes": 2968529141
+    }
+  ]
+}

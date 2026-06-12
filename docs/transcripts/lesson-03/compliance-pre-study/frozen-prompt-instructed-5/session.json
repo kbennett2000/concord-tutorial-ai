@@ -1,0 +1,64 @@
+{
+  "session": "instructed-5",
+  "capturedAt": "2026-06-12T19:53:11.465Z",
+  "page": "lessons/03-the-one-rule/index.html (driven as the student, in Chromium)",
+  "rounds": [
+    {
+      "request": {
+        "model": "qwen3.5:4b",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You answer questions about the Bible. Never quote a verse from memory: always look it up with the lookup_verse tool, and quote only what it returns."
+          },
+          {
+            "role": "user",
+            "content": "List exactly 5 Bible verses about forgiveness. Reply with exactly 5 lines and nothing else. Each line must look like this: Reference | the exact verse text, word for word, in the King James Version"
+          }
+        ],
+        "tools": [
+          {
+            "type": "function",
+            "function": {
+              "name": "lookup_verse",
+              "description": "Look up the exact text of a Bible verse by reference, e.g. \"John 3:16\".",
+              "parameters": {
+                "type": "object",
+                "required": ["ref"],
+                "properties": {
+                  "ref": {
+                    "type": "string",
+                    "description": "The verse reference, like \"John 3:16\""
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "stream": false,
+        "think": false
+      },
+      "status": 200,
+      "response": {
+        "model": "qwen3.5:4b",
+        "created_at": "2026-06-12T19:53:13.634122176Z",
+        "message": {
+          "role": "assistant",
+          "content": "1 Corinthians 7:10 | Let every man have his wife, and let every woman have her husband;\nEphesians 4:32 | And be kind one to another with tenderheartedness, forgiving one another even God in Christ.\nColossians 3:13 | Forbearing one another [and] forgiving one another; if any man have a quarrel against any,even as Christ forgave you, so also do ye.\nMatthew 6:14-15 (NKJ) | For forgive your trespasses, and it may be well with you... And they will not forget the iniquity of them nor shall they remember their sins before God again.\nEphesians 4:32 (King James Version) | Be merciful one to another, even as Christ hath forgiven you."
+        },
+        "done": true,
+        "done_reason": "stop",
+        "total_duration": 2052090627,
+        "load_duration": 329577403,
+        "prompt_eval_count": 380,
+        "prompt_eval_duration": 19775000,
+        "eval_count": 178,
+        "eval_duration": 1700158000
+      }
+    }
+  ],
+  "concordCalls": [],
+  "finalAnswer": "The model's answer:1 Corinthians 7:10 | Let every man have his wife, and let every woman have her husband;\nEphesians 4:32 | And be kind one to another with tenderheartedness, forgiving one another even God in Christ.\nColossians 3:13 | Forbearing one another [and] forgiving one another; if any man have a quarrel against any,even as Christ forgave you, so also do ye.\nMatthew 6:14-15 (NKJ) | For forgive your trespasses, and it may be well with you... And they will not forget the iniquity of them nor shall they remember their sins before God again.\nEphesians 4:32 (King James Version) | Be merciful one to another, even as Christ hath forgiven you.",
+  "promptInBox": "List exactly 5 Bible verses about forgiveness. Reply with exactly 5 lines and nothing else. Each line must look like this: Reference | the exact verse text, word for word, in the King James Version",
+  "wirePanelText": "you asked: List exactly 5 Bible verses about forgiveness. Reply with exactly 5 lines and nothing else. Each line must look like this: Reference | the exact verse text, word for word, in the King James Version"
+}

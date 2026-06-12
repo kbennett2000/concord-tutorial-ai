@@ -1,0 +1,171 @@
+{
+  "session": "simple-1",
+  "capturedAt": "2026-06-12T20:01:10.380Z",
+  "page": "lessons/03-the-one-rule/index.html (driven as the student, in Chromium)",
+  "rounds": [
+    {
+      "request": {
+        "model": "qwen3.5:4b",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You answer questions about the Bible. Never quote a verse from memory: always look it up with the lookup_verse tool, and quote only what it returns."
+          },
+          {
+            "role": "user",
+            "content": "What does John 3:16 say?"
+          }
+        ],
+        "tools": [
+          {
+            "type": "function",
+            "function": {
+              "name": "lookup_verse",
+              "description": "Look up the exact text of a Bible verse by reference, e.g. \"John 3:16\".",
+              "parameters": {
+                "type": "object",
+                "required": ["ref"],
+                "properties": {
+                  "ref": {
+                    "type": "string",
+                    "description": "The verse reference, like \"John 3:16\""
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "stream": false,
+        "think": false
+      },
+      "status": 200,
+      "response": {
+        "model": "qwen3.5:4b",
+        "created_at": "2026-06-12T20:01:11.282922566Z",
+        "message": {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "id": "call_3qh8syzc",
+              "function": {
+                "index": 0,
+                "name": "lookup_verse",
+                "arguments": {
+                  "ref": "John 3:16"
+                }
+              }
+            }
+          ]
+        },
+        "done": true,
+        "done_reason": "stop",
+        "total_duration": 819912001,
+        "load_duration": 296602732,
+        "prompt_eval_count": 348,
+        "prompt_eval_duration": 82089000,
+        "eval_count": 33,
+        "eval_duration": 288229000
+      }
+    },
+    {
+      "request": {
+        "model": "qwen3.5:4b",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You answer questions about the Bible. Never quote a verse from memory: always look it up with the lookup_verse tool, and quote only what it returns."
+          },
+          {
+            "role": "user",
+            "content": "What does John 3:16 say?"
+          },
+          {
+            "role": "assistant",
+            "content": "",
+            "tool_calls": [
+              {
+                "id": "call_3qh8syzc",
+                "function": {
+                  "index": 0,
+                  "name": "lookup_verse",
+                  "arguments": {
+                    "ref": "John 3:16"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "tool_name": "lookup_verse",
+            "content": "For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life.",
+            "isError": false
+          }
+        ],
+        "tools": [
+          {
+            "type": "function",
+            "function": {
+              "name": "lookup_verse",
+              "description": "Look up the exact text of a Bible verse by reference, e.g. \"John 3:16\".",
+              "parameters": {
+                "type": "object",
+                "required": ["ref"],
+                "properties": {
+                  "ref": {
+                    "type": "string",
+                    "description": "The verse reference, like \"John 3:16\""
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "stream": false,
+        "think": false
+      },
+      "status": 200,
+      "response": {
+        "model": "qwen3.5:4b",
+        "created_at": "2026-06-12T20:01:12.011558945Z",
+        "message": {
+          "role": "assistant",
+          "content": "John 3:16 says this: \"For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life.\""
+        },
+        "done": true,
+        "done_reason": "stop",
+        "total_duration": 724035347,
+        "load_duration": 291383460,
+        "prompt_eval_count": 428,
+        "prompt_eval_duration": 35797000,
+        "eval_count": 45,
+        "eval_duration": 393962000
+      }
+    }
+  ],
+  "concordCalls": [
+    {
+      "url": "http://localhost:8000/v1/verses/John%203%3A16?translations=KJV",
+      "status": 200,
+      "response": {
+        "reference": "John 3:16",
+        "translations": ["KJV"],
+        "verses": [
+          {
+            "book": "JHN",
+            "chapter": 3,
+            "verse": 16,
+            "reference": "John 3:16",
+            "text": {
+              "KJV": "For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life."
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "finalAnswer": "The model's answer:John 3:16 says this: \"For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life.\"",
+  "promptInBox": "What does John 3:16 say?",
+  "wirePanelText": "you asked: What does John 3:16 say?→ the model asked: lookup_verse {\"ref\":\"John 3:16\"}\n← your code sent back: For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life."
+}

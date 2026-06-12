@@ -119,6 +119,13 @@ Verified against installed reality in T0 (Ollama v0.30.7, this repo's
   taught as the second etiquette flag beside `stream: false`. The T0 pin
   protocol (tool turns) is unaffected; if a later lesson changes request
   conditions again, the §4 protocol is re-run under those conditions.
+- **Tool lessons also send `think: false`** _(settled T3 by protocol
+  re-run — `docs/model-pin/THINK-ADDENDUM.md`)_: pin and fallback both
+  scored 10/10 under the lesson-3 shape (`tools` + `stream: false` +
+  `think: false`), so every lesson's parcel carries the same two
+  etiquette flags and lesson 3 adds exactly one field. This discharges
+  DECISION.md's re-run obligation for this shape; the obligation stands
+  for future condition changes (T4's multi-tool shape included).
 - **Error surfaces** _(captured T0, `docs/model-pin/ERROR-SURFACES.md`)_:
   Ollama stopped / Concord down → the page's `fetch` rejects
   (`TypeError: Failed to fetch` and engine equivalents); model not pulled
@@ -186,12 +193,29 @@ against Concord, and hands the result back. Model proposes, your code
 disposes.
 **Build:** a given working loop (~40 readable lines) with one tool —
 `lookup_verse`, backed by Concord `/v1/verses/{ref}` — declared with a
-name, a description, and parameters. The lesson walks the loop with the
-course's own diagram of question → tool call → your code → Concord →
-answer.
-**The payoff:** re-run lesson 2's fact-check through the tooled
-assistant. Errors collapse to zero — _and the student can say exactly
-why_: every quote now arrives over the wire from their own Concord.
+name, a description, and parameters, **plus the lesson's namesake: a
+one-sentence system rule** ("never quote a verse from memory: always
+look it up…"). The rule ships because T3 measured it load-bearing:
+without it the model looked up every claim in only **2 of 6** runs
+(three never touched the tool); with it, **6 of 6**
+(`docs/transcripts/lesson-03/compliance-pre-study/`). The lesson walks
+the loop with the course's own diagram
+(`docs/diagrams/tool-loop.svg`) of question → tool call → your code →
+Concord → answer, and a wire panel that renders the actual `messages`
+the loop sends.
+**The payoff (scoped claim — T3 measured):** re-run lesson 2's
+fact-check through the tooled assistant. What collapses is fabricated
+_text_ — every quote arrives over the wire from their own Concord with
+a checkable address. Still the model's: which verses it picks, the
+commentary around the quotes, and addresses can still blur — but a
+blurred address now fails loudly (Concord's error returns as the tool
+result — the model's second chance) or fetches a real-but-different
+verse, visible on the wire. A model can also still skip the tool
+(the rule cuts that from 4-in-6 runs to 0-in-6 in T3's study); the
+lesson teaches the tell: a quote with no wire line. T3 field note:
+lesson 2's frozen prompt cannot be reused verbatim here — its
+"exactly 5 lines and nothing else" scaffolding collided with the rule
+and produced refusals 6/6; the re-run relaxes to the bare ask.
 **Win:** "the errors stopped because of code I can read."
 
 ### Lesson 4 — `04-the-menu` · _Let it choose_

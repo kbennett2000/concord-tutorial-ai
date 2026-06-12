@@ -60,6 +60,11 @@ const model = arg("model");
 const trials = Number(arg("trials", "10"));
 const numGpu = arg("num-gpu", null);
 const label = arg("label", null);
+// --think true|false adds the `think` field to every request (T3 addendum);
+// omitting the flag preserves the original T0 protocol shape exactly.
+const thinkArg = arg("think", null);
+const think =
+  thinkArg === null ? undefined : thinkArg === "true" ? true : false;
 if (!model) {
   console.error("--model is required");
   process.exit(1);
@@ -117,6 +122,7 @@ async function main() {
       ],
       tools: TOOLS,
       stream: false,
+      ...(think !== undefined ? { think } : {}),
       ...(options ? { options } : {}),
     };
     const res1 = await post("/api/chat", req1);
@@ -152,6 +158,7 @@ async function main() {
         ],
         tools: TOOLS,
         stream: false,
+        ...(think !== undefined ? { think } : {}),
         ...(options ? { options } : {}),
       };
       const res2 = await post("/api/chat", req2);
