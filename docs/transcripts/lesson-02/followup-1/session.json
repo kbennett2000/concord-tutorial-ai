@@ -1,0 +1,148 @@
+{
+  "session": "followup-1",
+  "capturedAt": "2026-06-12T19:28:32.391Z",
+  "page": "lessons/02-the-fact-check/index.html (driven as the student, in Chromium)",
+  "promptInBox": "List exactly 5 Bible verses about comfort in hard times. Reply with exactly 5 lines and nothing else. Each line must look like this: Reference | the exact verse text, word for word, in the King James Version",
+  "chat": {
+    "request": {
+      "model": "qwen3.5:4b",
+      "messages": [
+        {
+          "role": "user",
+          "content": "List exactly 5 Bible verses about comfort in hard times. Reply with exactly 5 lines and nothing else. Each line must look like this: Reference | the exact verse text, word for word, in the King James Version"
+        }
+      ],
+      "stream": false,
+      "think": false
+    },
+    "status": 200,
+    "response": {
+      "model": "qwen3.5:4b",
+      "created_at": "2026-06-12T19:28:34.128819714Z",
+      "message": {
+        "role": "assistant",
+        "content": "2 Corinthians 1:3–4 The Lord giveth grace; he maketh to us comfort.\nIsaiah 58:9 Then shalt thou know that I am the LORD which have called thee by thy name.\nLamentations 3:22 He is merciful, even then when we be at fault in our thoughts and deeds.\nJeremiah 14:7 O God of our peace there hath been no hope for us; but thou art our Rock.\nNahum 1:9 For the Lord will judge his people, and will have mercy on them as He did unto the fathers"
+      },
+      "done": true,
+      "done_reason": "stop",
+      "total_duration": 1702069259,
+      "load_duration": 323260509,
+      "prompt_eval_count": 57,
+      "prompt_eval_duration": 24084000,
+      "eval_count": 131,
+      "eval_duration": 1277825000
+    }
+  },
+  "checks": [
+    {
+      "card": 1,
+      "ref": "2 Corinthians 1:3",
+      "manualPath": true,
+      "url": "http://localhost:8000/v1/verses/2%20Corinthians%201%3A3?translations=KJV",
+      "status": 200,
+      "response": {
+        "reference": "2 Corinthians 1:3",
+        "translations": ["KJV"],
+        "verses": [
+          {
+            "book": "2CO",
+            "chapter": 1,
+            "verse": 3,
+            "reference": "2 Corinthians 1:3",
+            "text": {
+              "KJV": "Blessed [be] God, even the Father of our Lord Jesus Christ, the Father of mercies, and the God of all comfort;"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "card": 2,
+      "ref": "Isaiah 58:9",
+      "manualPath": true,
+      "url": "http://localhost:8000/v1/verses/Isaiah%2058%3A9?translations=KJV",
+      "status": 200,
+      "response": {
+        "reference": "Isaiah 58:9",
+        "translations": ["KJV"],
+        "verses": [
+          {
+            "book": "ISA",
+            "chapter": 58,
+            "verse": 9,
+            "reference": "Isaiah 58:9",
+            "text": {
+              "KJV": "Then shalt thou call, and the LORD shall answer; thou shalt cry, and he shall say, Here I [am]. If thou take away from the midst of thee the yoke, the putting forth of the finger, and speaking vanity;"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "card": 3,
+      "ref": "Lamentations 3:22",
+      "manualPath": true,
+      "url": "http://localhost:8000/v1/verses/Lamentations%203%3A22?translations=KJV",
+      "status": 200,
+      "response": {
+        "reference": "Lamentations 3:22",
+        "translations": ["KJV"],
+        "verses": [
+          {
+            "book": "LAM",
+            "chapter": 3,
+            "verse": 22,
+            "reference": "Lamentations 3:22",
+            "text": {
+              "KJV": "[It is of] the LORD’S mercies that we are not consumed, because his compassions fail not."
+            }
+          }
+        ]
+      }
+    },
+    {
+      "card": 4,
+      "ref": "Jeremiah 14:7",
+      "manualPath": true,
+      "url": "http://localhost:8000/v1/verses/Jeremiah%2014%3A7?translations=KJV",
+      "status": 200,
+      "response": {
+        "reference": "Jeremiah 14:7",
+        "translations": ["KJV"],
+        "verses": [
+          {
+            "book": "JER",
+            "chapter": 14,
+            "verse": 7,
+            "reference": "Jeremiah 14:7",
+            "text": {
+              "KJV": "O LORD, though our iniquities testify against us, do thou [it] for thy name’s sake: for our backslidings are many; we have sinned against thee."
+            }
+          }
+        ]
+      }
+    },
+    {
+      "card": 5,
+      "ref": "Nahum 1:9",
+      "manualPath": true,
+      "url": "http://localhost:8000/v1/verses/Nahum%201%3A9?translations=KJV",
+      "status": 200,
+      "response": {
+        "reference": "Nahum 1:9",
+        "translations": ["KJV"],
+        "verses": [
+          {
+            "book": "NAM",
+            "chapter": 1,
+            "verse": 9,
+            "reference": "Nahum 1:9",
+            "text": {
+              "KJV": "What do ye imagine against the LORD? he will make an utter end: affliction shall not rise up the second time."
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

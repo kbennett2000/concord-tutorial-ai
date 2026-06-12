@@ -1,0 +1,34 @@
+{
+  "study": "lesson-02 theme pre-study",
+  "theme": "money",
+  "run": 1,
+  "capturedAt": "2026-06-12T19:24:36.527Z",
+  "request": {
+    "model": "qwen3.5:4b",
+    "messages": [
+      {
+        "role": "user",
+        "content": "List exactly 5 Bible verses about money. Reply with exactly 5 lines and nothing else. Each line must look like this: Reference | the exact verse text, word for word, in the King James Version"
+      }
+    ],
+    "stream": false,
+    "think": false
+  },
+  "status": 200,
+  "response": {
+    "model": "qwen3.5:4b",
+    "created_at": "2026-06-12T19:24:36.527157429Z",
+    "message": {
+      "role": "assistant",
+      "content": "Ecclesiastes 5:10 | Give not thine gold for much words; nor thy labour to increase money.\nProverbs 22:7 | The rich shall have rule over the poor; and the borrower is servant unto the lender.\nMatthew 6:24 | Ye cannot serve God, and mammon also.\nActs 20:35 | For I preferved you in all things, that ye might learn by me to work with your own hands.\nGalatians 6:7 | Sow not corruption amongst men; yet have patience towards them of the world?"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 1645198407,
+    "load_duration": 331379770,
+    "prompt_eval_count": 54,
+    "prompt_eval_duration": 43885000,
+    "eval_count": 127,
+    "eval_duration": 1224826000
+  }
+}

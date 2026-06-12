@@ -1,0 +1,148 @@
+{
+  "session": "pin-3",
+  "capturedAt": "2026-06-12T19:27:59.279Z",
+  "page": "lessons/02-the-fact-check/index.html (driven as the student, in Chromium)",
+  "promptInBox": "List exactly 5 Bible verses about forgiveness. Reply with exactly 5 lines and nothing else. Each line must look like this: Reference | the exact verse text, word for word, in the King James Version",
+  "chat": {
+    "request": {
+      "model": "qwen3.5:4b",
+      "messages": [
+        {
+          "role": "user",
+          "content": "List exactly 5 Bible verses about forgiveness. Reply with exactly 5 lines and nothing else. Each line must look like this: Reference | the exact verse text, word for word, in the King James Version"
+        }
+      ],
+      "stream": false,
+      "think": false
+    },
+    "status": 200,
+    "response": {
+      "model": "qwen3.5:4b",
+      "created_at": "2026-06-12T19:28:01.848899571Z",
+      "message": {
+        "role": "assistant",
+        "content": "Ephesians 4:32 - Be ye kind one to another, merciful, forgiving one another even as God for Christ's sake hath forgiven you.\nColossians 3:13 - Forbearing one another, and forgiving one another, if any man have a quarrel against any; even as Christ forgave you, so do also ye.\nMark 11:25 - And when ye stand praying, forgive, if ye have ought against any; that your Father which is in heaven may also give unto you the good things of this world.\nLuke 6:37 | Judge not, and ye shall not be judged... forgiving, for so shew mercy that we are forgiven (KJV text often varies slightly here) -> Let's use a clear parallel verse instead to ensure accuracy without citation confusion in strict KJV phrasing context usually preferred as Ephesians or Matthew\nMatthew 6:14 - For if ye forgive men their trespasses, your heavenly Father will also forgive you."
+      },
+      "done": true,
+      "done_reason": "stop",
+      "total_duration": 2499836177,
+      "load_duration": 335877656,
+      "prompt_eval_count": 54,
+      "prompt_eval_duration": 27041000,
+      "eval_count": 213,
+      "eval_duration": 2026119000
+    }
+  },
+  "checks": [
+    {
+      "card": 1,
+      "ref": "Ephesians 4:32",
+      "manualPath": true,
+      "url": "http://localhost:8000/v1/verses/Ephesians%204%3A32?translations=KJV",
+      "status": 200,
+      "response": {
+        "reference": "Ephesians 4:32",
+        "translations": ["KJV"],
+        "verses": [
+          {
+            "book": "EPH",
+            "chapter": 4,
+            "verse": 32,
+            "reference": "Ephesians 4:32",
+            "text": {
+              "KJV": "And be ye kind one to another, tenderhearted, forgiving one another, even as God for Christ’s sake hath forgiven you."
+            }
+          }
+        ]
+      }
+    },
+    {
+      "card": 2,
+      "ref": "Colossians 3:13",
+      "manualPath": true,
+      "url": "http://localhost:8000/v1/verses/Colossians%203%3A13?translations=KJV",
+      "status": 200,
+      "response": {
+        "reference": "Colossians 3:13",
+        "translations": ["KJV"],
+        "verses": [
+          {
+            "book": "COL",
+            "chapter": 3,
+            "verse": 13,
+            "reference": "Colossians 3:13",
+            "text": {
+              "KJV": "Forbearing one another, and forgiving one another, if any man have a quarrel against any: even as Christ forgave you, so also [do] ye."
+            }
+          }
+        ]
+      }
+    },
+    {
+      "card": 3,
+      "ref": "Mark 11:25",
+      "manualPath": true,
+      "url": "http://localhost:8000/v1/verses/Mark%2011%3A25?translations=KJV",
+      "status": 200,
+      "response": {
+        "reference": "Mark 11:25",
+        "translations": ["KJV"],
+        "verses": [
+          {
+            "book": "MRK",
+            "chapter": 11,
+            "verse": 25,
+            "reference": "Mark 11:25",
+            "text": {
+              "KJV": "And when ye stand praying, forgive, if ye have ought against any: that your Father also which is in heaven may forgive you your trespasses."
+            }
+          }
+        ]
+      }
+    },
+    {
+      "card": 4,
+      "ref": "Luke 6:37",
+      "manualPath": false,
+      "url": "http://localhost:8000/v1/verses/Luke%206%3A37?translations=KJV",
+      "status": 200,
+      "response": {
+        "reference": "Luke 6:37",
+        "translations": ["KJV"],
+        "verses": [
+          {
+            "book": "LUK",
+            "chapter": 6,
+            "verse": 37,
+            "reference": "Luke 6:37",
+            "text": {
+              "KJV": "Judge not, and ye shall not be judged: condemn not, and ye shall not be condemned: forgive, and ye shall be forgiven:"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "card": 5,
+      "ref": "Matthew 6:14",
+      "manualPath": true,
+      "url": "http://localhost:8000/v1/verses/Matthew%206%3A14?translations=KJV",
+      "status": 200,
+      "response": {
+        "reference": "Matthew 6:14",
+        "translations": ["KJV"],
+        "verses": [
+          {
+            "book": "MAT",
+            "chapter": 6,
+            "verse": 14,
+            "reference": "Matthew 6:14",
+            "text": {
+              "KJV": "For if ye forgive men their trespasses, your heavenly Father will also forgive you:"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

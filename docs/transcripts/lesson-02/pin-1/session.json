@@ -1,0 +1,63 @@
+{
+  "session": "pin-1",
+  "capturedAt": "2026-06-12T19:26:37.081Z",
+  "page": "lessons/02-the-fact-check/index.html (driven as the student, in Chromium)",
+  "promptInBox": "List exactly 5 Bible verses about forgiveness. Reply with exactly 5 lines and nothing else. Each line must look like this: Reference | the exact verse text, word for word, in the King James Version",
+  "chat": {
+    "request": {
+      "model": "qwen3.5:4b",
+      "messages": [
+        {
+          "role": "user",
+          "content": "List exactly 5 Bible verses about forgiveness. Reply with exactly 5 lines and nothing else. Each line must look like this: Reference | the exact verse text, word for word, in the King James Version"
+        }
+      ],
+      "stream": false,
+      "think": false
+    },
+    "status": 200,
+    "response": {
+      "model": "qwen3.5:4b",
+      "created_at": "2026-06-12T19:26:39.350420229Z",
+      "message": {
+        "role": "assistant",
+        "content": "Ephesians 4:32 Be ye therefore gentle one to another; meekness forgiving one another if any have a complaint against you. even as Christ forgave you.\nColossians 3:13 Forbearing (one unto) another, and forgoing sins one with respect to another in love.\nMatthew 6:12 And forgive us our debts as we also forgive our debtors which owe it to God's sake.\nEphesians 4:30 Not letting the unrighteous wrathful spirit of your heart ascend up against anyone without a cause. even so that there be no opportunity for Satan.\nProverbs 17:9 He who findeth a wise man, he shall leave nothing but sorrow in his days to come; and they are not lost to God's judgment which have been forgiven unto them by His mercy."
+      },
+      "done": true,
+      "done_reason": "stop",
+      "total_duration": 2202104683,
+      "load_duration": 329757239,
+      "prompt_eval_count": 54,
+      "prompt_eval_duration": 20995000,
+      "eval_count": 182,
+      "eval_duration": 1744105000
+    }
+  },
+  "checks": [
+    {
+      "card": 1,
+      "ref": "",
+      "skipped": "no reference guessed — manual-path card"
+    },
+    {
+      "card": 2,
+      "ref": "",
+      "skipped": "no reference guessed — manual-path card"
+    },
+    {
+      "card": 3,
+      "ref": "",
+      "skipped": "no reference guessed — manual-path card"
+    },
+    {
+      "card": 4,
+      "ref": "",
+      "skipped": "no reference guessed — manual-path card"
+    },
+    {
+      "card": 5,
+      "ref": "",
+      "skipped": "no reference guessed — manual-path card"
+    }
+  ]
+}

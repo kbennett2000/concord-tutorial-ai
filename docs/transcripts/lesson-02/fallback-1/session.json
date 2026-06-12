@@ -1,0 +1,118 @@
+{
+  "session": "fallback-1",
+  "capturedAt": "2026-06-12T19:32:58.722Z",
+  "page": "lessons/02-the-fact-check/index.html (driven as the student, in Chromium)",
+  "promptInBox": "List exactly 5 Bible verses about forgiveness. Reply with exactly 5 lines and nothing else. Each line must look like this: Reference | the exact verse text, word for word, in the King James Version",
+  "chat": {
+    "request": {
+      "model": "qwen3.5:2b",
+      "messages": [
+        {
+          "role": "user",
+          "content": "List exactly 5 Bible verses about forgiveness. Reply with exactly 5 lines and nothing else. Each line must look like this: Reference | the exact verse text, word for word, in the King James Version"
+        }
+      ],
+      "stream": false,
+      "think": false
+    },
+    "status": 200,
+    "response": {
+      "model": "qwen3.5:2b",
+      "created_at": "2026-06-12T19:33:03.195041701Z",
+      "message": {
+        "role": "assistant",
+        "content": "Romans 12:6 | Let no one despise your piety by being harsh; but rather let all men treat you with good deeds and kindnesses.\nLuke 17:38 | Verily I say unto thee, thou shalt be forgiven that much trespassing which ye think they have done against me in the days past?\nJames 5:20 | For whosoever shall hate a brother of mine without cause is waster before God; he was not accepted by his Lord.\n1 John 3:9 | Whose sins thou tak'st away, and doest remove them from thyself, I say unto thee they are forgiven of thee for evermore!"
+      },
+      "done": true,
+      "done_reason": "stop",
+      "total_duration": 4411190322,
+      "load_duration": 3277086408,
+      "prompt_eval_count": 54,
+      "prompt_eval_duration": 57479000,
+      "eval_count": 145,
+      "eval_duration": 1075001000
+    }
+  },
+  "checks": [
+    {
+      "card": 1,
+      "ref": "Romans 12:6",
+      "manualPath": false,
+      "url": "http://localhost:8000/v1/verses/Romans%2012%3A6?translations=KJV",
+      "status": 200,
+      "response": {
+        "reference": "Romans 12:6",
+        "translations": ["KJV"],
+        "verses": [
+          {
+            "book": "ROM",
+            "chapter": 12,
+            "verse": 6,
+            "reference": "Romans 12:6",
+            "text": {
+              "KJV": "Having then gifts differing according to the grace that is given to us, whether prophecy, [let us prophesy] according to the proportion of faith;"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "card": 2,
+      "ref": "Luke 17:38",
+      "manualPath": false,
+      "url": "http://localhost:8000/v1/verses/Luke%2017%3A38?translations=KJV",
+      "status": 404,
+      "response": {
+        "error": {
+          "code": "no_verses_found",
+          "message": "no verses found for 'Luke 17:38' in the requested translations",
+          "detail": {}
+        }
+      }
+    },
+    {
+      "card": 3,
+      "ref": "James 5:20",
+      "manualPath": false,
+      "url": "http://localhost:8000/v1/verses/James%205%3A20?translations=KJV",
+      "status": 200,
+      "response": {
+        "reference": "James 5:20",
+        "translations": ["KJV"],
+        "verses": [
+          {
+            "book": "JAS",
+            "chapter": 5,
+            "verse": 20,
+            "reference": "James 5:20",
+            "text": {
+              "KJV": "Let him know, that he which converteth the sinner from the error of his way shall save a soul from death, and shall hide a multitude of sins."
+            }
+          }
+        ]
+      }
+    },
+    {
+      "card": 4,
+      "ref": "1 John 3:9",
+      "manualPath": false,
+      "url": "http://localhost:8000/v1/verses/1%20John%203%3A9?translations=KJV",
+      "status": 200,
+      "response": {
+        "reference": "1 John 3:9",
+        "translations": ["KJV"],
+        "verses": [
+          {
+            "book": "1JN",
+            "chapter": 3,
+            "verse": 9,
+            "reference": "1 John 3:9",
+            "text": {
+              "KJV": "Whosoever is born of God doth not commit sin; for his seed remaineth in him: and he cannot sin, because he is born of God."
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

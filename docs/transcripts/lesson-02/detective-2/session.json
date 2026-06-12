@@ -1,0 +1,85 @@
+{
+  "session": "detective-2",
+  "capturedAt": "2026-06-12T19:32:40.788Z",
+  "page": "lessons/02-the-fact-check/index.html (driven as the student, in Chromium)",
+  "promptInBox": "List exactly 5 Bible verses about comfort in hard times. Reply with exactly 5 lines and nothing else. Each line must look like this: Reference | the exact verse text, word for word, in the King James Version",
+  "chat": {
+    "request": {
+      "model": "qwen3.5:4b",
+      "messages": [
+        {
+          "role": "user",
+          "content": "List exactly 5 Bible verses about comfort in hard times. Reply with exactly 5 lines and nothing else. Each line must look like this: Reference | the exact verse text, word for word, in the King James Version"
+        }
+      ],
+      "stream": false,
+      "think": false
+    },
+    "status": 200,
+    "response": {
+      "model": "qwen3.5:4b",
+      "created_at": "2026-06-12T19:32:42.986414793Z",
+      "message": {
+        "role": "assistant",
+        "content": "Psalm 34:18 He is near to all them that call upon him, to all that call upon him in truth. | Psalm 56:4 In God I will praise his word; in Yehova will my foot take hold. | Isaiah 29:17 Though your sin be a scarlet woolen red clothed with crimson clothes, it shall become white as snow and clear as light like the cloud of mercy that is before you when he passes through to bring salvation upon you for all generations from now until eternity forevermore so doth our Lord Jehovah speak. | Jeremiah 17:5-6 Woe unto him that striveth with his father or mother, hath hated brother and sister! | Lamentations 3:22 He is my God I will praise Him; in the house of Yehova there are all those who seek refuge from trouble."
+      },
+      "done": true,
+      "done_reason": "stop",
+      "total_duration": 2155155202,
+      "load_duration": 322753862,
+      "prompt_eval_count": 57,
+      "prompt_eval_duration": 21735000,
+      "eval_count": 187,
+      "eval_duration": 1756957000
+    }
+  },
+  "checks": [
+    {
+      "card": 1,
+      "ref": "Psalm 34:18 He is near to all them that call upon him, to all that call upon him in truth.",
+      "manualPath": false,
+      "url": "http://localhost:8000/v1/verses/Psalm%2034%3A18%20He%20is%20near%20to%20all%20them%20that%20call%20upon%20him%2C%20to%20all%20that%20call%20upon%20him%20in%20truth.?translations=KJV",
+      "status": 400,
+      "response": {
+        "error": {
+          "code": "unparseable_reference",
+          "message": "'Psalm 34:18 He is near to all them that call upon him, to all that call upon him in truth.' is missing a chapter/verse — a reference needs at least a chapter number",
+          "detail": {}
+        }
+      }
+    }
+  ],
+  "detective": {
+    "card": 1,
+    "before": {
+      "ref": "Psalm 34:18 He is near to all them that call upon him, to all that call upon him in truth.",
+      "status": 400,
+      "response": {
+        "error": {
+          "code": "unparseable_reference",
+          "message": "'Psalm 34:18 He is near to all them that call upon him, to all that call upon him in truth.' is missing a chapter/verse — a reference needs at least a chapter number",
+          "detail": {}
+        }
+      }
+    },
+    "after": {
+      "ref": "Psalm 34:18",
+      "status": 200,
+      "response": {
+        "reference": "Psalms 34:18",
+        "translations": ["KJV"],
+        "verses": [
+          {
+            "book": "PSA",
+            "chapter": 34,
+            "verse": 18,
+            "reference": "Psalms 34:18",
+            "text": {
+              "KJV": "The LORD [is] nigh unto them that are of a broken heart; and saveth such as be of a contrite spirit. ר"
+            }
+          }
+        ]
+      }
+    }
+  }
+}
