@@ -56,8 +56,9 @@ works.
 
 ## The five lessons
 
-1. **Another local server** — a model is just another HTTP service on your
-   machine; talk to an AI from a page you control.
+1. **[Another local server](lessons/01-hello-model/)** — a model is just
+   another HTTP service on your machine; talk to an AI from a page you
+   control. ← **start here**
 2. **Catch it making things up** — render its claims beside the live
    Concord lookup, and mark the mismatches with your own eyes.
 3. **Give it a tool** — the heart of the course: the model writes a
