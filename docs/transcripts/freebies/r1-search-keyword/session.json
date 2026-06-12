@@ -1,0 +1,467 @@
+{
+  "session": "r1-search-keyword",
+  "capturedAt": "2026-06-12T21:48:35.026Z",
+  "page": "lessons/05-the-real-thing/index.html (one continuous session, driven in Chromium)",
+  "turns": [
+    {
+      "n": 1,
+      "message": "Which verses contain the exact phrase \"still waters\"?",
+      "rounds": [
+        {
+          "request": {
+            "model": "qwen3.5:4b",
+            "messages": [
+              {
+                "role": "system",
+                "content": "You answer questions about the Bible. Never quote a verse from memory: always look it up with the lookup_verse tool, and quote only what it returns."
+              },
+              {
+                "role": "user",
+                "content": "Which verses contain the exact phrase \"still waters\"?"
+              }
+            ],
+            "tools": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "lookup_verse",
+                  "description": "Look up the exact text of a Bible verse by reference, e.g. \"John 3:16\".",
+                  "parameters": {
+                    "type": "object",
+                    "required": ["ref"],
+                    "properties": {
+                      "ref": {
+                        "type": "string",
+                        "description": "The verse reference, like \"John 3:16\""
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "function",
+                "function": {
+                  "name": "search_by_meaning",
+                  "description": "Search the Bible by meaning rather than exact words. Use this when the user describes a theme, feeling, or idea — like 'verses about courage' — instead of naming a verse. Returns the closest verses with a similarity score.",
+                  "parameters": {
+                    "type": "object",
+                    "required": ["query"],
+                    "properties": {
+                      "query": {
+                        "type": "string",
+                        "description": "What the user is looking for, in plain words"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "function",
+                "function": {
+                  "name": "places_for_passage",
+                  "description": "List the places named in a Bible passage. Use this when the user asks where something happened. Takes a verse reference like 'Acts 9:3'.",
+                  "parameters": {
+                    "type": "object",
+                    "required": ["ref"],
+                    "properties": {
+                      "ref": {
+                        "type": "string",
+                        "description": "The verse reference, like \"Acts 9:3\""
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "function",
+                "function": {
+                  "name": "search_keyword",
+                  "description": "Find verses containing an exact word or phrase. Use this when the wording itself matters — a phrase someone remembers, a word being traced — rather than a theme or a reference.",
+                  "parameters": {
+                    "type": "object",
+                    "required": ["query"],
+                    "properties": {
+                      "query": {
+                        "type": "string",
+                        "description": "The exact word or phrase to find"
+                      }
+                    }
+                  }
+                }
+              }
+            ],
+            "stream": false,
+            "think": false
+          },
+          "status": 200,
+          "response": {
+            "model": "qwen3.5:4b",
+            "created_at": "2026-06-12T21:48:39.640446242Z",
+            "message": {
+              "role": "assistant",
+              "content": "",
+              "tool_calls": [
+                {
+                  "id": "call_2s89od4q",
+                  "function": {
+                    "index": 0,
+                    "name": "search_keyword",
+                    "arguments": {
+                      "query": "still waters"
+                    }
+                  }
+                }
+              ]
+            },
+            "done": true,
+            "done_reason": "stop",
+            "total_duration": 4518617809,
+            "load_duration": 4064710682,
+            "prompt_eval_count": 657,
+            "prompt_eval_duration": 192895000,
+            "eval_count": 26,
+            "eval_duration": 257277000
+          },
+          "promptEvalCount": 657,
+          "evalCount": 26
+        },
+        {
+          "request": {
+            "model": "qwen3.5:4b",
+            "messages": [
+              {
+                "role": "system",
+                "content": "You answer questions about the Bible. Never quote a verse from memory: always look it up with the lookup_verse tool, and quote only what it returns."
+              },
+              {
+                "role": "user",
+                "content": "Which verses contain the exact phrase \"still waters\"?"
+              },
+              {
+                "role": "assistant",
+                "content": "",
+                "tool_calls": [
+                  {
+                    "id": "call_2s89od4q",
+                    "function": {
+                      "index": 0,
+                      "name": "search_keyword",
+                      "arguments": {
+                        "query": "still waters"
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "role": "tool",
+                "tool_name": "search_keyword",
+                "content": "Verses containing the words (KJV), 1 total:\nPsalms 23:2: He maketh me to lie down in green pastures: he leadeth me beside the still waters.",
+                "isError": false
+              }
+            ],
+            "tools": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "lookup_verse",
+                  "description": "Look up the exact text of a Bible verse by reference, e.g. \"John 3:16\".",
+                  "parameters": {
+                    "type": "object",
+                    "required": ["ref"],
+                    "properties": {
+                      "ref": {
+                        "type": "string",
+                        "description": "The verse reference, like \"John 3:16\""
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "function",
+                "function": {
+                  "name": "search_by_meaning",
+                  "description": "Search the Bible by meaning rather than exact words. Use this when the user describes a theme, feeling, or idea — like 'verses about courage' — instead of naming a verse. Returns the closest verses with a similarity score.",
+                  "parameters": {
+                    "type": "object",
+                    "required": ["query"],
+                    "properties": {
+                      "query": {
+                        "type": "string",
+                        "description": "What the user is looking for, in plain words"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "function",
+                "function": {
+                  "name": "places_for_passage",
+                  "description": "List the places named in a Bible passage. Use this when the user asks where something happened. Takes a verse reference like 'Acts 9:3'.",
+                  "parameters": {
+                    "type": "object",
+                    "required": ["ref"],
+                    "properties": {
+                      "ref": {
+                        "type": "string",
+                        "description": "The verse reference, like \"Acts 9:3\""
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "function",
+                "function": {
+                  "name": "search_keyword",
+                  "description": "Find verses containing an exact word or phrase. Use this when the wording itself matters — a phrase someone remembers, a word being traced — rather than a theme or a reference.",
+                  "parameters": {
+                    "type": "object",
+                    "required": ["query"],
+                    "properties": {
+                      "query": {
+                        "type": "string",
+                        "description": "The exact word or phrase to find"
+                      }
+                    }
+                  }
+                }
+              }
+            ],
+            "stream": false,
+            "think": false
+          },
+          "status": 200,
+          "response": {
+            "model": "qwen3.5:4b",
+            "created_at": "2026-06-12T21:48:43.665077089Z",
+            "message": {
+              "role": "assistant",
+              "content": "",
+              "tool_calls": [
+                {
+                  "id": "call_y8vp506z",
+                  "function": {
+                    "index": 0,
+                    "name": "lookup_verse",
+                    "arguments": {
+                      "ref": "Psalm 23:2"
+                    }
+                  }
+                }
+              ]
+            },
+            "done": true,
+            "done_reason": "stop",
+            "total_duration": 691208006,
+            "load_duration": 318366096,
+            "prompt_eval_count": 740,
+            "prompt_eval_duration": 42062000,
+            "eval_count": 34,
+            "eval_duration": 327020000
+          },
+          "promptEvalCount": 740,
+          "evalCount": 34
+        },
+        {
+          "request": {
+            "model": "qwen3.5:4b",
+            "messages": [
+              {
+                "role": "system",
+                "content": "You answer questions about the Bible. Never quote a verse from memory: always look it up with the lookup_verse tool, and quote only what it returns."
+              },
+              {
+                "role": "user",
+                "content": "Which verses contain the exact phrase \"still waters\"?"
+              },
+              {
+                "role": "assistant",
+                "content": "",
+                "tool_calls": [
+                  {
+                    "id": "call_2s89od4q",
+                    "function": {
+                      "index": 0,
+                      "name": "search_keyword",
+                      "arguments": {
+                        "query": "still waters"
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "role": "tool",
+                "tool_name": "search_keyword",
+                "content": "Verses containing the words (KJV), 1 total:\nPsalms 23:2: He maketh me to lie down in green pastures: he leadeth me beside the still waters.",
+                "isError": false
+              },
+              {
+                "role": "assistant",
+                "content": "",
+                "tool_calls": [
+                  {
+                    "id": "call_y8vp506z",
+                    "function": {
+                      "index": 0,
+                      "name": "lookup_verse",
+                      "arguments": {
+                        "ref": "Psalm 23:2"
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "role": "tool",
+                "tool_name": "lookup_verse",
+                "content": "He maketh me to lie down in green pastures: he leadeth me beside the still waters.",
+                "isError": false
+              }
+            ],
+            "tools": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "lookup_verse",
+                  "description": "Look up the exact text of a Bible verse by reference, e.g. \"John 3:16\".",
+                  "parameters": {
+                    "type": "object",
+                    "required": ["ref"],
+                    "properties": {
+                      "ref": {
+                        "type": "string",
+                        "description": "The verse reference, like \"John 3:16\""
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "function",
+                "function": {
+                  "name": "search_by_meaning",
+                  "description": "Search the Bible by meaning rather than exact words. Use this when the user describes a theme, feeling, or idea — like 'verses about courage' — instead of naming a verse. Returns the closest verses with a similarity score.",
+                  "parameters": {
+                    "type": "object",
+                    "required": ["query"],
+                    "properties": {
+                      "query": {
+                        "type": "string",
+                        "description": "What the user is looking for, in plain words"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "function",
+                "function": {
+                  "name": "places_for_passage",
+                  "description": "List the places named in a Bible passage. Use this when the user asks where something happened. Takes a verse reference like 'Acts 9:3'.",
+                  "parameters": {
+                    "type": "object",
+                    "required": ["ref"],
+                    "properties": {
+                      "ref": {
+                        "type": "string",
+                        "description": "The verse reference, like \"Acts 9:3\""
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "function",
+                "function": {
+                  "name": "search_keyword",
+                  "description": "Find verses containing an exact word or phrase. Use this when the wording itself matters — a phrase someone remembers, a word being traced — rather than a theme or a reference.",
+                  "parameters": {
+                    "type": "object",
+                    "required": ["query"],
+                    "properties": {
+                      "query": {
+                        "type": "string",
+                        "description": "The exact word or phrase to find"
+                      }
+                    }
+                  }
+                }
+              }
+            ],
+            "stream": false,
+            "think": false
+          },
+          "status": 200,
+          "response": {
+            "model": "qwen3.5:4b",
+            "created_at": "2026-06-12T21:48:44.815832874Z",
+            "message": {
+              "role": "assistant",
+              "content": "Based on a search, there is only one verse containing that exact phrase from the King James Version of the Bible:\n\n> Psalm 23:2 \"He maketh me to lie down in green pastures: he leadeth me beside the still waters.\"\n\nThere are several other verses about Jesus as the Good Shepherd or being at peace, but none contain those specific words."
+            },
+            "done": true,
+            "done_reason": "stop",
+            "total_duration": 1143162320,
+            "load_duration": 331369004,
+            "prompt_eval_count": 808,
+            "prompt_eval_duration": 52239000,
+            "eval_count": 78,
+            "eval_duration": 753402000
+          },
+          "promptEvalCount": 808,
+          "evalCount": 78
+        }
+      ]
+    }
+  ],
+  "concordCalls": [
+    {
+      "turn": 1,
+      "url": "http://localhost:8000/v1/search?q=still%20waters&limit=5",
+      "status": 200,
+      "response": {
+        "query": "still waters",
+        "translation": "KJV",
+        "book": null,
+        "limit": 5,
+        "offset": 0,
+        "total": 1,
+        "hits": [
+          {
+            "book": "PSA",
+            "chapter": 23,
+            "verse": 2,
+            "reference": "Psalms 23:2",
+            "snippet": "He maketh me to lie down in green pastures: he leadeth me beside the <mark>still</mark> <mark>waters</mark>."
+          }
+        ]
+      }
+    },
+    {
+      "turn": 1,
+      "url": "http://localhost:8000/v1/verses/Psalm%2023%3A2?translations=KJV",
+      "status": 200,
+      "response": {
+        "reference": "Psalms 23:2",
+        "translations": ["KJV"],
+        "verses": [
+          {
+            "book": "PSA",
+            "chapter": 23,
+            "verse": 2,
+            "reference": "Psalms 23:2",
+            "text": {
+              "KJV": "He maketh me to lie down in green pastures: he leadeth me beside the still waters."
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "finalChatText": "YouWhich verses contain the exact phrase \"still waters\"?The modelBased on a search, there is only one verse containing that exact phrase from the King James Version of the Bible:\n\n> Psalm 23:2 \"He maketh me to lie down in green pastures: he leadeth me beside the still waters.\"\n\nThere are several other verses about Jesus as the Good Shepherd or being at peace, but none contain those specific words.",
+  "wirePanelText": "you asked: Which verses contain the exact phrase \"still waters\"?→ the model asked: search_keyword {\"query\":\"still waters\"}\n← your code sent back: Verses containing the words (KJV), 1 total:\nPsalms 23:2: He maketh me to lie down in green pastures: he leadeth me beside the still waters.→ the model asked: lookup_verse {\"ref\":\"Psalm 23:2\"}\n← your code sent back: He maketh me to lie down in green pastures: he leadeth me beside the still waters."
+}
