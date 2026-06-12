@@ -1,0 +1,204 @@
+{
+  "model": "qwen3.5:2b",
+  "trial": 7,
+  "startedAt": "2026-06-12T19:50:36.790Z",
+  "options": "(ollama defaults)",
+  "request1": {
+    "model": "qwen3.5:2b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You answer questions about the Bible. When the user asks what a verse says, use the lookup_verse tool to get its exact text, then answer quoting only the text the tool returned."
+      },
+      {
+        "role": "user",
+        "content": "What does John 3:16 say?"
+      }
+    ],
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "lookup_verse",
+          "description": "Look up the exact text of a Bible verse by reference, e.g. \"John 3:16\".",
+          "parameters": {
+            "type": "object",
+            "required": ["ref"],
+            "properties": {
+              "ref": {
+                "type": "string",
+                "description": "The verse reference, like \"John 3:16\""
+              }
+            }
+          }
+        }
+      }
+    ],
+    "stream": false,
+    "think": false
+  },
+  "response1": {
+    "status": 200,
+    "ms": 582,
+    "json": {
+      "model": "qwen3.5:2b",
+      "created_at": "2026-06-12T19:50:37.371576571Z",
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_9g1yck11",
+            "function": {
+              "index": 0,
+              "name": "lookup_verse",
+              "arguments": {
+                "ref": "John 3:16"
+              }
+            }
+          }
+        ]
+      },
+      "done": true,
+      "done_reason": "stop",
+      "total_duration": 580898440,
+      "load_duration": 321051682,
+      "prompt_eval_count": 354,
+      "prompt_eval_duration": 11554000,
+      "eval_count": 33,
+      "eval_duration": 245324000
+    }
+  },
+  "gate1": {
+    "oneCall": true,
+    "rightTool": true,
+    "refIsJohn316": true,
+    "contentEmpty": true,
+    "noThinkTags": true,
+    "pass": true
+  },
+  "request2": {
+    "model": "qwen3.5:2b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You answer questions about the Bible. When the user asks what a verse says, use the lookup_verse tool to get its exact text, then answer quoting only the text the tool returned."
+      },
+      {
+        "role": "user",
+        "content": "What does John 3:16 say?"
+      },
+      {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_9g1yck11",
+            "function": {
+              "index": 0,
+              "name": "lookup_verse",
+              "arguments": {
+                "ref": "John 3:16"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "tool_name": "lookup_verse",
+        "content": "For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life."
+      }
+    ],
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "lookup_verse",
+          "description": "Look up the exact text of a Bible verse by reference, e.g. \"John 3:16\".",
+          "parameters": {
+            "type": "object",
+            "required": ["ref"],
+            "properties": {
+              "ref": {
+                "type": "string",
+                "description": "The verse reference, like \"John 3:16\""
+              }
+            }
+          }
+        }
+      }
+    ],
+    "stream": false,
+    "think": false
+  },
+  "response2": {
+    "status": 200,
+    "ms": 609,
+    "json": {
+      "model": "qwen3.5:2b",
+      "created_at": "2026-06-12T19:50:37.980740685Z",
+      "message": {
+        "role": "assistant",
+        "content": "\"For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life.\""
+      },
+      "done": true,
+      "done_reason": "stop",
+      "total_duration": 608192358,
+      "load_duration": 321500961,
+      "prompt_eval_count": 434,
+      "prompt_eval_duration": 24243000,
+      "eval_count": 35,
+      "eval_duration": 259572999
+    }
+  },
+  "gate2": {
+    "skipped": false,
+    "spanA": true,
+    "spanB": true,
+    "noThinkTags": true,
+    "evalCount": 35,
+    "evalDurationNs": 259572999,
+    "tokensPerSec": 134.84,
+    "pass": true
+  },
+  "ps": {
+    "models": [
+      {
+        "name": "qwen3.5:2b",
+        "model": "qwen3.5:2b",
+        "size": 2186752818,
+        "digest": "324d162be6ca5629ae4517c8710434d0bd2d665bc94dbad46e9af8fbf8a2f0df",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen35",
+          "families": ["qwen35"],
+          "parameter_size": "2.3B",
+          "quantization_level": "Q8_0"
+        },
+        "expires_at": "2026-06-12T13:55:37.980820015-06:00",
+        "size_vram": 2186752818,
+        "context_length": 4096
+      },
+      {
+        "name": "qwen3.5:4b",
+        "model": "qwen3.5:4b",
+        "size": 2968529141,
+        "digest": "2a654d98e6fba55d452b7043684e9b57a947e393bbffa62485a7aac05ee4eefd",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen35",
+          "families": ["qwen35"],
+          "parameter_size": "4.7B",
+          "quantization_level": "Q4_K_M"
+        },
+        "expires_at": "2026-06-12T13:55:26.363438868-06:00",
+        "size_vram": 2968529141,
+        "context_length": 4096
+      }
+    ]
+  },
+  "mechanicalPass": true
+}

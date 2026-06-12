@@ -1,0 +1,64 @@
+{
+  "session": "provoke-4",
+  "capturedAt": "2026-06-12T20:02:25.621Z",
+  "page": "lessons/03-the-one-rule/index.html (driven as the student, in Chromium)",
+  "rounds": [
+    {
+      "request": {
+        "model": "qwen3.5:4b",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You answer questions about the Bible. Never quote a verse from memory: always look it up with the lookup_verse tool, and quote only what it returns."
+          },
+          {
+            "role": "user",
+            "content": "What does Hesitations 9:99 say, word for word?"
+          }
+        ],
+        "tools": [
+          {
+            "type": "function",
+            "function": {
+              "name": "lookup_verse",
+              "description": "Look up the exact text of a Bible verse by reference, e.g. \"John 3:16\".",
+              "parameters": {
+                "type": "object",
+                "required": ["ref"],
+                "properties": {
+                  "ref": {
+                    "type": "string",
+                    "description": "The verse reference, like \"John 3:16\""
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "stream": false,
+        "think": false
+      },
+      "status": 200,
+      "response": {
+        "model": "qwen3.5:4b",
+        "created_at": "2026-06-12T20:02:27.009513765Z",
+        "message": {
+          "role": "assistant",
+          "content": "There is no \"Book of Hesitations\" in the Bible; you likely meant **Hebrews**. However, Hebrews does not have a chapter or verse marked as \"9:99\"—there are only 13 chapters and up to Chapter 24. Could it be **Hosea** (the prophet)? Or perhaps you're referring to another book? Please clarify the name so I can look up the correct passage for you!"
+        },
+        "done": true,
+        "done_reason": "stop",
+        "total_duration": 1297312862,
+        "load_duration": 324388706,
+        "prompt_eval_count": 353,
+        "prompt_eval_duration": 89178000,
+        "eval_count": 92,
+        "eval_duration": 880361000
+      }
+    }
+  ],
+  "concordCalls": [],
+  "finalAnswer": "The model's answer:There is no \"Book of Hesitations\" in the Bible; you likely meant **Hebrews**. However, Hebrews does not have a chapter or verse marked as \"9:99\"—there are only 13 chapters and up to Chapter 24. Could it be **Hosea** (the prophet)? Or perhaps you're referring to another book? Please clarify the name so I can look up the correct passage for you!",
+  "promptInBox": "What does Hesitations 9:99 say, word for word?",
+  "wirePanelText": "you asked: What does Hesitations 9:99 say, word for word?"
+}
