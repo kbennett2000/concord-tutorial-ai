@@ -1,0 +1,97 @@
+{
+  "model": "qwen3.5:2b",
+  "trials": 10,
+  "mechanicalPasses": 10,
+  "results": [
+    {
+      "trial": 1,
+      "gate1": true,
+      "gate2": true,
+      "mechanicalPass": true,
+      "ref": "John 3:16",
+      "tokensPerSec": 143.01,
+      "psBytes": 2186752818
+    },
+    {
+      "trial": 2,
+      "gate1": true,
+      "gate2": true,
+      "mechanicalPass": true,
+      "ref": "John 3:16",
+      "tokensPerSec": 143.88,
+      "psBytes": 2186752818
+    },
+    {
+      "trial": 3,
+      "gate1": true,
+      "gate2": true,
+      "mechanicalPass": true,
+      "ref": "John 3:16",
+      "tokensPerSec": 141.62,
+      "psBytes": 2186752818
+    },
+    {
+      "trial": 4,
+      "gate1": true,
+      "gate2": true,
+      "mechanicalPass": true,
+      "ref": "John 3:16",
+      "tokensPerSec": 141.65,
+      "psBytes": 2186752818
+    },
+    {
+      "trial": 5,
+      "gate1": true,
+      "gate2": true,
+      "mechanicalPass": true,
+      "ref": "John 3:16",
+      "tokensPerSec": 141.76,
+      "psBytes": 2186752818
+    },
+    {
+      "trial": 6,
+      "gate1": true,
+      "gate2": true,
+      "mechanicalPass": true,
+      "ref": "John 3:16",
+      "tokensPerSec": 142.89,
+      "psBytes": 2186752818
+    },
+    {
+      "trial": 7,
+      "gate1": true,
+      "gate2": true,
+      "mechanicalPass": true,
+      "ref": "John 3:16",
+      "tokensPerSec": 143.31,
+      "psBytes": 2186752818
+    },
+    {
+      "trial": 8,
+      "gate1": true,
+      "gate2": true,
+      "mechanicalPass": true,
+      "ref": "John 3:16",
+      "tokensPerSec": 143.32,
+      "psBytes": 2186752818
+    },
+    {
+      "trial": 9,
+      "gate1": true,
+      "gate2": true,
+      "mechanicalPass": true,
+      "ref": "John 3:16",
+      "tokensPerSec": 142.89,
+      "psBytes": 2186752818
+    },
+    {
+      "trial": 10,
+      "gate1": true,
+      "gate2": true,
+      "mechanicalPass": true,
+      "ref": "John 3:16",
+      "tokensPerSec": 141.72,
+      "psBytes": 2186752818
+    }
+  ]
+}

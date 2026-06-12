@@ -1,0 +1,205 @@
+{
+  "model": "qwen3.5:4b",
+  "trial": 2,
+  "startedAt": "2026-06-12T17:55:17.889Z",
+  "options": "(ollama defaults)",
+  "request1": {
+    "model": "qwen3.5:4b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You answer questions about the Bible. When the user asks what a verse says, use the lookup_verse tool to get its exact text, then answer quoting only the text the tool returned."
+      },
+      {
+        "role": "user",
+        "content": "What does John 3:16 say?"
+      }
+    ],
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "lookup_verse",
+          "description": "Look up the exact text of a Bible verse by reference, e.g. \"John 3:16\".",
+          "parameters": {
+            "type": "object",
+            "required": ["ref"],
+            "properties": {
+              "ref": {
+                "type": "string",
+                "description": "The verse reference, like \"John 3:16\""
+              }
+            }
+          }
+        }
+      }
+    ],
+    "stream": false
+  },
+  "response1": {
+    "status": 200,
+    "ms": 55159,
+    "json": {
+      "model": "qwen3.5:4b",
+      "created_at": "2026-06-12T17:56:13.048210391Z",
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "thinking": "The user is asking me to look up what John 3:16 says. I have a function available called lookup_verse that can help with this exact task - looking up Bible verse text by reference. The reference they've provided is \"John 3:16\" which matches the format expected for this tool (like \"John 3:16\").",
+        "tool_calls": [
+          {
+            "id": "call_kjhd3ggt",
+            "function": {
+              "index": 0,
+              "name": "lookup_verse",
+              "arguments": {
+                "ref": "John 3:16"
+              }
+            }
+          }
+        ]
+      },
+      "done": true,
+      "done_reason": "stop",
+      "total_duration": 55158087073,
+      "load_duration": 292422111,
+      "prompt_eval_count": 352,
+      "prompt_eval_duration": 107091000,
+      "eval_count": 110,
+      "eval_duration": 54755939000
+    }
+  },
+  "gate1": {
+    "oneCall": true,
+    "rightTool": true,
+    "refIsJohn316": true,
+    "contentEmpty": true,
+    "noThinkTags": true,
+    "pass": true
+  },
+  "request2": {
+    "model": "qwen3.5:4b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You answer questions about the Bible. When the user asks what a verse says, use the lookup_verse tool to get its exact text, then answer quoting only the text the tool returned."
+      },
+      {
+        "role": "user",
+        "content": "What does John 3:16 say?"
+      },
+      {
+        "role": "assistant",
+        "content": "",
+        "thinking": "The user is asking me to look up what John 3:16 says. I have a function available called lookup_verse that can help with this exact task - looking up Bible verse text by reference. The reference they've provided is \"John 3:16\" which matches the format expected for this tool (like \"John 3:16\").",
+        "tool_calls": [
+          {
+            "id": "call_kjhd3ggt",
+            "function": {
+              "index": 0,
+              "name": "lookup_verse",
+              "arguments": {
+                "ref": "John 3:16"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "tool_name": "lookup_verse",
+        "content": "For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life."
+      }
+    ],
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "lookup_verse",
+          "description": "Look up the exact text of a Bible verse by reference, e.g. \"John 3:16\".",
+          "parameters": {
+            "type": "object",
+            "required": ["ref"],
+            "properties": {
+              "ref": {
+                "type": "string",
+                "description": "The verse reference, like \"John 3:16\""
+              }
+            }
+          }
+        }
+      }
+    ],
+    "stream": false
+  },
+  "response2": {
+    "status": 200,
+    "ms": 56937,
+    "json": {
+      "model": "qwen3.5:4b",
+      "created_at": "2026-06-12T17:57:09.985650381Z",
+      "message": {
+        "role": "assistant",
+        "content": "John 3:16 says: \n\n\"For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life.\"",
+        "thinking": "The tool has returned the exact text of John 3:16. Now I need to present this information to the user clearly. The verse reads \"For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life.\""
+      },
+      "done": true,
+      "done_reason": "stop",
+      "total_duration": 56934093910,
+      "load_duration": 310242690,
+      "prompt_eval_count": 511,
+      "prompt_eval_duration": 824527000,
+      "eval_count": 112,
+      "eval_duration": 55796319000
+    }
+  },
+  "gate2": {
+    "skipped": false,
+    "spanA": true,
+    "spanB": true,
+    "noThinkTags": true,
+    "evalCount": 112,
+    "evalDurationNs": 55796319000,
+    "tokensPerSec": 2.01,
+    "pass": true
+  },
+  "ps": {
+    "models": [
+      {
+        "name": "qwen3.5:4b",
+        "model": "qwen3.5:4b",
+        "size": 3776048000,
+        "digest": "2a654d98e6fba55d452b7043684e9b57a947e393bbffa62485a7aac05ee4eefd",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen35",
+          "families": ["qwen35"],
+          "parameter_size": "4.7B",
+          "quantization_level": "Q4_K_M"
+        },
+        "expires_at": "2026-06-12T12:02:09.98572989-06:00",
+        "size_vram": 1638945257,
+        "context_length": 4096
+      },
+      {
+        "name": "qwen3.5:9b",
+        "model": "qwen3.5:9b",
+        "size": 5641055763,
+        "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen35",
+          "families": ["qwen35"],
+          "parameter_size": "9.7B",
+          "quantization_level": "Q4_K_M"
+        },
+        "expires_at": "2026-06-12T11:58:25.918894183-06:00",
+        "size_vram": 5641055763,
+        "context_length": 4096
+      }
+    ]
+  },
+  "mechanicalPass": true
+}

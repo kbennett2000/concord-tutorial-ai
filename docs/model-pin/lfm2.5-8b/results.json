@@ -1,0 +1,97 @@
+{
+  "model": "lfm2.5:8b",
+  "trials": 10,
+  "mechanicalPasses": 10,
+  "results": [
+    {
+      "trial": 1,
+      "gate1": true,
+      "gate2": true,
+      "mechanicalPass": true,
+      "ref": "John 3:16",
+      "tokensPerSec": 275.96,
+      "psBytes": 5254791822
+    },
+    {
+      "trial": 2,
+      "gate1": true,
+      "gate2": true,
+      "mechanicalPass": true,
+      "ref": "John 3:16",
+      "tokensPerSec": 272.94,
+      "psBytes": 5254791822
+    },
+    {
+      "trial": 3,
+      "gate1": true,
+      "gate2": true,
+      "mechanicalPass": true,
+      "ref": "John 3:16",
+      "tokensPerSec": 277.92,
+      "psBytes": 5254791822
+    },
+    {
+      "trial": 4,
+      "gate1": true,
+      "gate2": true,
+      "mechanicalPass": true,
+      "ref": "John 3:16",
+      "tokensPerSec": 276.61,
+      "psBytes": 5254791822
+    },
+    {
+      "trial": 5,
+      "gate1": true,
+      "gate2": true,
+      "mechanicalPass": true,
+      "ref": "John 3:16",
+      "tokensPerSec": 277.46,
+      "psBytes": 5254791822
+    },
+    {
+      "trial": 6,
+      "gate1": true,
+      "gate2": true,
+      "mechanicalPass": true,
+      "ref": "John 3:16",
+      "tokensPerSec": 278.04,
+      "psBytes": 5254791822
+    },
+    {
+      "trial": 7,
+      "gate1": true,
+      "gate2": true,
+      "mechanicalPass": true,
+      "ref": "John 3:16",
+      "tokensPerSec": 276.11,
+      "psBytes": 5254791822
+    },
+    {
+      "trial": 8,
+      "gate1": true,
+      "gate2": true,
+      "mechanicalPass": true,
+      "ref": "John 3:16",
+      "tokensPerSec": 277.41,
+      "psBytes": 5254791822
+    },
+    {
+      "trial": 9,
+      "gate1": true,
+      "gate2": true,
+      "mechanicalPass": true,
+      "ref": "John 3:16",
+      "tokensPerSec": 276.78,
+      "psBytes": 5254791822
+    },
+    {
+      "trial": 10,
+      "gate1": true,
+      "gate2": true,
+      "mechanicalPass": true,
+      "ref": "John 3:16",
+      "tokensPerSec": 276.08,
+      "psBytes": 5254791822
+    }
+  ]
+}

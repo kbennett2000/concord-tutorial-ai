@@ -1,0 +1,97 @@
+{
+  "model": "qwen3.5:9b",
+  "trials": 10,
+  "mechanicalPasses": 10,
+  "results": [
+    {
+      "trial": 1,
+      "gate1": true,
+      "gate2": true,
+      "mechanicalPass": true,
+      "ref": "John 3:16",
+      "tokensPerSec": 78.86,
+      "psBytes": 5641055763
+    },
+    {
+      "trial": 2,
+      "gate1": true,
+      "gate2": true,
+      "mechanicalPass": true,
+      "ref": "John 3:16",
+      "tokensPerSec": 78.84,
+      "psBytes": 5641055763
+    },
+    {
+      "trial": 3,
+      "gate1": true,
+      "gate2": true,
+      "mechanicalPass": true,
+      "ref": "John 3:16",
+      "tokensPerSec": 78.88,
+      "psBytes": 5641055763
+    },
+    {
+      "trial": 4,
+      "gate1": true,
+      "gate2": true,
+      "mechanicalPass": true,
+      "ref": "John 3:16",
+      "tokensPerSec": 78.08,
+      "psBytes": 5641055763
+    },
+    {
+      "trial": 5,
+      "gate1": true,
+      "gate2": true,
+      "mechanicalPass": true,
+      "ref": "John 3:16",
+      "tokensPerSec": 78.24,
+      "psBytes": 5641055763
+    },
+    {
+      "trial": 6,
+      "gate1": true,
+      "gate2": true,
+      "mechanicalPass": true,
+      "ref": "John 3:16",
+      "tokensPerSec": 78.01,
+      "psBytes": 5641055763
+    },
+    {
+      "trial": 7,
+      "gate1": true,
+      "gate2": true,
+      "mechanicalPass": true,
+      "ref": "John 3:16",
+      "tokensPerSec": 78.9,
+      "psBytes": 5641055763
+    },
+    {
+      "trial": 8,
+      "gate1": true,
+      "gate2": true,
+      "mechanicalPass": true,
+      "ref": "John 3:16",
+      "tokensPerSec": 78.39,
+      "psBytes": 5641055763
+    },
+    {
+      "trial": 9,
+      "gate1": true,
+      "gate2": true,
+      "mechanicalPass": true,
+      "ref": "John 3:16",
+      "tokensPerSec": 78.57,
+      "psBytes": 5641055763
+    },
+    {
+      "trial": 10,
+      "gate1": true,
+      "gate2": true,
+      "mechanicalPass": true,
+      "ref": "John 3:16",
+      "tokensPerSec": 78.41,
+      "psBytes": 5641055763
+    }
+  ]
+}

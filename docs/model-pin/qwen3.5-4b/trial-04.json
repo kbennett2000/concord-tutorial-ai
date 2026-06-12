@@ -1,0 +1,188 @@
+{
+  "model": "qwen3.5:4b",
+  "trial": 4,
+  "startedAt": "2026-06-12T17:58:35.692Z",
+  "options": "(ollama defaults)",
+  "request1": {
+    "model": "qwen3.5:4b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You answer questions about the Bible. When the user asks what a verse says, use the lookup_verse tool to get its exact text, then answer quoting only the text the tool returned."
+      },
+      {
+        "role": "user",
+        "content": "What does John 3:16 say?"
+      }
+    ],
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "lookup_verse",
+          "description": "Look up the exact text of a Bible verse by reference, e.g. \"John 3:16\".",
+          "parameters": {
+            "type": "object",
+            "required": ["ref"],
+            "properties": {
+              "ref": {
+                "type": "string",
+                "description": "The verse reference, like \"John 3:16\""
+              }
+            }
+          }
+        }
+      }
+    ],
+    "stream": false
+  },
+  "response1": {
+    "status": 200,
+    "ms": 47833,
+    "json": {
+      "model": "qwen3.5:4b",
+      "created_at": "2026-06-12T17:59:23.524343462Z",
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "thinking": "The user is asking for the text of John 3:16 from the Bible. I have a tool available called lookup_verse that can help me look up the exact text of Bible verses by reference. The required parameter for this tool is \"ref\" which should be in format like \"John 3:16\".\n\nLet me call the tool with the correct reference to get the exact text they're asking about.",
+        "tool_calls": [
+          {
+            "id": "call_5qjn1r9o",
+            "function": {
+              "index": 0,
+              "name": "lookup_verse",
+              "arguments": {
+                "ref": "John 3:16"
+              }
+            }
+          }
+        ]
+      },
+      "done": true,
+      "done_reason": "stop",
+      "total_duration": 47831699858,
+      "load_duration": 341268344,
+      "prompt_eval_count": 352,
+      "prompt_eval_duration": 1145082000,
+      "eval_count": 122,
+      "eval_duration": 46341301000
+    }
+  },
+  "gate1": {
+    "oneCall": true,
+    "rightTool": true,
+    "refIsJohn316": true,
+    "contentEmpty": true,
+    "noThinkTags": true,
+    "pass": true
+  },
+  "request2": {
+    "model": "qwen3.5:4b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You answer questions about the Bible. When the user asks what a verse says, use the lookup_verse tool to get its exact text, then answer quoting only the text the tool returned."
+      },
+      {
+        "role": "user",
+        "content": "What does John 3:16 say?"
+      },
+      {
+        "role": "assistant",
+        "content": "",
+        "thinking": "The user is asking for the text of John 3:16 from the Bible. I have a tool available called lookup_verse that can help me look up the exact text of Bible verses by reference. The required parameter for this tool is \"ref\" which should be in format like \"John 3:16\".\n\nLet me call the tool with the correct reference to get the exact text they're asking about.",
+        "tool_calls": [
+          {
+            "id": "call_5qjn1r9o",
+            "function": {
+              "index": 0,
+              "name": "lookup_verse",
+              "arguments": {
+                "ref": "John 3:16"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "tool_name": "lookup_verse",
+        "content": "For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life."
+      }
+    ],
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "lookup_verse",
+          "description": "Look up the exact text of a Bible verse by reference, e.g. \"John 3:16\".",
+          "parameters": {
+            "type": "object",
+            "required": ["ref"],
+            "properties": {
+              "ref": {
+                "type": "string",
+                "description": "The verse reference, like \"John 3:16\""
+              }
+            }
+          }
+        }
+      }
+    ],
+    "stream": false
+  },
+  "response2": {
+    "status": 200,
+    "ms": 22811,
+    "json": {
+      "model": "qwen3.5:4b",
+      "created_at": "2026-06-12T17:59:46.335804132Z",
+      "message": {
+        "role": "assistant",
+        "content": "\"For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life.\"",
+        "thinking": "Great! I got the exact text of John 3:16 from the tool. Now I can answer the user's question by quoting this verse as requested - answering only with the text returned by the tool."
+      },
+      "done": true,
+      "done_reason": "stop",
+      "total_duration": 22809596807,
+      "load_duration": 300013859,
+      "prompt_eval_count": 523,
+      "prompt_eval_duration": 667929000,
+      "eval_count": 81,
+      "eval_duration": 21838526000
+    }
+  },
+  "gate2": {
+    "skipped": false,
+    "spanA": true,
+    "spanB": true,
+    "noThinkTags": true,
+    "evalCount": 81,
+    "evalDurationNs": 21838526000,
+    "tokensPerSec": 3.71,
+    "pass": true
+  },
+  "ps": {
+    "models": [
+      {
+        "name": "qwen3.5:4b",
+        "model": "qwen3.5:4b",
+        "size": 3776048000,
+        "digest": "2a654d98e6fba55d452b7043684e9b57a947e393bbffa62485a7aac05ee4eefd",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen35",
+          "families": ["qwen35"],
+          "parameter_size": "4.7B",
+          "quantization_level": "Q4_K_M"
+        },
+        "expires_at": "2026-06-12T12:04:46.335880361-06:00",
+        "size_vram": 1638945257,
+        "context_length": 4096
+      }
+    ]
+  },
+  "mechanicalPass": true
+}
