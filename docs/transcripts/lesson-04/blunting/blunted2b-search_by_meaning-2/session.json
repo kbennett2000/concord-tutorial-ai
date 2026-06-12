@@ -1,0 +1,482 @@
+{
+  "session": "blunted2b-search_by_meaning-2",
+  "capturedAt": "2026-06-12T20:28:25.646Z",
+  "page": "lessons/04-the-menu/index.html (driven as the student, in Chromium)",
+  "blunted": {
+    "tool": "search_by_meaning",
+    "description": "\"Search.\""
+  },
+  "rounds": [
+    {
+      "request": {
+        "model": "qwen3.5:2b",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You answer questions about the Bible. Never quote a verse from memory: always look it up with the lookup_verse tool, and quote only what it returns."
+          },
+          {
+            "role": "user",
+            "content": "Find verses about courage when you're afraid."
+          }
+        ],
+        "tools": [
+          {
+            "type": "function",
+            "function": {
+              "name": "lookup_verse",
+              "description": "Look up the exact text of a Bible verse by reference, e.g. \"John 3:16\".",
+              "parameters": {
+                "type": "object",
+                "required": ["ref"],
+                "properties": {
+                  "ref": {
+                    "type": "string",
+                    "description": "The verse reference, like \"John 3:16\""
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "function",
+            "function": {
+              "name": "search_by_meaning",
+              "description": "Search.",
+              "parameters": {
+                "type": "object",
+                "required": ["query"],
+                "properties": {
+                  "query": {
+                    "type": "string",
+                    "description": "What the user is looking for, in plain words"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "function",
+            "function": {
+              "name": "places_for_passage",
+              "description": "List the places named in a Bible passage. Use this when the user asks where something happened. Takes a verse reference like 'Acts 9:3'.",
+              "parameters": {
+                "type": "object",
+                "required": ["ref"],
+                "properties": {
+                  "ref": {
+                    "type": "string",
+                    "description": "The verse reference, like \"Acts 9:3\""
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "stream": false,
+        "think": false
+      },
+      "status": 200,
+      "response": {
+        "model": "qwen3.5:2b",
+        "created_at": "2026-06-12T20:28:26.296288759Z",
+        "message": {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "id": "call_d4t0t0pr",
+              "function": {
+                "index": 0,
+                "name": "search_by_meaning",
+                "arguments": {
+                  "query": "courage when you are afraid"
+                }
+              }
+            }
+          ]
+        },
+        "done": true,
+        "done_reason": "stop",
+        "total_duration": 579600612,
+        "load_duration": 321196809,
+        "prompt_eval_count": 515,
+        "prompt_eval_duration": 11610000,
+        "eval_count": 32,
+        "eval_duration": 241526000
+      }
+    },
+    {
+      "request": {
+        "model": "qwen3.5:2b",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You answer questions about the Bible. Never quote a verse from memory: always look it up with the lookup_verse tool, and quote only what it returns."
+          },
+          {
+            "role": "user",
+            "content": "Find verses about courage when you're afraid."
+          },
+          {
+            "role": "assistant",
+            "content": "",
+            "tool_calls": [
+              {
+                "id": "call_d4t0t0pr",
+                "function": {
+                  "index": 0,
+                  "name": "search_by_meaning",
+                  "arguments": {
+                    "query": "courage when you are afraid"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "tool_name": "search_by_meaning",
+            "content": "Closest matches (KJV text):\nJob 23:15 (similarity 0.9001): Therefore am I troubled at his presence: when I consider, I am afraid of him.\nPsalms 76:7 (similarity 0.8978): Thou, [even] thou, [art] to be feared: and who may stand in thy sight when once thou art angry?\nJob 13:21 (similarity 0.893): Withdraw thine hand far from me: and let not thy dread make me afraid.\nDeuteronomy 1:29 (similarity 0.8902): Then I said unto you, Dread not, neither be afraid of them.\nPsalms 56:3 (similarity 0.8898): What time I am afraid, I will trust in thee.",
+            "isError": false
+          }
+        ],
+        "tools": [
+          {
+            "type": "function",
+            "function": {
+              "name": "lookup_verse",
+              "description": "Look up the exact text of a Bible verse by reference, e.g. \"John 3:16\".",
+              "parameters": {
+                "type": "object",
+                "required": ["ref"],
+                "properties": {
+                  "ref": {
+                    "type": "string",
+                    "description": "The verse reference, like \"John 3:16\""
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "function",
+            "function": {
+              "name": "search_by_meaning",
+              "description": "Search.",
+              "parameters": {
+                "type": "object",
+                "required": ["query"],
+                "properties": {
+                  "query": {
+                    "type": "string",
+                    "description": "What the user is looking for, in plain words"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "function",
+            "function": {
+              "name": "places_for_passage",
+              "description": "List the places named in a Bible passage. Use this when the user asks where something happened. Takes a verse reference like 'Acts 9:3'.",
+              "parameters": {
+                "type": "object",
+                "required": ["ref"],
+                "properties": {
+                  "ref": {
+                    "type": "string",
+                    "description": "The verse reference, like \"Acts 9:3\""
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "stream": false,
+        "think": false
+      },
+      "status": 200,
+      "response": {
+        "model": "qwen3.5:2b",
+        "created_at": "2026-06-12T20:28:27.240267931Z",
+        "message": {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "id": "call_6ppc5pem",
+              "function": {
+                "index": 0,
+                "name": "lookup_verse",
+                "arguments": {
+                  "ref": "Deuteronomy 1:29"
+                }
+              }
+            },
+            {
+              "id": "call_gqed1od3",
+              "function": {
+                "index": 1,
+                "name": "lookup_verse",
+                "arguments": {
+                  "ref": "Psalms 56:3"
+                }
+              }
+            }
+          ]
+        },
+        "done": true,
+        "done_reason": "stop",
+        "total_duration": 895648688,
+        "load_duration": 347089742,
+        "prompt_eval_count": 754,
+        "prompt_eval_duration": 29883000,
+        "eval_count": 70,
+        "eval_duration": 514908000
+      }
+    },
+    {
+      "request": {
+        "model": "qwen3.5:2b",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You answer questions about the Bible. Never quote a verse from memory: always look it up with the lookup_verse tool, and quote only what it returns."
+          },
+          {
+            "role": "user",
+            "content": "Find verses about courage when you're afraid."
+          },
+          {
+            "role": "assistant",
+            "content": "",
+            "tool_calls": [
+              {
+                "id": "call_d4t0t0pr",
+                "function": {
+                  "index": 0,
+                  "name": "search_by_meaning",
+                  "arguments": {
+                    "query": "courage when you are afraid"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "tool_name": "search_by_meaning",
+            "content": "Closest matches (KJV text):\nJob 23:15 (similarity 0.9001): Therefore am I troubled at his presence: when I consider, I am afraid of him.\nPsalms 76:7 (similarity 0.8978): Thou, [even] thou, [art] to be feared: and who may stand in thy sight when once thou art angry?\nJob 13:21 (similarity 0.893): Withdraw thine hand far from me: and let not thy dread make me afraid.\nDeuteronomy 1:29 (similarity 0.8902): Then I said unto you, Dread not, neither be afraid of them.\nPsalms 56:3 (similarity 0.8898): What time I am afraid, I will trust in thee.",
+            "isError": false
+          },
+          {
+            "role": "assistant",
+            "content": "",
+            "tool_calls": [
+              {
+                "id": "call_6ppc5pem",
+                "function": {
+                  "index": 0,
+                  "name": "lookup_verse",
+                  "arguments": {
+                    "ref": "Deuteronomy 1:29"
+                  }
+                }
+              },
+              {
+                "id": "call_gqed1od3",
+                "function": {
+                  "index": 1,
+                  "name": "lookup_verse",
+                  "arguments": {
+                    "ref": "Psalms 56:3"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "tool_name": "lookup_verse",
+            "content": "Then I said unto you, Dread not, neither be afraid of them.",
+            "isError": false
+          },
+          {
+            "role": "tool",
+            "tool_name": "lookup_verse",
+            "content": "What time I am afraid, I will trust in thee.",
+            "isError": false
+          }
+        ],
+        "tools": [
+          {
+            "type": "function",
+            "function": {
+              "name": "lookup_verse",
+              "description": "Look up the exact text of a Bible verse by reference, e.g. \"John 3:16\".",
+              "parameters": {
+                "type": "object",
+                "required": ["ref"],
+                "properties": {
+                  "ref": {
+                    "type": "string",
+                    "description": "The verse reference, like \"John 3:16\""
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "function",
+            "function": {
+              "name": "search_by_meaning",
+              "description": "Search.",
+              "parameters": {
+                "type": "object",
+                "required": ["query"],
+                "properties": {
+                  "query": {
+                    "type": "string",
+                    "description": "What the user is looking for, in plain words"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "function",
+            "function": {
+              "name": "places_for_passage",
+              "description": "List the places named in a Bible passage. Use this when the user asks where something happened. Takes a verse reference like 'Acts 9:3'.",
+              "parameters": {
+                "type": "object",
+                "required": ["ref"],
+                "properties": {
+                  "ref": {
+                    "type": "string",
+                    "description": "The verse reference, like \"Acts 9:3\""
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "stream": false,
+        "think": false
+      },
+      "status": 200,
+      "response": {
+        "model": "qwen3.5:2b",
+        "created_at": "2026-06-12T20:28:28.148750074Z",
+        "message": {
+          "role": "assistant",
+          "content": "Here are some verses about courage when facing fear:\n\n**Deuteronomy 1:29 (KJV)**\nThen I said unto you, Dread not, neither be afraid of them.\n\n**Psalms 56:3 (KJV)**\nWhat time I am afraid, I will trust in thee."
+        },
+        "done": true,
+        "done_reason": "stop",
+        "total_duration": 899215777,
+        "load_duration": 332206784,
+        "prompt_eval_count": 869,
+        "prompt_eval_duration": 41791000,
+        "eval_count": 68,
+        "eval_duration": 519467999
+      }
+    }
+  ],
+  "concordCalls": [
+    {
+      "url": "http://localhost:8000/v1/semantic-search?q=courage%20when%20you%20are%20afraid&limit=5&translation=KJV",
+      "status": 200,
+      "response": {
+        "query": "courage when you are afraid",
+        "translation": "KJV",
+        "count": 5,
+        "results": [
+          {
+            "book": "JOB",
+            "chapter": 23,
+            "verse": 15,
+            "reference": "Job 23:15",
+            "score": 0.9001,
+            "text": "Therefore am I troubled at his presence: when I consider, I am afraid of him."
+          },
+          {
+            "book": "PSA",
+            "chapter": 76,
+            "verse": 7,
+            "reference": "Psalms 76:7",
+            "score": 0.8978,
+            "text": "Thou, [even] thou, [art] to be feared: and who may stand in thy sight when once thou art angry?"
+          },
+          {
+            "book": "JOB",
+            "chapter": 13,
+            "verse": 21,
+            "reference": "Job 13:21",
+            "score": 0.893,
+            "text": "Withdraw thine hand far from me: and let not thy dread make me afraid."
+          },
+          {
+            "book": "DEU",
+            "chapter": 1,
+            "verse": 29,
+            "reference": "Deuteronomy 1:29",
+            "score": 0.8902,
+            "text": "Then I said unto you, Dread not, neither be afraid of them."
+          },
+          {
+            "book": "PSA",
+            "chapter": 56,
+            "verse": 3,
+            "reference": "Psalms 56:3",
+            "score": 0.8898,
+            "text": "What time I am afraid, I will trust in thee."
+          }
+        ]
+      }
+    },
+    {
+      "url": "http://localhost:8000/v1/verses/Deuteronomy%201%3A29?translations=KJV",
+      "status": 200,
+      "response": {
+        "reference": "Deuteronomy 1:29",
+        "translations": ["KJV"],
+        "verses": [
+          {
+            "book": "DEU",
+            "chapter": 1,
+            "verse": 29,
+            "reference": "Deuteronomy 1:29",
+            "text": {
+              "KJV": "Then I said unto you, Dread not, neither be afraid of them."
+            }
+          }
+        ]
+      }
+    },
+    {
+      "url": "http://localhost:8000/v1/verses/Psalms%2056%3A3?translations=KJV",
+      "status": 200,
+      "response": {
+        "reference": "Psalms 56:3",
+        "translations": ["KJV"],
+        "verses": [
+          {
+            "book": "PSA",
+            "chapter": 56,
+            "verse": 3,
+            "reference": "Psalms 56:3",
+            "text": {
+              "KJV": "What time I am afraid, I will trust in thee."
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "finalAnswer": "The model's answer:Here are some verses about courage when facing fear:\n\n**Deuteronomy 1:29 (KJV)**\nThen I said unto you, Dread not, neither be afraid of them.\n\n**Psalms 56:3 (KJV)**\nWhat time I am afraid, I will trust in thee.",
+  "promptInBox": "Find verses about courage when you're afraid.",
+  "wirePanelText": "you asked: Find verses about courage when you're afraid.→ the model asked: search_by_meaning {\"query\":\"courage when you are afraid\"}\n← your code sent back: Closest matches (KJV text):\nJob 23:15 (similarity 0.9001): Therefore am I troubled at his presence: when I consider, I am afraid of him.\nPsalms 76:7 (similarity 0.8978): Thou, [even] thou, [art] to be feared: and who may stand in thy sight when once thou art angry?\nJob 13:21 (similarity 0.893): Withdraw thine hand far from me: and let not thy dread make me afraid.\nDeuteronomy 1:29 (similarity 0.8902): Then I said unto you, Dread not, neither be afraid of them.\nPsalms 56:3 (similarity 0.8898): What time I am afraid, I will trust in thee.→ the model asked: lookup_verse {\"ref\":\"Deuteronomy 1:29\"}\n→ the model asked: lookup_verse {\"ref\":\"Psalms 56:3\"}\n← your code sent back: Then I said unto you, Dread not, neither be afraid of them.← your code sent back: What time I am afraid, I will trust in thee."
+}
