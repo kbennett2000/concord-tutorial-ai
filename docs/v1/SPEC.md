@@ -221,18 +221,33 @@ and produced refusals 6/6; the re-run relaxes to the bare ask.
 ### Lesson 4 — `04-the-menu` · _Let it choose_
 
 **New idea:** with several tools on the menu, the model chooses by
-_reading your descriptions_ — plain English you wrote is now steering
-software.
+_reading your words_ — names and descriptions, plain English you wrote,
+now steering software.
 **Build:** add `search_by_meaning` (Concord `/v1/semantic-search`) and
-`places_for_passage` (`/v1/verses/{ref}/places`) to the loop. Ask mixed
-questions and watch routing. Then the lab: deliberately blunt one
-description (the lesson names the exact edit), watch the model misroute
-or flounder, restore it, watch competence return.
-**Range handling:** misrouting under a blunted description varies by
-run; the lesson frames it as _tilting odds_, and the restoration as why
-production projects treat descriptions as reviewed product copy.
-**Win:** "I changed a sentence and changed how an AI behaves — on
-purpose."
+`places_for_passage` (`/v1/verses/{ref}/places`) to the loop. The
+semantic tool passes `translation=KJV` explicitly: _the matching
+happens in one translation's meaning-space; the text comes back in
+yours_ — the same explicit-send the production server makes (verified
+against Concord v1.2.0's API.md, T4). Places results carry coordinates
+or an honest "location unknown" — never an invented 0,0. Ask mixed
+questions and watch routing (T4 measured the pin at **10/10** on the
+frozen routing set; the fallback at 9/10 — DECISION.md's wager note).
+Then the lab: deliberately blunt one description (the lesson names the
+exact edit), observe, restore.
+**Range handling (T4 measured — the lab teaches the true finding):**
+this model shrugged the blunting off — 18/18 blunted runs still routed
+correctly, and even the fallback went 6/6 on first pick — because **the
+name is a description too**: three tools with honest names route on
+names alone. The lesson lands the deeper moral: production menus are
+bigger, names vaguer, models weaker, stakes higher — which is why
+production treats names _and_ descriptions as reviewed product copy.
+If a student's run does misroute, the text meets them (odds, not law).
+The honesty beat ships: Genesis 4:16 crosses Eden _and_ Nod as
+`location unknown` on the student's own wire — and T4's capture shows
+the model's _commentary_ still embellishing around the honest data,
+lesson 3's scoped claim holding.
+**Win:** "I changed a sentence and watched what an AI did about it — on
+purpose, with receipts."
 
 ### Lesson 5 — `05-the-real-thing` · _It has a name_
 
