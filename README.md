@@ -61,7 +61,7 @@ works.
    control. ← **start here**
 2. **[Catch it making things up](lessons/02-the-fact-check/)** — render its claims beside the live
    Concord lookup, and mark the mismatches with your own eyes.
-3. **Give it a tool** — the heart of the course: the model writes a
+3. **[Give it a tool](lessons/03-the-one-rule/)** — the heart of the course: the model writes a
    request, _your code_ looks the verse up, and the errors stop — for a
    reason you can read.
 4. **Let it choose** — give it a menu of tools and steer it with plain
