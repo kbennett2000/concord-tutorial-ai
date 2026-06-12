@@ -1,0 +1,16 @@
+{
+  "model": "qwen3.5:2b",
+  "trials": 1,
+  "mechanicalPasses": 1,
+  "results": [
+    {
+      "trial": 1,
+      "gate1": true,
+      "gate2": true,
+      "mechanicalPass": true,
+      "ref": "John 3:16",
+      "tokensPerSec": 13.38,
+      "psBytes": 2426090289
+    }
+  ]
+}

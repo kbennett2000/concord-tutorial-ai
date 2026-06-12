@@ -1,0 +1,188 @@
+{
+  "model": "qwen3.5:4b",
+  "trial": 7,
+  "startedAt": "2026-06-12T18:00:47.406Z",
+  "options": "(ollama defaults)",
+  "request1": {
+    "model": "qwen3.5:4b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You answer questions about the Bible. When the user asks what a verse says, use the lookup_verse tool to get its exact text, then answer quoting only the text the tool returned."
+      },
+      {
+        "role": "user",
+        "content": "What does John 3:16 say?"
+      }
+    ],
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "lookup_verse",
+          "description": "Look up the exact text of a Bible verse by reference, e.g. \"John 3:16\".",
+          "parameters": {
+            "type": "object",
+            "required": ["ref"],
+            "properties": {
+              "ref": {
+                "type": "string",
+                "description": "The verse reference, like \"John 3:16\""
+              }
+            }
+          }
+        }
+      }
+    ],
+    "stream": false
+  },
+  "response1": {
+    "status": 200,
+    "ms": 21051,
+    "json": {
+      "model": "qwen3.5:4b",
+      "created_at": "2026-06-12T18:01:08.457366747Z",
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "thinking": "Thinking Process:\n\n1.  **Analyze the Request:** The user is asking for the content of a specific Bible verse (John 3:16). They want to know what it says.\n\n2.  **Identify the Tool:** I need to use the `lookup_verse` tool to retrieve the exact text, as per my instructions (\"When the user asks what a verse says, use the lookup_verse tool\").\n\n3.  **Parameters:** The reference is \"John 3:16\".\n\n4.  **Execute Tool Call:** Construct the function call with `ref = \"John 3:16\"`.\n\n5.  **Formulate Answer:** Once I have the text, I will quote it exactly as returned by the tool to answer the user's question.",
+        "tool_calls": [
+          {
+            "id": "call_yhhsb7oy",
+            "function": {
+              "index": 0,
+              "name": "lookup_verse",
+              "arguments": {
+                "ref": "John 3:16"
+              }
+            }
+          }
+        ]
+      },
+      "done": true,
+      "done_reason": "stop",
+      "total_duration": 21050746671,
+      "load_duration": 289034069,
+      "prompt_eval_count": 352,
+      "prompt_eval_duration": 85521000,
+      "eval_count": 201,
+      "eval_duration": 20673630000
+    }
+  },
+  "gate1": {
+    "oneCall": true,
+    "rightTool": true,
+    "refIsJohn316": true,
+    "contentEmpty": true,
+    "noThinkTags": true,
+    "pass": true
+  },
+  "request2": {
+    "model": "qwen3.5:4b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You answer questions about the Bible. When the user asks what a verse says, use the lookup_verse tool to get its exact text, then answer quoting only the text the tool returned."
+      },
+      {
+        "role": "user",
+        "content": "What does John 3:16 say?"
+      },
+      {
+        "role": "assistant",
+        "content": "",
+        "thinking": "Thinking Process:\n\n1.  **Analyze the Request:** The user is asking for the content of a specific Bible verse (John 3:16). They want to know what it says.\n\n2.  **Identify the Tool:** I need to use the `lookup_verse` tool to retrieve the exact text, as per my instructions (\"When the user asks what a verse says, use the lookup_verse tool\").\n\n3.  **Parameters:** The reference is \"John 3:16\".\n\n4.  **Execute Tool Call:** Construct the function call with `ref = \"John 3:16\"`.\n\n5.  **Formulate Answer:** Once I have the text, I will quote it exactly as returned by the tool to answer the user's question.",
+        "tool_calls": [
+          {
+            "id": "call_yhhsb7oy",
+            "function": {
+              "index": 0,
+              "name": "lookup_verse",
+              "arguments": {
+                "ref": "John 3:16"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "tool_name": "lookup_verse",
+        "content": "For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life."
+      }
+    ],
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "lookup_verse",
+          "description": "Look up the exact text of a Bible verse by reference, e.g. \"John 3:16\".",
+          "parameters": {
+            "type": "object",
+            "required": ["ref"],
+            "properties": {
+              "ref": {
+                "type": "string",
+                "description": "The verse reference, like \"John 3:16\""
+              }
+            }
+          }
+        }
+      }
+    ],
+    "stream": false
+  },
+  "response2": {
+    "status": 200,
+    "ms": 10054,
+    "json": {
+      "model": "qwen3.5:4b",
+      "created_at": "2026-06-12T18:01:18.511425557Z",
+      "message": {
+        "role": "assistant",
+        "content": "\"For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life.\"",
+        "thinking": "The tool returned the text of John 3:16. I will now quote this text to answer the user's question directly and accurately according to my instructions.\n\nSteps completed successfully. The verse is \"For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life.\""
+      },
+      "done": true,
+      "done_reason": "stop",
+      "total_duration": 10052979313,
+      "load_duration": 286637893,
+      "prompt_eval_count": 602,
+      "prompt_eval_duration": 248767000,
+      "eval_count": 114,
+      "eval_duration": 9514179000
+    }
+  },
+  "gate2": {
+    "skipped": false,
+    "spanA": true,
+    "spanB": true,
+    "noThinkTags": true,
+    "evalCount": 114,
+    "evalDurationNs": 9514179000,
+    "tokensPerSec": 11.98,
+    "pass": true
+  },
+  "ps": {
+    "models": [
+      {
+        "name": "qwen3.5:4b",
+        "model": "qwen3.5:4b",
+        "size": 3776048000,
+        "digest": "2a654d98e6fba55d452b7043684e9b57a947e393bbffa62485a7aac05ee4eefd",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen35",
+          "families": ["qwen35"],
+          "parameter_size": "4.7B",
+          "quantization_level": "Q4_K_M"
+        },
+        "expires_at": "2026-06-12T12:06:18.51150078-06:00",
+        "size_vram": 1638945257,
+        "context_length": 4096
+      }
+    ]
+  },
+  "mechanicalPass": true
+}

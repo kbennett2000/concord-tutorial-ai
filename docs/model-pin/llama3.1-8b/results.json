@@ -1,0 +1,97 @@
+{
+  "model": "llama3.1:8b",
+  "trials": 10,
+  "mechanicalPasses": 9,
+  "results": [
+    {
+      "trial": 1,
+      "gate1": true,
+      "gate2": true,
+      "mechanicalPass": true,
+      "ref": "John 3:16",
+      "tokensPerSec": 104.98,
+      "psBytes": 5271715839
+    },
+    {
+      "trial": 2,
+      "gate1": true,
+      "gate2": true,
+      "mechanicalPass": true,
+      "ref": "John 3:16",
+      "tokensPerSec": 105.87,
+      "psBytes": 5271715839
+    },
+    {
+      "trial": 3,
+      "gate1": true,
+      "gate2": false,
+      "mechanicalPass": false,
+      "ref": "John 3:16",
+      "tokensPerSec": 104.37,
+      "psBytes": 5271715839
+    },
+    {
+      "trial": 4,
+      "gate1": true,
+      "gate2": true,
+      "mechanicalPass": true,
+      "ref": "John 3:16",
+      "tokensPerSec": 105.37,
+      "psBytes": 5271715839
+    },
+    {
+      "trial": 5,
+      "gate1": true,
+      "gate2": true,
+      "mechanicalPass": true,
+      "ref": "John 3:16",
+      "tokensPerSec": 106.02,
+      "psBytes": 5271715839
+    },
+    {
+      "trial": 6,
+      "gate1": true,
+      "gate2": true,
+      "mechanicalPass": true,
+      "ref": "John 3:16",
+      "tokensPerSec": 105.59,
+      "psBytes": 5271715839
+    },
+    {
+      "trial": 7,
+      "gate1": true,
+      "gate2": true,
+      "mechanicalPass": true,
+      "ref": "John 3:16",
+      "tokensPerSec": 105.89,
+      "psBytes": 5271715839
+    },
+    {
+      "trial": 8,
+      "gate1": true,
+      "gate2": true,
+      "mechanicalPass": true,
+      "ref": "John 3:16",
+      "tokensPerSec": 104.79,
+      "psBytes": 5271715839
+    },
+    {
+      "trial": 9,
+      "gate1": true,
+      "gate2": true,
+      "mechanicalPass": true,
+      "ref": "John 3:16",
+      "tokensPerSec": 106.4,
+      "psBytes": 5271715839
+    },
+    {
+      "trial": 10,
+      "gate1": true,
+      "gate2": true,
+      "mechanicalPass": true,
+      "ref": "John 3:16",
+      "tokensPerSec": 104.9,
+      "psBytes": 5271715839
+    }
+  ]
+}

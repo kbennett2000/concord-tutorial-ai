@@ -1,0 +1,188 @@
+{
+  "model": "qwen3.5:4b",
+  "trial": 3,
+  "startedAt": "2026-06-12T17:57:09.987Z",
+  "options": "(ollama defaults)",
+  "request1": {
+    "model": "qwen3.5:4b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You answer questions about the Bible. When the user asks what a verse says, use the lookup_verse tool to get its exact text, then answer quoting only the text the tool returned."
+      },
+      {
+        "role": "user",
+        "content": "What does John 3:16 say?"
+      }
+    ],
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "lookup_verse",
+          "description": "Look up the exact text of a Bible verse by reference, e.g. \"John 3:16\".",
+          "parameters": {
+            "type": "object",
+            "required": ["ref"],
+            "properties": {
+              "ref": {
+                "type": "string",
+                "description": "The verse reference, like \"John 3:16\""
+              }
+            }
+          }
+        }
+      }
+    ],
+    "stream": false
+  },
+  "response1": {
+    "status": 200,
+    "ms": 27213,
+    "json": {
+      "model": "qwen3.5:4b",
+      "created_at": "2026-06-12T17:57:37.199734411Z",
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "thinking": "The user is asking me to look up what John 3:16 says. I have a tool called lookup_verse that can help with this by taking a verse reference parameter and returning its exact text.\n\nI should call the lookup_verse function with \"John 3:16\" as the ref parameter.",
+        "tool_calls": [
+          {
+            "id": "call_yuwhx0fo",
+            "function": {
+              "index": 0,
+              "name": "lookup_verse",
+              "arguments": {
+                "ref": "John 3:16"
+              }
+            }
+          }
+        ]
+      },
+      "done": true,
+      "done_reason": "stop",
+      "total_duration": 27211327888,
+      "load_duration": 303526134,
+      "prompt_eval_count": 352,
+      "prompt_eval_duration": 396822000,
+      "eval_count": 101,
+      "eval_duration": 26508525000
+    }
+  },
+  "gate1": {
+    "oneCall": true,
+    "rightTool": true,
+    "refIsJohn316": true,
+    "contentEmpty": true,
+    "noThinkTags": true,
+    "pass": true
+  },
+  "request2": {
+    "model": "qwen3.5:4b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You answer questions about the Bible. When the user asks what a verse says, use the lookup_verse tool to get its exact text, then answer quoting only the text the tool returned."
+      },
+      {
+        "role": "user",
+        "content": "What does John 3:16 say?"
+      },
+      {
+        "role": "assistant",
+        "content": "",
+        "thinking": "The user is asking me to look up what John 3:16 says. I have a tool called lookup_verse that can help with this by taking a verse reference parameter and returning its exact text.\n\nI should call the lookup_verse function with \"John 3:16\" as the ref parameter.",
+        "tool_calls": [
+          {
+            "id": "call_yuwhx0fo",
+            "function": {
+              "index": 0,
+              "name": "lookup_verse",
+              "arguments": {
+                "ref": "John 3:16"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "tool_name": "lookup_verse",
+        "content": "For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life."
+      }
+    ],
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "lookup_verse",
+          "description": "Look up the exact text of a Bible verse by reference, e.g. \"John 3:16\".",
+          "parameters": {
+            "type": "object",
+            "required": ["ref"],
+            "properties": {
+              "ref": {
+                "type": "string",
+                "description": "The verse reference, like \"John 3:16\""
+              }
+            }
+          }
+        }
+      }
+    ],
+    "stream": false
+  },
+  "response2": {
+    "status": 200,
+    "ms": 58489,
+    "json": {
+      "model": "qwen3.5:4b",
+      "created_at": "2026-06-12T17:58:35.687843362Z",
+      "message": {
+        "role": "assistant",
+        "content": "John 3:16 says: \n\n\"For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life.\"",
+        "thinking": "Now I need to present this information to the user by quoting the text returned from the tool and then providing any helpful context if appropriate. The user just asked \"What does John 3:16 say?\" so I should answer directly with what the verse says, using the exact text provided by the tool."
+      },
+      "done": true,
+      "done_reason": "stop",
+      "total_duration": 58485925252,
+      "load_duration": 289244039,
+      "prompt_eval_count": 502,
+      "prompt_eval_duration": 500265000,
+      "eval_count": 109,
+      "eval_duration": 57693280000
+    }
+  },
+  "gate2": {
+    "skipped": false,
+    "spanA": true,
+    "spanB": true,
+    "noThinkTags": true,
+    "evalCount": 109,
+    "evalDurationNs": 57693280000,
+    "tokensPerSec": 1.89,
+    "pass": true
+  },
+  "ps": {
+    "models": [
+      {
+        "name": "qwen3.5:4b",
+        "model": "qwen3.5:4b",
+        "size": 3776048000,
+        "digest": "2a654d98e6fba55d452b7043684e9b57a947e393bbffa62485a7aac05ee4eefd",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen35",
+          "families": ["qwen35"],
+          "parameter_size": "4.7B",
+          "quantization_level": "Q4_K_M"
+        },
+        "expires_at": "2026-06-12T12:03:35.688372383-06:00",
+        "size_vram": 1638945257,
+        "context_length": 4096
+      }
+    ]
+  },
+  "mechanicalPass": true
+}

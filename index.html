@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>concord-tutorial-ai — looked up, never made up</title>
+    <style>
+      :root {
+        --ink: #1f2933;
+        --soft: #52606d;
+        --ok: #1a7f37;
+        --warn: #9a3412;
+        --card: #f8fafc;
+        --line: #d9e2ec;
+      }
+      body {
+        font-family: Georgia, "Times New Roman", serif;
+        color: var(--ink);
+        max-width: 44rem;
+        margin: 3rem auto;
+        padding: 0 1.25rem;
+        line-height: 1.6;
+      }
+      h1 {
+        font-size: 1.9rem;
+        margin-bottom: 0.25rem;
+      }
+      .tagline {
+        color: var(--soft);
+        font-style: italic;
+        margin-top: 0;
+      }
+      .status {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 1rem 1.25rem;
+        margin: 1rem 0;
+      }
+      .status h2 {
+        font-size: 1.05rem;
+        margin: 0 0 0.35rem;
+      }
+      .on {
+        color: var(--ok);
+      }
+      .checking {
+        color: var(--soft);
+      }
+      [data-offline-guidance] {
+        color: var(--warn);
+        margin: 0.4rem 0 0;
+      }
+      [data-offline-guidance][hidden] {
+        display: none;
+      }
+      code {
+        font-family: ui-monospace, Menlo, Consolas, monospace;
+        font-size: 0.92em;
+        background: #eef2f6;
+        padding: 0.1em 0.35em;
+        border-radius: 4px;
+      }
+      a {
+        color: #1d4ed8;
+      }
+      footer {
+        color: var(--soft);
+        font-size: 0.9rem;
+        margin-top: 2.5rem;
+        border-top: 1px solid var(--line);
+        padding-top: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>concord-tutorial-ai</h1>
+    <p class="tagline">
+      Looked up, never made up — and you're going to build why.
+    </p>
+
+    <p>
+      You've seen an AI invent a Bible verse. In five short lessons you'll catch
+      it doing that with your own code — and then fix it, yourself, so it can't.
+      Start with the <a href="README.md">README</a>; when you're ready to set
+      things up, <a href="SETUP.md">SETUP</a> walks you through it once.
+    </p>
+
+    <p>This page checks your two co-stars, right now, from your browser:</p>
+
+    <div class="status">
+      <h2>Ollama — the AI on your computer</h2>
+      <p class="checking" data-status="ollama">Checking…</p>
+      <p data-offline-guidance="ollama" hidden>
+        Ollama isn't answering. The 30-second check: open
+        <code>http://localhost:11434</code> in a new tab — you want the words
+        "Ollama is running." If they don't appear, start the Ollama app (on
+        Linux: <code>ollama serve</code> in a terminal), then reload this page.
+        Not installed yet? <a href="SETUP.md">SETUP</a> has you covered.
+      </p>
+    </div>
+
+    <div class="status">
+      <h2>Concord — the real Bible it will look things up in</h2>
+      <p class="checking" data-status="concord">Checking…</p>
+      <p data-offline-guidance="concord" hidden>
+        Concord isn't answering. The course-1 ritual still works: open
+        <code>http://localhost:8000/healthz</code> in a new tab — a short line
+        of data means it's on. If nothing loads, open Docker and start Concord,
+        then reload this page. First time? <a href="SETUP.md">SETUP</a> shows
+        the way.
+      </p>
+    </div>
+
+    <footer>
+      🚧 Under construction — lessons land one at a time. MIT © 2026 Kris
+      Bennett.
+    </footer>
+
+    <script>
+      // The two backends every lesson talks to. Same addresses as SETUP.md.
+      const OLLAMA = "http://localhost:11434";
+      const CONCORD = "http://localhost:8000";
+
+      // A check the lessons will reuse: try the backend; if it can't be
+      // reached, show that backend's friendly guidance instead of a blank
+      // page or a console error.
+      function check(name, url, describe) {
+        const status = document.querySelector(`[data-status="${name}"]`);
+        const guidance = document.querySelector(
+          `[data-offline-guidance="${name}"]`,
+        );
+        fetch(url)
+          .then((r) => (r.ok ? r.text() : Promise.reject(new Error(r.status))))
+          .then((body) => {
+            status.textContent = describe(body);
+            status.className = "on";
+            guidance.hidden = true;
+          })
+          .catch(() => {
+            status.textContent = "Not reachable from this page.";
+            status.className = "checking";
+            guidance.hidden = false;
+          });
+      }
+
+      check("ollama", `${OLLAMA}/`, () => "On — Ollama is running.");
+      check("concord", `${CONCORD}/healthz`, (body) => {
+        try {
+          const h = JSON.parse(body);
+          return `On — ${h.translation_count} translations, ${h.verse_count.toLocaleString()} verses ready.`;
+        } catch {
+          return "On.";
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,230 @@
+{
+  "model": "qwen3.5:4b",
+  "trial": 1,
+  "startedAt": "2026-06-12T18:06:05.947Z",
+  "options": {
+    "num_gpu": 0
+  },
+  "request1": {
+    "model": "qwen3.5:4b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You answer questions about the Bible. When the user asks what a verse says, use the lookup_verse tool to get its exact text, then answer quoting only the text the tool returned."
+      },
+      {
+        "role": "user",
+        "content": "What does John 3:16 say?"
+      }
+    ],
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "lookup_verse",
+          "description": "Look up the exact text of a Bible verse by reference, e.g. \"John 3:16\".",
+          "parameters": {
+            "type": "object",
+            "required": ["ref"],
+            "properties": {
+              "ref": {
+                "type": "string",
+                "description": "The verse reference, like \"John 3:16\""
+              }
+            }
+          }
+        }
+      }
+    ],
+    "stream": false,
+    "options": {
+      "num_gpu": 0
+    }
+  },
+  "response1": {
+    "status": 200,
+    "ms": 49600,
+    "json": {
+      "model": "qwen3.5:4b",
+      "created_at": "2026-06-12T18:06:55.546583367Z",
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "thinking": "Thinking Process:\n\n1.  **Analyze the Request:** The user is asking for the content of a specific Bible verse (John 3:16). I need to use the provided `lookup_verse` tool to retrieve the exact text and then answer the question quoting that text.\n\n2.  **Verify Tools:** There is one available function: `lookup_verse`.\n    *   Description: \"Look up the exact text of a Bible verse by reference, e.g. \\\"John 3:16\\\".\"\n    *   Parameters: Required `ref` (string).\n\n3.  **Execute Tool Call:** I need to call `lookup_verse` with the parameter `ref = \"John 3:16\"`.\n\n4.  **Formulate Output:** After receiving the result, I should answer the user's question by quoting only the text returned by the tool (as per instruction: \"then answer quoting only the text the tool returned\"). Although usually a brief introduction is okay, the core of the response must focus on the direct quote from the tool.\n\n5.  **Draft Response:**\n    *   Call `lookup_verse` with ref=\"John 3:16\".\n    *   Display result in user-friendly format (quoting the text).\n\nLet's execute the tool call now.\n\nWait, I should check if there are any special instructions regarding quoting. The system prompt says \"When the user asks what a verse says, use the lookup_verse tool to get its exact text, then answer quoting only the text the tool returned.\" This implies I shouldn't add too much interpretation or paraphrase before/after.\n\nPlan:\n1. Call `lookup_verse(ref=\"John 3:16\")`.\n2. Present the retrieved verse clearly.\n\nLet's proceed.cw",
+        "tool_calls": [
+          {
+            "id": "call_owdwd6ci",
+            "function": {
+              "index": 0,
+              "name": "lookup_verse",
+              "arguments": {
+                "ref": "John 3:16"
+              }
+            }
+          }
+        ]
+      },
+      "done": true,
+      "done_reason": "stop",
+      "total_duration": 49595946237,
+      "load_duration": 9179820945,
+      "prompt_eval_count": 352,
+      "prompt_eval_duration": 4187689000,
+      "eval_count": 416,
+      "eval_duration": 36225590000
+    }
+  },
+  "gate1": {
+    "oneCall": true,
+    "rightTool": true,
+    "refIsJohn316": true,
+    "contentEmpty": true,
+    "noThinkTags": true,
+    "pass": true
+  },
+  "request2": {
+    "model": "qwen3.5:4b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You answer questions about the Bible. When the user asks what a verse says, use the lookup_verse tool to get its exact text, then answer quoting only the text the tool returned."
+      },
+      {
+        "role": "user",
+        "content": "What does John 3:16 say?"
+      },
+      {
+        "role": "assistant",
+        "content": "",
+        "thinking": "Thinking Process:\n\n1.  **Analyze the Request:** The user is asking for the content of a specific Bible verse (John 3:16). I need to use the provided `lookup_verse` tool to retrieve the exact text and then answer the question quoting that text.\n\n2.  **Verify Tools:** There is one available function: `lookup_verse`.\n    *   Description: \"Look up the exact text of a Bible verse by reference, e.g. \\\"John 3:16\\\".\"\n    *   Parameters: Required `ref` (string).\n\n3.  **Execute Tool Call:** I need to call `lookup_verse` with the parameter `ref = \"John 3:16\"`.\n\n4.  **Formulate Output:** After receiving the result, I should answer the user's question by quoting only the text returned by the tool (as per instruction: \"then answer quoting only the text the tool returned\"). Although usually a brief introduction is okay, the core of the response must focus on the direct quote from the tool.\n\n5.  **Draft Response:**\n    *   Call `lookup_verse` with ref=\"John 3:16\".\n    *   Display result in user-friendly format (quoting the text).\n\nLet's execute the tool call now.\n\nWait, I should check if there are any special instructions regarding quoting. The system prompt says \"When the user asks what a verse says, use the lookup_verse tool to get its exact text, then answer quoting only the text the tool returned.\" This implies I shouldn't add too much interpretation or paraphrase before/after.\n\nPlan:\n1. Call `lookup_verse(ref=\"John 3:16\")`.\n2. Present the retrieved verse clearly.\n\nLet's proceed.cw",
+        "tool_calls": [
+          {
+            "id": "call_owdwd6ci",
+            "function": {
+              "index": 0,
+              "name": "lookup_verse",
+              "arguments": {
+                "ref": "John 3:16"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "tool_name": "lookup_verse",
+        "content": "For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life."
+      }
+    ],
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "lookup_verse",
+          "description": "Look up the exact text of a Bible verse by reference, e.g. \"John 3:16\".",
+          "parameters": {
+            "type": "object",
+            "required": ["ref"],
+            "properties": {
+              "ref": {
+                "type": "string",
+                "description": "The verse reference, like \"John 3:16\""
+              }
+            }
+          }
+        }
+      }
+    ],
+    "stream": false,
+    "options": {
+      "num_gpu": 0
+    }
+  },
+  "response2": {
+    "status": 200,
+    "ms": 11036,
+    "json": {
+      "model": "qwen3.5:4b",
+      "created_at": "2026-06-12T18:07:06.582411482Z",
+      "message": {
+        "role": "assistant",
+        "content": "\"For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life.\"",
+        "thinking": "The tool returned the verse text: \"For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life.\"\n\nI will now answer the user's question by quoting this text. I can present it clearly as a quote from John 3:16."
+      },
+      "done": true,
+      "done_reason": "stop",
+      "total_duration": 11033376861,
+      "load_duration": 289912013,
+      "prompt_eval_count": 817,
+      "prompt_eval_duration": 701293000,
+      "eval_count": 110,
+      "eval_duration": 10038107000
+    }
+  },
+  "gate2": {
+    "skipped": false,
+    "spanA": true,
+    "spanB": true,
+    "noThinkTags": true,
+    "evalCount": 110,
+    "evalDurationNs": 10038107000,
+    "tokensPerSec": 10.96,
+    "pass": true
+  },
+  "ps": {
+    "models": [
+      {
+        "name": "qwen3.5:4b",
+        "model": "qwen3.5:4b",
+        "size": 3208915187,
+        "digest": "2a654d98e6fba55d452b7043684e9b57a947e393bbffa62485a7aac05ee4eefd",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen35",
+          "families": ["qwen35"],
+          "parameter_size": "4.7B",
+          "quantization_level": "Q4_K_M"
+        },
+        "expires_at": "2026-06-12T12:12:06.582505122-06:00",
+        "size_vram": 0,
+        "context_length": 4096
+      },
+      {
+        "name": "qwen3.5:9b",
+        "model": "qwen3.5:9b",
+        "size": 6222564555,
+        "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen35",
+          "families": ["qwen35"],
+          "parameter_size": "9.7B",
+          "quantization_level": "Q4_K_M"
+        },
+        "expires_at": "2026-06-12T12:11:05.839139055-06:00",
+        "size_vram": 0,
+        "context_length": 4096
+      },
+      {
+        "name": "qwen3.5:2b",
+        "model": "qwen3.5:2b",
+        "size": 2186752818,
+        "digest": "324d162be6ca5629ae4517c8710434d0bd2d665bc94dbad46e9af8fbf8a2f0df",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen35",
+          "families": ["qwen35"],
+          "parameter_size": "2.3B",
+          "quantization_level": "Q8_0"
+        },
+        "expires_at": "2026-06-12T12:08:48.039345761-06:00",
+        "size_vram": 2186752818,
+        "context_length": 4096
+      }
+    ]
+  },
+  "mechanicalPass": true
+}

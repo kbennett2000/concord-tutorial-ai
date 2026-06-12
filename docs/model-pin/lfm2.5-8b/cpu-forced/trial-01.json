@@ -1,0 +1,230 @@
+{
+  "model": "lfm2.5:8b",
+  "trial": 1,
+  "startedAt": "2026-06-12T18:07:25.641Z",
+  "options": {
+    "num_gpu": 0
+  },
+  "request1": {
+    "model": "lfm2.5:8b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You answer questions about the Bible. When the user asks what a verse says, use the lookup_verse tool to get its exact text, then answer quoting only the text the tool returned."
+      },
+      {
+        "role": "user",
+        "content": "What does John 3:16 say?"
+      }
+    ],
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "lookup_verse",
+          "description": "Look up the exact text of a Bible verse by reference, e.g. \"John 3:16\".",
+          "parameters": {
+            "type": "object",
+            "required": ["ref"],
+            "properties": {
+              "ref": {
+                "type": "string",
+                "description": "The verse reference, like \"John 3:16\""
+              }
+            }
+          }
+        }
+      }
+    ],
+    "stream": false,
+    "options": {
+      "num_gpu": 0
+    }
+  },
+  "response1": {
+    "status": 200,
+    "ms": 9916,
+    "json": {
+      "model": "lfm2.5:8b",
+      "created_at": "2026-06-12T18:07:35.556384012Z",
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "thinking": "The user asks: \"What does John 3:16 say?\" According to the system prompt, we must use the lookup_verse tool to get the exact text of that verse. So I need to call lookup_verse with ref \"John 3:16\". Then answer quoting only the text returned.\n\nThus:\n\n[analysis]\nWe have no prior data; we need to fetch the verse.",
+        "tool_calls": [
+          {
+            "id": "call_k1fqpp4g",
+            "function": {
+              "index": 0,
+              "name": "lookup_verse",
+              "arguments": {
+                "ref": "John 3:16"
+              }
+            }
+          }
+        ]
+      },
+      "done": true,
+      "done_reason": "stop",
+      "total_duration": 9912250816,
+      "load_duration": 4766739969,
+      "prompt_eval_count": 151,
+      "prompt_eval_duration": 914979000,
+      "eval_count": 102,
+      "eval_duration": 4228425000
+    }
+  },
+  "gate1": {
+    "oneCall": true,
+    "rightTool": true,
+    "refIsJohn316": true,
+    "contentEmpty": true,
+    "noThinkTags": true,
+    "pass": true
+  },
+  "request2": {
+    "model": "lfm2.5:8b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You answer questions about the Bible. When the user asks what a verse says, use the lookup_verse tool to get its exact text, then answer quoting only the text the tool returned."
+      },
+      {
+        "role": "user",
+        "content": "What does John 3:16 say?"
+      },
+      {
+        "role": "assistant",
+        "content": "",
+        "thinking": "The user asks: \"What does John 3:16 say?\" According to the system prompt, we must use the lookup_verse tool to get the exact text of that verse. So I need to call lookup_verse with ref \"John 3:16\". Then answer quoting only the text returned.\n\nThus:\n\n[analysis]\nWe have no prior data; we need to fetch the verse.",
+        "tool_calls": [
+          {
+            "id": "call_k1fqpp4g",
+            "function": {
+              "index": 0,
+              "name": "lookup_verse",
+              "arguments": {
+                "ref": "John 3:16"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "tool_name": "lookup_verse",
+        "content": "For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life."
+      }
+    ],
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "lookup_verse",
+          "description": "Look up the exact text of a Bible verse by reference, e.g. \"John 3:16\".",
+          "parameters": {
+            "type": "object",
+            "required": ["ref"],
+            "properties": {
+              "ref": {
+                "type": "string",
+                "description": "The verse reference, like \"John 3:16\""
+              }
+            }
+          }
+        }
+      }
+    ],
+    "stream": false,
+    "options": {
+      "num_gpu": 0
+    }
+  },
+  "response2": {
+    "status": 200,
+    "ms": 7042,
+    "json": {
+      "model": "lfm2.5:8b",
+      "created_at": "2026-06-12T18:07:42.598750556Z",
+      "message": {
+        "role": "assistant",
+        "content": "For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life.",
+        "thinking": "The user asks: \"What does John 3:16 say?\" The tool returned the verse text. According to the tool response:\n\n\"For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life.\"\n\nWe need to quote only the text the tool returned. So we output exactly that string.\n\nThus answer: For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life.\n\nMake sure no extra commentary."
+      },
+      "done": true,
+      "done_reason": "stop",
+      "total_duration": 7039904481,
+      "load_duration": 214461009,
+      "prompt_eval_count": 224,
+      "prompt_eval_duration": 575112000,
+      "eval_count": 172,
+      "eval_duration": 6248013000
+    }
+  },
+  "gate2": {
+    "skipped": false,
+    "spanA": true,
+    "spanB": true,
+    "noThinkTags": true,
+    "evalCount": 172,
+    "evalDurationNs": 6248013000,
+    "tokensPerSec": 27.53,
+    "pass": true
+  },
+  "ps": {
+    "models": [
+      {
+        "name": "lfm2.5:8b",
+        "model": "lfm2.5:8b",
+        "size": 5259489443,
+        "digest": "9cf756159fc2f3b9128c6a3f544ec90c5e9b8afdbb4179a57b8aea9de589cfb2",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "lfm2moe",
+          "families": ["lfm2moe"],
+          "parameter_size": "8.5B",
+          "quantization_level": "Q4_K_M"
+        },
+        "expires_at": "2026-06-12T12:12:42.59886933-06:00",
+        "size_vram": 0,
+        "context_length": 4096
+      },
+      {
+        "name": "qwen3.5:9b",
+        "model": "qwen3.5:9b",
+        "size": 6222564555,
+        "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen35",
+          "families": ["qwen35"],
+          "parameter_size": "9.7B",
+          "quantization_level": "Q4_K_M"
+        },
+        "expires_at": "2026-06-12T12:11:05.839139055-06:00",
+        "size_vram": 0,
+        "context_length": 4096
+      },
+      {
+        "name": "qwen3.5:2b",
+        "model": "qwen3.5:2b",
+        "size": 2186752818,
+        "digest": "324d162be6ca5629ae4517c8710434d0bd2d665bc94dbad46e9af8fbf8a2f0df",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen35",
+          "families": ["qwen35"],
+          "parameter_size": "2.3B",
+          "quantization_level": "Q8_0"
+        },
+        "expires_at": "2026-06-12T12:08:48.039345761-06:00",
+        "size_vram": 2186752818,
+        "context_length": 4096
+      }
+    ]
+  },
+  "mechanicalPass": true
+}
